@@ -7,6 +7,7 @@ import Rules from './Components/Rules';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
+import HallOfHeroes from './Components/HallOfHeroes';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
                 <Link to="/options">Options</Link>
               </li>
               <li>
+                <Link to="/hallofheroes">Hall of heroes</Link>
+              </li>
+              <li>
                 <Link to="/aboutUs">About us</Link>
               </li>
               <li>
@@ -45,6 +49,7 @@ function App() {
             <Route path="/game" component={Game} />
             <Route path="/rules" component={Rules} />
             <Route path="/options" component={Options} />
+            <Route path="/hallofheroes" component={HallOfHeroes} />
             <Route path="/aboutUs" component={AboutUs} />
             <Route path="/contactUs" component={ContactUs} />
           </Switch>
