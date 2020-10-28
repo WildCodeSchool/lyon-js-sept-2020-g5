@@ -1,0 +1,147 @@
+@font-face{
+    font-family: "Pink";
+    src: url(../police/pink.ttf)
+}
+.box{
+    height:200px;
+}
+body{
+    background-image: url("../img/Home-img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.btn-container1{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    font-family: "Pink";
+    
+    
+}
+
+
+.btn-new-game{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7) ;
+    text-shadow: 5px 3px red ;
+    color: #FBFF2C;
+    border-color: white;
+}
+
+.btn-rules, .btn-options, .btn-about{
+    border-radius: 10px;
+    background-color: rgba(0, 0 , 0, 0.7);
+    color: white;
+    border-color: white;
+}
+
+
+@media screen and (max-width:736px){
+
+
+
+.btn-container1{
+    
+    padding: 20px;
+    
+    
+}
+
+.btn-container2{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+
+    
+}
+
+
+ .btn-new-game{
+    width: 305px;
+    height: 64px;
+    font-size: 36px;
+    
+   
+}
+
+.btn-rules, .btn-options, .btn-about{
+    width: 125px;
+    height: 64px;
+    font-size: 24px;
+    
+    
+    
+}
+
+
+}
+
+
+@media screen and (min-width:736px) and (max-width:1024px){
+
+
+    .btn-container2{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        
+    }
+    .btn-new-game{
+        width: 480px;
+        height: 150px;
+        font-size: 64px;
+        color: #FBFF2C;
+        font-size: 64px;
+        
+       
+        
+       
+    }
+    
+    
+    .btn-rules, .btn-options, .btn-about{
+        width: 230px;
+        height: 90px;
+        font-size: 36px;
+        margin: 20px;
+        
+        
+        
+    }
+}
+
+
+@media screen and  (min-width:1024px){
+
+    .btn-container2{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        
+    }
+
+    .btn-new-game{
+        width: 480px;
+        height: 150px;
+        font-size: 64px;
+        
+        
+        
+       
+    }
+    
+    
+    .btn-rules, .btn-options, .btn-about{
+        width: 230px;
+        height: 90px;
+        font-size: 36px;
+        margin: 20px;
+        
+        
+        
+    }
+}
