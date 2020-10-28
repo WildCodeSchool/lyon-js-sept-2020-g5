@@ -26,10 +26,10 @@ function App() {
                 <Link to="/rules">Rules</Link>
               </li>
               <li>
-                <Link to="/options">Options</Link>
+                <Link to="/hallofheroes">Hall of heroes</Link>
               </li>
               <li>
-                <Link to="/hallofheroes">Hall of heroes</Link>
+                <Link to="/options">Options</Link>
               </li>
               <li>
                 <Link to="/aboutUs">About us</Link>
