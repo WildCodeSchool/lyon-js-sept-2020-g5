@@ -31,11 +31,21 @@ button{
     border-color: white;
 }
 
+.btn-new-game:hover{
+    background-color:black;
+    cursor: pointer;
+}
+
 .btn-rules, .btn-options, .btn-about{
     border-radius: 10px;
     background-color: rgba(0, 0 , 0, 0.7);
     color: white;
     border-color: white;
+}
+
+.btn-rules:hover, .btn-options:hover, .btn-about:hover{
+    background-color:black;
+    cursor: pointer;
 }
 
 
