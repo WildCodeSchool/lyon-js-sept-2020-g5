@@ -1,35 +1,45 @@
 @font-face{
     font-family: "Pink";
-    src: url(../police/pink.ttf)
+    src: url(../Police/pink.ttf)
 }
 .box{
     height:200px;
 }
 body{
-    background-image: url("../img/Home-img.jpg");
+    background-image: url("../Pictures/Home-img.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
-.btn-container1{
+
+.btn-container1, .btn-container2{
     display: flex;
     justify-content: center;
 }
 
+
+
 button{
     font-family: "Pink";
-    
-    
+
 }
 
+.body-home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 90vh;
 
+}
 .btn-new-game{
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7) ;
-    
+    text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red ;
     color: #FBFF2C;
     border-color: white;
 }
+
+
 
 .btn-new-game:hover{
     background-color:black;
@@ -52,23 +62,6 @@ button{
 @media screen and (max-width:736px){
 
 
-
-.btn-container1{
-    
-    padding: 20px;
-    
-    
-}
-
-.btn-container2{
-    display: flex;
-    justify-content: space-around;
-    border-radius: 10px;
-
-    
-}
-
-
  .btn-new-game{
     width: 305px;
     height: 64px;
@@ -79,13 +72,17 @@ button{
 }
 
 .btn-rules, .btn-options, .btn-about{
+
     width: 125px;
     height: 64px;
     font-size: 24px;
-    
-    
-    
+       
 }
+
+button{
+    margin: 5px;
+}
+
 
 
 }
@@ -94,23 +91,15 @@ button{
 @media screen and (min-width:736px) and (max-width:1024px){
 
 
-    .btn-container2{
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        padding: 20px;
-        
-    }
+    
+
+
     .btn-new-game{
         width: 480px;
         height: 150px;
         font-size: 64px;
         color: #FBFF2C;
         font-size: 64px;
-        
-       
-        
-       
     }
     
     
@@ -118,23 +107,21 @@ button{
         width: 230px;
         height: 90px;
         font-size: 36px;
-        margin: 20px;
         
         
         
+        
+    }
+
+    button{
+        margin: 10px;
     }
 }
 
 
 @media screen and  (min-width:1024px){
 
-    .btn-container2{
-        display: flex;
-        justify-content: center;
-        padding: 20px;
-        
-    }
-
+   
     .btn-new-game{
         width: 480px;
         height: 150px;
