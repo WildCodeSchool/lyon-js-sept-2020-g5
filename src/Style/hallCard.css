@@ -1,25 +1,26 @@
-.HallCard {
-  margin: 10px;
-  display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-  text-align: center;
-  width: 80%;
-  border: 2px solid black;
+img {
+  max-width: 200px;
+  max-height: 250px;
+  border-radius: 15px;
 }
 
-.HallCard img {
-  max-width: 200px;
-}
 table {
-  border: 2px solid blue;
-  margin-left: 10px;
-  margin-right: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: grey;
 }
 td {
-  border: 3px dashed red;
+  color: white;
+  background-color: grey;
+  text-align: center;
 }
+
 h1 {
   text-align: center;
+}
+.hallOfHeroes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

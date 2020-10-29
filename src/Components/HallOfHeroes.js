@@ -44,7 +44,7 @@ class HallOfHeroes extends React.Component {
     return (
       <div>
         <h1>Hall of heroes</h1>
-        <div>
+        <div className="hallOfHeroes">
           {cards.map((hero) => (
             <HallCard key={hero.id} {...hero} />
           ))}
