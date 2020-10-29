@@ -3,13 +3,13 @@
     src: url(../Police/pink.ttf)
 }
 
-.header{
-    height: 100px;
-}
 .box{
     height:200px;
 }
-body{
+
+.body-home-container{
+    height: 100vh;
+    width: 100%;
     background-image: url("../Pictures/Home-img.jpg");
     background-size: cover;
     background-position: center;
@@ -22,44 +22,47 @@ body{
 }
 
 
-
 button{
     font-family: "Pink";
-
 }
 
-.body-home-container{
+
+.btn-home-container{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     height: 90vh;
-
 }
+
+
 .btn-new-game{
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.7) ;
     text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red ;
     color: #FBFF2C;
     border-color: white;
+    border: 0.1px solid white;
 }
-
 
 
 .btn-new-game:hover{
     background-color:black;
     cursor: pointer;
+    border-color:#FBFF2C;
 }
 
 .btn-rules, .btn-options, .btn-about{
     border-radius: 10px;
     background-color: rgba(0, 0 , 0, 0.7);
     color: white;
-    border-color: white;
+    border-color:white;
+    border: 0.1px solid;
 }
 
 .btn-rules:hover, .btn-options:hover, .btn-about:hover{
     background-color:black;
     cursor: pointer;
+    border-color: #FBFF2C;
 }
 
 
@@ -71,9 +74,7 @@ button{
     width: 305px;
     height: 64px;
     font-size: 36px;
-    text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red ;
-    
-   
+    text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red ; 
 }
 
 .btn-rules, .btn-options, .btn-about{
@@ -81,23 +82,16 @@ button{
     width: 125px;
     height: 64px;
     font-size: 24px;
-       
 }
 
 button{
     margin: 5px;
 }
 
-
-
 }
 
 
 @media screen and (min-width:736px) and (max-width:1024px){
-
-
-    
-
 
     .btn-new-game{
         width: 480px;
@@ -111,11 +105,7 @@ button{
     .btn-rules, .btn-options, .btn-about{
         width: 230px;
         height: 90px;
-        font-size: 36px;
-        
-        
-        
-        
+        font-size: 36px;  
     }
 
     button{
@@ -132,10 +122,6 @@ button{
         height: 150px;
         font-size: 64px;
         text-shadow: 5px 5px red, -2px 2px red, 2px -2px red, -2px -2px red ;
-        
-        
-        
-       
     }
     
     
@@ -143,9 +129,6 @@ button{
         width: 230px;
         height: 90px;
         font-size: 36px;
-        margin: 20px;
-        
-        
-        
+        margin: 20px;   
     }
 }
