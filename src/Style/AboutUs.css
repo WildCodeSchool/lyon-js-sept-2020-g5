@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.RulesContainer {
+.WilderContainer {
   width: auto;
   height: auto;
   overflow: auto;
@@ -18,14 +18,12 @@
   grid-template-areas:
     'a  b '
     'c  d '
-    'e  f '
-    'g  h '
-    'i  j ';
+    'e  f ';
 
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
 
-  --stagger-delay: 1000ms;
+  --stagger-delay: 700ms;
 }
 
 @keyframes cardEntrance {
@@ -38,67 +36,38 @@
     transform: scale(1);
   }
 }
-.blockRules:nth-child(1) {
+.blockAboutUs:nth-child(1) {
   grid-area: a;
   animation-delay: calc(1 * var(--stagger-delay));
   align-self: center;
   justify-self: center;
 }
-.blockRules:nth-child(2) {
+.blockAboutUs:nth-child(2) {
   grid-area: b;
   animation-delay: calc(2 * var(--stagger-delay));
   align-self: center;
   justify-self: center;
 }
-.blockRules:nth-child(3) {
+.blockAboutUs:nth-child(3) {
   grid-area: c;
   animation-delay: calc(3 * var(--stagger-delay));
   align-self: center;
   justify-self: center;
 }
-.blockRules:nth-child(4) {
+.blockAboutUs:nth-child(4) {
   grid-area: d;
   animation-delay: calc(4 * var(--stagger-delay));
   align-self: center;
   justify-self: center;
 }
-.blockRules:nth-child(5) {
+.blockAboutUs:nth-child(5) {
   grid-area: e;
   animation-delay: calc(5 * var(--stagger-delay));
   align-self: center;
   justify-self: center;
-}
-
-.blockRules:nth-child(6) {
-  grid-area: f;
-  animation-delay: calc(6 * var(--stagger-delay));
-  align-self: center;
-  justify-self: center;
-}
-.blockRules:nth-child(7) {
-  grid-area: g;
-  animation-delay: calc(7 * var(--stagger-delay));
-  align-self: center;
-  justify-self: center;
-}
-
-.blockRules:nth-child(8) {
-  grid-area: h;
-  animation-delay: calc(8 * var(--stagger-delay));
-  align-self: center;
-  justify-self: center;
-}
-.blockRules:nth-child(9) {
-  grid-area: i;
-  animation-delay: calc(9 * var(--stagger-delay));
-  align-self: center;
-  justify-self: center;
-}
-.blockRules:nth-child(10) {
-  grid-area: j;
-  animation-delay: calc(10 * var(--stagger-delay));
-  align-self: center;
-  justify-self: center;
+  grid-column-end: span 2;
+  height: auto;
+  width: 35vw;
 }
 
 img {
@@ -107,7 +76,7 @@ img {
 }
 
 /*simgle block rules*/
-.blockRules {
+.blockAboutUs {
   padding: 10px;
   margin-top: 30px;
   border: 2px solid;
@@ -129,7 +98,7 @@ img {
   animation-fill-mode: backwards; /*applique le "from du keyframe" avant l'animation et garde le style a la fin */
 }
 
-.rulesDetails {
+.AboutUsDetails {
   color: white;
   padding: 10px;
   text-align: center;
@@ -140,8 +109,8 @@ img {
   overflow: auto;
 }
 @media (max-width: 640px) {
-  .RulesContainer {
-    grid-template-areas: 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j';
+  .WilderContainer {
+    grid-template-areas: 'a' 'b' 'c' 'd' 'e';
     grid-template-columns: 1fr;
   }
 }
