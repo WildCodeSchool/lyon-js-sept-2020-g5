@@ -39,9 +39,7 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+            <Route exact path="/" component={Home} />
             <Route path="/game" component={Game} />
             <Route path="/rules" component={Rules} />
             <Route path="/options" component={Options} />
