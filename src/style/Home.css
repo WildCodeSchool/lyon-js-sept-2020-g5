@@ -2,6 +2,10 @@
     font-family: "Pink";
     src: url(../Police/pink.ttf)
 }
+
+.header{
+    height: 100px;
+}
 .box{
     height:200px;
 }
@@ -62,7 +66,8 @@ button{
 @media screen and (max-width:736px){
 
 
- .btn-new-game{
+
+.btn-new-game{
     width: 305px;
     height: 64px;
     font-size: 36px;
