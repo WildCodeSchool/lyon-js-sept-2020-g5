@@ -1,14 +1,25 @@
 .HallCard {
-  width: 100%;
-  border: 1px solid #f8f8f8;
-  border-radius: 2px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+  margin: 10px;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  border: 2px solid black;
 }
 
 .HallCard img {
-  max-width: 800px;
+  max-width: 200px;
 }
-
-ul {
-  list-style: none;
+table {
+  border: 2px solid blue;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+td {
+  border: 3px dashed red;
+}
+h1 {
+  text-align: center;
 }
