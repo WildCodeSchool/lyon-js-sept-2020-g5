@@ -2,7 +2,7 @@
 .burger-menu.open {
   display: inline-block;
   cursor: pointer;
-  position: fixed;
+
   right: 20px;
   top: 40px;
   z-index: 20;
@@ -58,4 +58,12 @@
 }
 .menu li:hover {
   color: #ff0000;
+}
+
+@media only screen and (min-width: 1200px) {
+  .burger-menu .bar1,
+  .bar2,
+  .bar3 {
+    display: none;
+  }
 }
