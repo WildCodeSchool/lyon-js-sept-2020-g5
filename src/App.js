@@ -9,7 +9,6 @@ import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
 import HallOfHeroes from './Components/HallOfHeroes';
 import Footer from './Components/Footer';
-import './Style/Header.css';
 import Header from './Components/Header';
 
 function App() {
@@ -18,17 +17,17 @@ function App() {
       <Router>
         <div>
           <Header />
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/game" component={Game} />
-            <Route path="/rules" component={Rules} />
-            <Route path="/options" component={Options} />
-            <Route path="/hallofheroes" component={HallOfHeroes} />
-            <Route path="/aboutUs" component={AboutUs} />
-            <Route path="/contactUs" component={ContactUs} />
-          </Switch>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/game" component={Game} />
+              <Route path="/rules" component={Rules} />
+              <Route path="/options" component={Options} />
+              <Route path="/aboutUs" component={AboutUs} />
+              <Route path="/contactUs" component={ContactUs} />
+              <Route path="/hallofheroes" component={HallOfHeroes} />
+            </Switch>
+          </main>
         </div>
         <Footer />
       </Router>
