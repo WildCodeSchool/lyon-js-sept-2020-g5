@@ -1,8 +1,8 @@
 import React from 'react';
+import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
-import { Howl, Howler } from 'howler';
 
 const audioClips = new Howl({
   src: [Punch],
@@ -13,8 +13,6 @@ const audioClips2 = new Howl({
 });
 
 const Home = (props) => {
-  console.log(props);
-
   const handleNewGameClick = () => {
     props.history.push('/game');
     audioClips2.play();
