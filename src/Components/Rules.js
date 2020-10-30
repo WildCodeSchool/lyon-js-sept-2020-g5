@@ -53,7 +53,7 @@ function Rules() {
       <RulesComponents
         image="http://placekitten.com/372/330"
         alt="."
-        nameOfRule="Step 1  - Board, Fight phase"
+        nameOfRule="Step 1 - Board, Fight phase"
         textRule="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
       />
       <RulesComponents

@@ -7,8 +7,9 @@
   width: auto;
   height: auto;
   overflow: auto;
-  background-image: url('http://iwallpapers2.free.fr/images/Espace/Espace_etoiles_-_1920x1080.jpg');
+  background-image: url('../Picture/space.jpeg');
   background-attachment: fixed;
+  background-size: cover;
   display: grid;
   grid-template-columns: auto;
   gap: 20px;
