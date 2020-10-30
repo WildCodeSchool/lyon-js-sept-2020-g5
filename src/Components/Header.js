@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Style/Header.css';
+import BurgerMenu from './Burgermenu';
 
 const Header = () => {
   return (
@@ -25,6 +26,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      <BurgerMenu />
     </header>
   );
 };
