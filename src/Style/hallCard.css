@@ -24,3 +24,8 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.card {
+  width: 320 px;
+  height: 285px;
+}
