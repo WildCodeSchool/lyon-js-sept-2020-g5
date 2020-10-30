@@ -7,6 +7,7 @@ import Rules from './Components/Rules';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
+import HallOfHeroes from './Components/HallOfHeroes';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="/options" component={Options} />
               <Route path="/aboutUs" component={AboutUs} />
               <Route path="/contactUs" component={ContactUs} />
+              <Route path="/hallofheroes" component={HallOfHeroes} />
             </Switch>
           </main>
         </div>

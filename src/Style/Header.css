@@ -45,6 +45,9 @@ header nav ul li a:hover {
   header nav ul li {
     display: none;
   }
+  nav {
+    display: none;
+  }
 }
 
 /*Tablette*/
@@ -52,5 +55,8 @@ header nav ul li a:hover {
   header nav ul li {
     font-size: 1em;
     padding: 5px 10px;
+  }
+  nav {
+    display: none;
   }
 }

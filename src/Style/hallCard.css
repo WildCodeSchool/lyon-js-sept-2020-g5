@@ -1,0 +1,31 @@
+img {
+  max-width: 200px;
+  max-height: 250px;
+  border-radius: 15px;
+}
+
+table {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: grey;
+}
+td {
+  color: white;
+  background-color: grey;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+.hallOfHeroes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 320 px;
+  height: 285px;
+}
