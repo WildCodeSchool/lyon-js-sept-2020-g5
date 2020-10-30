@@ -55,29 +55,15 @@ const ContactUs = () => (
 
 const BurgerMenu = () => (
   <div style={styles}>
-    <Router>
-      <div>
-        <Popup
-          modal
-          overlayStyle={{ background: 'rgba(255,255,255,0.98' }}
-          contentStyle={contentStyle}
-          closeOnDocumentClick={false}
-          trigger={(open) => <BurgerIcon open={open} />}
-        >
-          {(close) => <Menu close={close} />}
-        </Popup>
-
-        <hr />
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/game" component={Game} />
-        <Route path="/rules" component={Rules} />
-        <Route path="/options" component={Options} />
-        <Route path="/aboutUs" component={AboutUs} />
-        <Route path="/contactUs" component={ContactUs} />
-      </div>
-    </Router>
+    <Popup
+      modal
+      overlayStyle={{ background: 'rgba(255,255,255,0.98' }}
+      contentStyle={contentStyle}
+      closeOnDocumentClick={false}
+      trigger={(open) => <BurgerIcon open={open} />}
+    >
+      {(close) => <Menu close={close} />}
+    </Popup>
   </div>
 );
 

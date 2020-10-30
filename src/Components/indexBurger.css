@@ -2,9 +2,10 @@
 .burger-menu.open {
   display: inline-block;
   cursor: pointer;
+  position: absolute;
 
   right: 20px;
-  top: 40px;
+  top: 0px;
   z-index: 20;
   background: black;
   padding: 10px;
@@ -60,7 +61,7 @@
   color: #ff0000;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 700px) {
   .burger-menu .bar1,
   .bar2,
   .bar3 {
