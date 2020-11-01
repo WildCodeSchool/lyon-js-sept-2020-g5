@@ -52,7 +52,6 @@ class HallOfHeroes extends React.Component {
 
   render() {
     const { cards } = this.state;
-    console.log(cards);
     return (
       <div>
         <h1>Hall of heroes</h1>
