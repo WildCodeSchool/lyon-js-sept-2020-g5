@@ -4,20 +4,9 @@ img {
   border-radius: 15px;
 }
 
-table {
-  border: 2px solid black;
-  border-radius: 10px;
-  margin: 10px;
-  background-color: grey;
-}
-td {
-  color: white;
-  background-color: grey;
-  text-align: center;
-}
-
 h1 {
   text-align: center;
+  margin-top: 10px;
 }
 .hallOfHeroes {
   display: flex;
@@ -26,6 +15,21 @@ h1 {
 }
 
 .card {
-  width: 320 px;
-  height: 285px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 400px;
+  background-color: rgba(5, 5, 5, 0.722);
+  border-radius: 20px;
+  margin: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+}
+.statsInfo {
+  color: yellow;
+}
+
+.stats h1 {
+  color: white;
 }

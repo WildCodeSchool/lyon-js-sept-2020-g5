@@ -5,32 +5,22 @@ function HallCard(props) {
   const { name, img, atk, hp, power, alignment } = props;
   return (
     <div className="card">
-      <table>
-        <thead>
-          <tr>
-            <th>{name}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td rowSpan="5">
-              <img src={img} alt={name} />
-            </td>
-          </tr>
-          <tr>
-            <td>Attack : {atk}</td>
-          </tr>
-          <tr>
-            <td>Power : {power}</td>
-          </tr>
-          <tr>
-            <td>HP : {hp}</td>
-          </tr>
-          <tr>
-            <td>Alignment : {alignment}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="imgCard">
+        <img src={img} alt={name} />
+      </div>
+      <div className="stats">
+        <h1>{name}</h1>
+        <br />
+        <p>
+          Attack : <span className="statsInfo">{atk}</span>
+          <br />
+          Power : <span className="statsInfo">{power}</span>
+          <br />
+          HP : <span className="statsInfo">{hp}</span>
+          <br />
+          Alignment : <span className="statsInfo">{alignment}</span>
+        </p>
+      </div>
     </div>
   );
 }
