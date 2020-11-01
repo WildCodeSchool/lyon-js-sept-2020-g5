@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Style/Header.css';
 import BurgerMenu from './Burgermenu';
+import logowildClash from '../Pictures/logo-wildClash.png';
 
 const Header = () => {
   return (
     <header>
-      <p>Logo</p>
+      <div className="logo">
+        <img src={logowildClash} alt="logo Wild CLash" />
+      </div>
       <nav>
         <ul>
           <li>
@@ -22,7 +25,7 @@ const Header = () => {
             <Link to="/hallofheroes">Hall of heroes</Link>
           </li>
           <li>
-            <Link to="/aboutUs">About us</Link>
+            <Link to="/aboutus">About us</Link>
           </li>
         </ul>
       </nav>

@@ -3,23 +3,20 @@
   display: inline-block;
   cursor: pointer;
   position: absolute;
-
   right: 20px;
-  top: 0px;
-  z-index: 20;
-  background: black;
+  top: 15px;
+
+  /* background: black; */
   padding: 10px;
-  border-radius: 25px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .burger-menu .bar1,
 .bar2,
 .bar3 {
-  width: 25px;
+  width: 30px;
   height: 3px;
   background-color: white;
-  margin: 4px 0;
+  margin: 5px 0;
   transition: 0.4s;
 }
 
@@ -61,10 +58,8 @@
   color: #ff0000;
 }
 
-@media only screen and (min-width: 700px) {
-  .burger-menu .bar1,
-  .bar2,
-  .bar3 {
+@media only screen and (min-width: 800px) {
+  .burger-menu {
     display: none;
   }
 }
