@@ -23,8 +23,8 @@ function App() {
               <Route path="/game" component={Game} />
               <Route path="/rules" component={Rules} />
               <Route path="/options" component={Options} />
-              <Route path="/aboutUs" component={AboutUs} />
-              <Route path="/contactUs" component={ContactUs} />
+              <Route path="/aboutus" component={AboutUs} />
+              <Route path="/contactus" component={ContactUs} />
               <Route path="/hallofheroes" component={HallOfHeroes} />
             </Switch>
           </main>

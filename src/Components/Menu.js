@@ -12,22 +12,27 @@ export default ({ close }) => (
       </li>
 
       <li>
-        <NavLink onClick={close} activeClassName="current" to="/Games">
+        <NavLink onClick={close} activeClassName="current" to="/game">
           Games
         </NavLink>
       </li>
       <li>
-        <NavLink onClick={close} activeClassName="current" to="/Options">
+        <NavLink onClick={close} activeClassName="current" to="/options">
           Options
         </NavLink>
       </li>
       <li>
-        <NavLink onClick={close} activeClassName="current" to="/About">
+        <NavLink onClick={close} activeClassName="current" to="/hallofheroes">
+          Hall of heroes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink onClick={close} activeClassName="current" to="/aboutus">
           About us
         </NavLink>
       </li>
       <li>
-        <NavLink onClick={close} activeClassName="current" to="/Contact Us">
+        <NavLink onClick={close} activeClassName="current" to="/contactus">
           Contact Us
         </NavLink>
       </li>
