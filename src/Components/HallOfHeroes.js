@@ -1,12 +1,23 @@
 import React from 'react';
 import axios from 'axios';
 import HallCard from './HallCard';
+import hallWaiting from '../Pictures/hallWaiting.png';
 
 class HallOfHeroes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
+      cards: [
+        {
+          alignment: 'XXXX',
+          id: 'XXXX',
+          name: 'Chargement en cours',
+          img: hallWaiting,
+          atk: 'XXXX',
+          hp: 'XXXX',
+          power: 'XXXX',
+        },
+      ],
     };
     this.getHeroes = this.getHeroes.bind(this);
   }

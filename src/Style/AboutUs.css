@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.WilderContainer {
+  width: auto;
+  height: auto;
+  overflow: auto;
+  background-image: url('../Pictures/space.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 20px;
+
+  /* Dessin du template */
+  grid-template-areas:
+    'a  b '
+    'c  d '
+    'e  f ';
+
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+
+  --stagger-delay: 700ms;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.blockAboutUs:nth-child(1) {
+  grid-area: a;
+  animation-delay: calc(1 * var(--stagger-delay));
+  align-self: center;
+  justify-self: center;
+}
+.blockAboutUs:nth-child(2) {
+  grid-area: b;
+  animation-delay: calc(2 * var(--stagger-delay));
+  align-self: center;
+  justify-self: center;
+}
+.blockAboutUs:nth-child(3) {
+  grid-area: c;
+  animation-delay: calc(3 * var(--stagger-delay));
+  align-self: center;
+  justify-self: center;
+}
+.blockAboutUs:nth-child(4) {
+  grid-area: d;
+  animation-delay: calc(4 * var(--stagger-delay));
+  align-self: center;
+  justify-self: center;
+}
+.blockAboutUs:nth-child(5) {
+  grid-area: e;
+  animation-delay: calc(5 * var(--stagger-delay));
+  align-self: center;
+  justify-self: center;
+  grid-column-end: span 2;
+  height: auto;
+  width: 35vw;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/*simgle block rules*/
+.blockAboutUs {
+  padding: 10px;
+  margin-top: 30px;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: rgb(255, 255, 255);
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: rgba(5, 5, 5, 0.722);
+  width: 70%;
+  height: auto;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  animation-name: cardEntrance;
+  animation-duration: 700ms;
+  animation-timing-function: ease-out; /*rapide puis ralentit jusqu'a la fin*/
+  animation-fill-mode: backwards; /*applique le "from du keyframe" avant l'animation et garde le style a la fin */
+}
+
+.AboutUsDetails {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+@media (max-width: 640px) {
+  .WilderContainer {
+    grid-template-areas: 'a' 'b' 'c' 'd' 'e';
+    grid-template-columns: 1fr;
+  }
+}

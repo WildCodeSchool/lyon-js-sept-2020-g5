@@ -2,14 +2,18 @@
   font-family: 'pink';
   src: url(../Police/pink.ttf);
 }
-
+.logo {
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #0d0c0c;
   font-family: 'pink';
-  height: 50px;
+  height: 80px;
 }
 
 header nav ul {
@@ -42,16 +46,13 @@ header nav ul li a:hover {
 
 /*Smartphone*/
 @media screen and (max-width: 400px) {
-  header nav ul li {
-    display: none;
-  }
   nav {
     display: none;
   }
 }
 
 /*Tablette*/
-@media screen and (min-width: 400px) and (max-width: 700px) {
+@media screen and (min-width: 400px) and (max-width: 800px) {
   header nav ul li {
     font-size: 1em;
     padding: 5px 10px;
