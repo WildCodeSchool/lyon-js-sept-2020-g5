@@ -2,10 +2,7 @@
   font-family: 'Pink';
   src: url(../Police/pink.ttf);
 }
-html,
-body {
-  height: 100%;
-}
+
 .header {
   height: 100px;
 }
@@ -25,10 +22,6 @@ body {
   justify-content: center;
 }
 
-main {
-  flex-grow: 1;
-}
-
 button {
   font-family: 'Pink';
 }
@@ -38,6 +31,7 @@ button {
   flex-direction: column;
   justify-content: flex-end;
 }
+
 .btn-new-game {
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.7);

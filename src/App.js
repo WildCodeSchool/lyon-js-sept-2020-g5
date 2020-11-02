@@ -13,22 +13,20 @@ import Header from './Components/Header';
 
 function App() {
   return (
-    <div>
+    <div className="page">
       <Router>
-        <div>
-          <Header />
-          <main>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/game" component={Game} />
-              <Route path="/rules" component={Rules} />
-              <Route path="/options" component={Options} />
-              <Route path="/aboutus" component={AboutUs} />
-              <Route path="/contactus" component={ContactUs} />
-              <Route path="/hallofheroes" component={HallOfHeroes} />
-            </Switch>
-          </main>
-        </div>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/game" component={Game} />
+            <Route path="/rules" component={Rules} />
+            <Route path="/options" component={Options} />
+            <Route path="/aboutus" component={AboutUs} />
+            <Route path="/contactus" component={ContactUs} />
+            <Route path="/hallofheroes" component={HallOfHeroes} />
+          </Switch>
+        </main>
         <Footer />
       </Router>
     </div>

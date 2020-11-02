@@ -1,6 +1,9 @@
-/*Home page */
-
-btn-container {
+.page {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
 }
