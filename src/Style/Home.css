@@ -29,7 +29,8 @@ button {
 .body-home-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  height: 100%;
+  justify-content: center;
 }
 
 .btn-new-game {
