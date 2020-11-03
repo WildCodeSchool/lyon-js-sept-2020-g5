@@ -7,3 +7,22 @@
     display: block;
   }
 }
+
+@media only screen and (min-width: 321px) and (orientation: portrait) {
+  .Portrait {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d0c0c;
+    flex-grow: 1;
+  }
+
+  .pageGame {
+    height: 100%;
+    display: flex;
+  }
+
+  .Paysage {
+    display: none;
+  }
+}
