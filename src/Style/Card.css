@@ -1,0 +1,91 @@
+.card {
+  width: 120px;
+  height: 180px;
+  cursor: crosshair;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'name name name'
+    'image image image'
+    'atk hp pw';
+}
+
+.heroName {
+  grid-area: name;
+  align-self: center;
+  color: white;
+}
+
+.imgCard {
+  grid-area: image;
+  justify-self: center;
+  width: 75px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.attack {
+  grid-area: atk;
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.healthPoints {
+  background-color: green;
+  grid-area: hp;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.power {
+  grid-area: pw;
+  background-color: yellow;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.attack img,
+.healthPoints img,
+.power img {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    width: 240px;
+    height: 300px;
+  }
+
+  .imgCard {
+    width: 150px;
+    height: 200px;
+  }
+
+  .attack,
+  .healthPoints,
+  .power {
+    width: 60px;
+    height: 60px;
+  }
+  .attack img,
+  .healthPoints img,
+  .power img {
+    width: 40px;
+    height: 40px;
+  }
+}
