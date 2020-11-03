@@ -15,6 +15,10 @@
     align-items: center;
     background-color: #0d0c0c;
     flex-grow: 1;
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+    height: 550px;
   }
 
   .pageGame {
@@ -24,5 +28,9 @@
 
   .Paysage {
     display: none;
+  }
+
+  footer {
+    height: 100%;
   }
 }
