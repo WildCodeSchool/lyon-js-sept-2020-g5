@@ -11,7 +11,7 @@ const Game = () => {
         />
       </div>
 
-      <div className="Paysage"></div>
+      <div className="Paysage" />
     </div>
   );
 };
