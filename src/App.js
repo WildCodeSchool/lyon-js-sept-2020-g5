@@ -17,6 +17,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       cards: [],
+      deck: [],
+      maxPower: 500,
+      pseudo: 'Js Player',
     };
   }
 
@@ -47,8 +50,41 @@ class App extends React.Component {
       });
   }
 
+  addToDeck = (cardName) => {
+    const { maxPower } = this.state;
+    const { deck } = this.state;
+    const { cards } = this.state;
+
+    let newDeck = deck.slice();
+
+    const totalPower = deck
+      .map((card) => card.power)
+      .reduce((acc, cur) => acc + cur, 0);
+
+    if (newDeck.filter((heroe) => cardName === heroe.name).length === 0) {
+      if (
+        totalPower +
+          cards.filter((heroe) => cardName === heroe.name)[0].power <=
+        maxPower
+      ) {
+        newDeck.push(cards.filter((heroe) => cardName === heroe.name)[0]);
+      } else {
+        window.alert(
+          'Be careful, your card is too powerful. Select another or start the game'
+        );
+      }
+    } else {
+      newDeck = newDeck.filter((heroe) => !cardName.includes(heroe.name));
+    }
+    this.setState({ deck: newDeck });
+  };
+
   render() {
     const { cards } = this.state;
+    const { deck } = this.state;
+    const { pseudo } = this.state;
+    const { maxPower } = this.state;
+
     return (
       <div className="page">
         <Router>
@@ -57,7 +93,13 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/game">
-                <Game heroes={cards} />
+                <Game
+                  heroes={cards}
+                  heroesChosen={deck}
+                  addToDeck={this.addToDeck}
+                  pseudo={pseudo}
+                  maxPower={maxPower}
+                />
               </Route>
               <Route path="/rules" component={Rules} />
               <Route path="/options" component={Options} />
