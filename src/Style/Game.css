@@ -35,7 +35,7 @@
   }
 }
 
-@media only screen and (max-width: 1366px) and (orientation: landscape) {
+@media only screen and (min-width: 700px) and (orientation: landscape) {
   .Portrait {
     display: none;
   }
@@ -45,7 +45,7 @@
   }
 }
 
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
+@media only screen and (min-width: 700px) and (orientation: portrait) {
   .Portrait {
     display: flex;
     justify-content: center;
