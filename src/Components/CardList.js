@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import '../Style/CardList.css';
 
-function CardList({ heroes, addToDeck }) {
+function CardList({ heroes, addToDeck, heroesChosen }) {
   return (
     <main className="cardList">
       {heroes.map((hero, index) => {
@@ -12,6 +12,7 @@ function CardList({ heroes, addToDeck }) {
             heroe={hero}
             index={index}
             addToDeck={addToDeck}
+            heroesChosen={heroesChosen}
           />
         );
       })}

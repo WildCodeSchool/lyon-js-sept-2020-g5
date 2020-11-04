@@ -10,6 +10,13 @@
     'image image image'
     'atk hp pw';
 }
+.card:hover {
+  background-color: #cc0000;
+  opacity: 0.8;
+}
+.selected {
+  opacity: 0.5;
+}
 
 .heroName {
   grid-area: name;

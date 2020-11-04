@@ -7,7 +7,11 @@ function Game({ heroes, heroesChosen, addToDeck, maxPower, pseudo }) {
   return (
     <div>
       <div className="containerDeck">
-        <CardList heroes={heroes} addToDeck={addToDeck} />
+        <CardList
+          heroes={heroes}
+          addToDeck={addToDeck}
+          heroesChosen={heroesChosen}
+        />
         <DeckList
           heroes={heroes}
           heroesChosen={heroesChosen}

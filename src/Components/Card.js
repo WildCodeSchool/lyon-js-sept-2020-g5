@@ -4,10 +4,15 @@ import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 import hammer from '../Pictures/icons-marteau-de-thor.png';
 
-function Card({ heroe, addToDeck, index }) {
+function Card({ heroe, addToDeck, index, heroesChosen }) {
   return (
     <div
-      className="card"
+      className={
+        heroesChosen.filter((heroeDeck) => heroeDeck.name === heroe.name)
+          .length === 0
+          ? 'card'
+          : 'card selected'
+      }
       role="button"
       tabIndex={index}
       onClick={() => addToDeck(heroe.name)}
