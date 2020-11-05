@@ -2,10 +2,6 @@
   width: auto;
   height: 100%;
   overflow: auto;
-  background-image: url(../Pictures/allpage-img.jpg);
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 input::-webkit-input-placeholder {
