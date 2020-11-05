@@ -8,11 +8,13 @@
 input::-webkit-input-placeholder {
   color: white;
   font-size: 18px;
+  text-align: left;
 }
 
 textarea::-webkit-input-placeholder {
   color: white;
   font-size: 18px;
+  text-align: left;
 }
 
 .form {
