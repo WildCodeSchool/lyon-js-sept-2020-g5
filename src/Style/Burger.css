@@ -54,12 +54,18 @@
   padding: 0;
   cursor: pointer;
 }
-.menu li:hover {
-  color: #ff0000;
-}
 
 @media only screen and (min-width: 800px) {
   .burger-menu {
     display: none;
   }
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: #ff0000;
 }
