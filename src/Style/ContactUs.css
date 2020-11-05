@@ -8,7 +8,7 @@
 input::-webkit-input-placeholder {
   color: white;
   font-size: 18px;
-  text-align: left;
+  text-align: left !important;
 }
 
 textarea::-webkit-input-placeholder {
