@@ -1,0 +1,116 @@
+.cardDeck {
+  width: 120px;
+  height: 180px;
+  cursor: crosshair;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'name name name'
+    'image image image'
+    'atk hp pw';
+  background-color: #0c0b13;
+  border-radius: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+  justify-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.cardDeck:hover {
+  background-color: #cc0000;
+  opacity: 0.8;
+}
+.selected {
+  opacity: 0.5;
+}
+
+.heroName {
+  grid-area: name;
+  align-self: center;
+  color: white;
+  font-size: 15px;
+}
+
+.imgCardDeck {
+  grid-area: image;
+  justify-self: center;
+  width: 75px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.attack {
+  grid-area: atk;
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.healthPoints {
+  background-color: green;
+  grid-area: hp;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.power {
+  grid-area: pw;
+  background-color: yellow;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: red;
+}
+
+.attack img,
+.healthPoints img,
+.power img {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .cardDeck {
+    width: 240px;
+    height: 300px;
+    padding: 5px;
+    justify-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .imgCardDeck {
+    width: 150px;
+    height: 200px;
+  }
+
+  .attack,
+  .healthPoints,
+  .power {
+    width: 70px;
+    height: 60px;
+  }
+  .attack img,
+  .healthPoints img,
+  .power img {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  .heroName {
+    font-size: larger;
+  }
+}

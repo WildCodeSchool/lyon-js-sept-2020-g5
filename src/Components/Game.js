@@ -1,9 +1,25 @@
 import React from 'react';
+import CardList from './CardList';
+import DeckList from './DeckList';
 import '../Style/Game.css';
 
-const Game = () => {
+function Game({ heroes, heroesChosen, addToDeck, maxPower, pseudo }) {
   return (
-    <div className="pageGame">
+    <div>
+      <div className="containerDeck">
+        <CardList
+          heroes={heroes}
+          addToDeck={addToDeck}
+          heroesChosen={heroesChosen}
+        />
+        <DeckList
+          heroes={heroes}
+          heroesChosen={heroesChosen}
+          addToDeck={addToDeck}
+          maxPower={maxPower}
+          pseudo={pseudo}
+        />
+      </div>
       <div className="Portrait">
         <img
           src="https://karagezwebstudio.com/fr/img/rotate.gif"
@@ -11,10 +27,8 @@ const Game = () => {
         />
         <p>Please turn your Smartphone into landcape orientation</p>
       </div>
-
-      <div className="Paysage" />
     </div>
   );
-};
+}
 
 export default Game;
