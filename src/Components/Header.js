@@ -27,6 +27,9 @@ const Header = () => {
           <li>
             <Link to="/aboutus">About us</Link>
           </li>
+          <li>
+            <Link to="/contactus">Contact us</Link>
+          </li>
         </ul>
       </nav>
       <BurgerMenu />
