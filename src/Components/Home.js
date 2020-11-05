@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Style/Home.css';
 import { Howl } from 'howler';
+import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
 
@@ -13,8 +13,6 @@ const audioClips2 = new Howl({
 });
 
 const Home = (props) => {
-  console.log(props);
-
   const handleNewGameClick = () => {
     props.history.push('/game');
     audioClips2.play();
@@ -36,41 +34,30 @@ const Home = (props) => {
   };
 
   return (
-    <div className="body-home-container ">
-      <div className="btn-home-container">
-        <div className="btn-container1">
-          <button
-            type="button"
-            className="btn-new-game "
-            onClick={handleNewGameClick}
-          >
-            New Game
-          </button>
-        </div>
-
-        <div className="btn-container2">
-          <button
-            type="button"
-            className="btn-rules"
-            onClick={handleRulesClick}
-          >
-            Rules
-          </button>
-          <button
-            type="button"
-            className="btn-options"
-            onClick={handleOptionsClick}
-          >
-            Options
-          </button>
-          <button
-            type="button"
-            className="btn-about"
-            onClick={handleAboutClick}
-          >
-            About us
-          </button>
-        </div>
+    <div className="body-home-container">
+      <div className="btn-container1">
+        <button
+          type="button"
+          className="btn-new-game"
+          onClick={handleNewGameClick}
+        >
+          New Game
+        </button>
+      </div>
+      <div className="btn-container2">
+        <button type="button" className="btn-rules" onClick={handleRulesClick}>
+          Rules
+        </button>
+        <button
+          type="button"
+          className="btn-options"
+          onClick={handleOptionsClick}
+        >
+          Options
+        </button>
+        <button type="button" className="btn-about" onClick={handleAboutClick}>
+          About us
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+.playerDeck {
+  width: 25%;
+  margin-top: 10px;
+}
+.totalPower {
+  background-color: blue;
+  height: 80px;
+}
+
+.deck {
+  background-color: chartreuse;
+}
+
+.pseudoPlayer {
+  background-color: red;
+  height: 80px;
+}
+
+.totalPower,
+.deck,
+.pseudoPlayer {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

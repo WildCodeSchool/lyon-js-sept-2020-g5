@@ -3,17 +3,11 @@
   src: url(../Police/pink.ttf);
 }
 
+.header {
+  height: 100px;
+}
 .box {
   height: 200px;
-}
-
-.body-home-container {
-  height: 100vh;
-  width: 100%;
-  background-image: url('../Pictures/Home-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 .btn-container1,
@@ -26,11 +20,15 @@ button {
   font-family: 'Pink';
 }
 
-.btn-home-container {
+.body-home-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 90vh;
+  height: 100%;
+  justify-content: center;
+  background-image: url('../Pictures/Home-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .btn-new-game {
