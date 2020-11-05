@@ -45,14 +45,14 @@ header nav ul li a:hover {
 }
 
 /*Smartphone*/
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   nav {
     display: none;
   }
 }
 
 /*Tablette*/
-@media screen and (min-width: 400px) and (max-width: 800px) {
+@media screen and (min-width: 480px) and (max-width: 767px) {
   header nav ul li {
     font-size: 1em;
     padding: 5px 10px;

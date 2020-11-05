@@ -5,8 +5,6 @@
   position: absolute;
   right: 20px;
   top: 15px;
-
-  /* background: black; */
   padding: 10px;
 }
 
@@ -55,7 +53,7 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .burger-menu {
     display: none;
   }
