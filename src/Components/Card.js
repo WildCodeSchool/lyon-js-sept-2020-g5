@@ -10,15 +10,15 @@ function Card({ heroe, addToDeck, index, heroesChosen }) {
       className={
         heroesChosen.filter((heroeDeck) => heroeDeck.name === heroe.name)
           .length === 0
-          ? 'card'
-          : 'card selected'
+          ? 'cardDeck'
+          : 'cardDeck selected'
       }
       role="button"
       tabIndex={index}
       onClick={() => addToDeck(heroe.name)}
     >
       <div className="heroName">{heroe.name}</div>
-      <div className="imgCard">
+      <div className="imgCardDeck">
         <img src={heroe.img} alt={heroe.name} />
       </div>
       <div className="attack">
