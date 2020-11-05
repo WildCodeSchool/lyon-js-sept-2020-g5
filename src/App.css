@@ -12,3 +12,10 @@ main {
 #root {
   height: 100%;
 }
+
+body {
+  background-image: url('./Pictures/allpage-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}

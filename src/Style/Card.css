@@ -29,7 +29,7 @@
   grid-area: name;
   align-self: center;
   color: white;
-  font-size: larger;
+  font-size: 15px;
 }
 
 .imgCardDeck {
@@ -43,8 +43,8 @@
 .attack {
   grid-area: atk;
   background-color: red;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,8 +55,8 @@
 .healthPoints {
   background-color: green;
   grid-area: hp;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,8 +67,8 @@
 .power {
   grid-area: pw;
   background-color: yellow;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,14 +79,17 @@
 .attack img,
 .healthPoints img,
 .power img {
-  width: 20px;
-  height: 20px;
+  display: none;
 }
 
 @media screen and (min-width: 900px) {
   .cardDeck {
     width: 240px;
     height: 300px;
+    padding: 5px;
+    justify-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
   }
 
   .imgCardDeck {
@@ -97,13 +100,17 @@
   .attack,
   .healthPoints,
   .power {
-    width: 60px;
+    width: 70px;
     height: 60px;
   }
   .attack img,
   .healthPoints img,
   .power img {
+    display: block;
     width: 40px;
     height: 40px;
+  }
+  .heroName {
+    font-size: larger;
   }
 }

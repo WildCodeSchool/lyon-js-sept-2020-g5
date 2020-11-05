@@ -9,12 +9,6 @@
 .box {
   height: 200px;
 }
-body {
-  background-image: url('../Pictures/Home-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
 
 .btn-container1,
 .btn-container2 {
@@ -31,6 +25,10 @@ button {
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  background-image: url('../Pictures/Home-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .btn-new-game {
