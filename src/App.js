@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home';
 import Game from './Components/Game';
@@ -13,7 +13,6 @@ function App() {
     <div>
       <Router>
         <div>
-          
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/game" component={Game} />

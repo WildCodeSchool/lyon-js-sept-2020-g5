@@ -1,8 +1,8 @@
 import React from 'react';
 import '../Style/Home.css';
+import { Howl } from 'howler';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
-import { Howl, Howler } from 'howler';
 
 const audioClips = new Howl({
   src: [Punch],
@@ -39,19 +39,35 @@ const Home = (props) => {
     <div className="body-home-container ">
       <div className="btn-home-container">
         <div className="btn-container1">
-          <button className="btn-new-game " onClick={handleNewGameClick}>
+          <button
+            type="button"
+            className="btn-new-game "
+            onClick={handleNewGameClick}
+          >
             New Game
           </button>
         </div>
 
         <div className="btn-container2">
-          <button className="btn-rules" onClick={handleRulesClick}>
+          <button
+            type="button"
+            className="btn-rules"
+            onClick={handleRulesClick}
+          >
             Rules
           </button>
-          <button className="btn-options" onClick={handleOptionsClick}>
+          <button
+            type="button"
+            className="btn-options"
+            onClick={handleOptionsClick}
+          >
             Options
           </button>
-          <button className="btn-about" onClick={handleAboutClick}>
+          <button
+            type="button"
+            className="btn-about"
+            onClick={handleAboutClick}
+          >
             About us
           </button>
         </div>
