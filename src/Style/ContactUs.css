@@ -24,11 +24,6 @@ textarea::-webkit-input-placeholder {
   align-items: center;
 }
 
-.form-container {
-  width: 100%;
-  height: 100vh;
-}
-
 .contact-input {
   border-color: transparent;
   border-bottom: 1px solid gray;
