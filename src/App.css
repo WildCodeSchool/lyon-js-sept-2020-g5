@@ -13,6 +13,10 @@ main {
   height: 100%;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
 body {
   background-image: url('./Pictures/sky.jpg');
   background-size: cover;

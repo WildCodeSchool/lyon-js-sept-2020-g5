@@ -37,11 +37,13 @@ button {
   text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red;
   color: #fbff2c;
   border-color: white;
+  border: 0.1px solid white;
 }
 
 .btn-new-game:hover {
   background-color: black;
   cursor: pointer;
+  border-color: #fbff2c;
 }
 
 .btn-rules,
@@ -51,6 +53,7 @@ button {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   border-color: white;
+  border: 0.1px solid;
 }
 
 .btn-rules:hover,
@@ -58,6 +61,7 @@ button {
 .btn-about:hover {
   background-color: black;
   cursor: pointer;
+  border-color: #fbff2c;
 }
 
 @media screen and (max-width: 736px) {
