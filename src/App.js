@@ -11,7 +11,7 @@ import HallOfHeroes from './Components/HallOfHeroes';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 
-function App() {
+const App = () => {
   return (
     <div className="page">
       <Router>
@@ -31,5 +31,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
+
 export default App;

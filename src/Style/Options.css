@@ -1,0 +1,70 @@
+.options-body {
+  width: auto;
+  height: 100%;
+  overflow: auto;
+  background-image: url(../Pictures/allpage-img.jpg);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+input::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.options-title {
+  text-align: center;
+  font-family: 'Pink';
+  color: white;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.options-btn {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-color: white;
+}
+
+.backHome {
+  color: #fbff2c;
+  border-color: white;
+  text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red;
+}
+
+.fi-icons {
+  text-align: center;
+  margin-right: 10px;
+}
+@media screen and (max-width: 736px) {
+  .options-btn {
+    width: 70%;
+    height: 75px;
+    font-size: 24px;
+    margin: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media screen and (min-width: 736px) and (max-width: 1024px) {
+  .options-btn {
+    width: 50%;
+    height: 120px;
+    font-size: 40px;
+    margin: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .options-btn {
+    width: 40%;
+    height: 120px;
+    font-size: 40px;
+    margin: 20px;
+  }
+}
