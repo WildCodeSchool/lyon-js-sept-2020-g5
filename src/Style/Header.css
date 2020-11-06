@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'pink';
+  src: url(../Police/pink.ttf);
+}
+.logo {
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d0c0c;
+  font-family: 'pink';
+  height: 80px;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+}
+
+header nav ul li {
+  list-style-type: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+p {
+  margin-left: 20px;
+  color: white;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  color: yellow;
+  text-shadow: 1px 1px red, -1px 1px red, 1px -1px red, -1px -1px red;
+}
+
+/*Smartphone*/
+@media screen and (max-width: 480px) {
+  nav {
+    display: none;
+  }
+}
+
+/*Tablette*/
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  header nav ul li {
+    font-size: 1em;
+    padding: 5px 10px;
+  }
+  nav {
+    display: none;
+  }
+}

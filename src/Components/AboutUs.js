@@ -1,10 +1,10 @@
 import React from 'react';
 import '../Style/AboutUs.css';
-import RidiculeRemi from '../Picture/RidiculeRemi.png';
-import Fat from '../Picture/Fat.png';
-import Casserole from '../Picture/Casserole.png';
-import skull from '../Picture/skull.png';
-import Tick from '../Picture/Tick.jpg';
+import RidiculeRemi from '../Pictures/RidiculeRemi.png';
+import Fat from '../Pictures/Fat.png';
+import Casserole from '../Pictures/Casserole.png';
+import skull from '../Pictures/skull.png';
+import Tick from '../Pictures/Tick.jpg';
 
 import AboutUsComponents from './AboutUsComponents';
 

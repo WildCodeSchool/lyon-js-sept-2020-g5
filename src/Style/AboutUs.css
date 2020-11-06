@@ -7,9 +7,6 @@
   width: auto;
   height: auto;
   overflow: auto;
-  background-image: url('../Picture/space.jpeg');
-  background-attachment: fixed;
-  background-size: cover;
   display: grid;
   grid-template-columns: auto;
   gap: 20px;
