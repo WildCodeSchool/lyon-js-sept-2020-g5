@@ -1,7 +1,7 @@
 .cardDeck {
   width: 120px;
   height: 180px;
-  cursor: crosshair;
+  cursor: url('https://img.icons8.com/color/48/000000/add.png'), copy;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -24,7 +24,9 @@
 .selected {
   opacity: 0.5;
 }
-
+.selected:hover {
+  cursor: url('https://img.icons8.com/color/48/000000/undo.png'), auto;
+}
 .heroName {
   grid-area: name;
   align-self: center;

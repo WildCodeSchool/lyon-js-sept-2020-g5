@@ -5,8 +5,6 @@
   position: absolute;
   right: 20px;
   top: 15px;
-
-  /* background: black; */
   padding: 10px;
 }
 
@@ -54,12 +52,18 @@
   padding: 0;
   cursor: pointer;
 }
-.menu li:hover {
-  color: #ff0000;
-}
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
   .burger-menu {
     display: none;
   }
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: #ff0000;
 }

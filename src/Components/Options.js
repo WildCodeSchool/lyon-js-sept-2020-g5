@@ -27,7 +27,7 @@ class Options extends Component {
         <h1 className="options-title">Options</h1>
         <div className="buttonsContainer">
           <input
-            placeholder="Pseudo"
+            placeholder="pseudo"
             type="text"
             className="options-btn pseudos"
           />
