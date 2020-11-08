@@ -33,6 +33,7 @@ export default function HallOfHeroes() {
             atk: parseInt(hero.powerstats.strength, 10),
             hp: parseInt(hero.powerstats.durability, 10),
             power: parseInt(hero.powerstats.power, 10),
+            alignment: hero.biography.alignment,
           };
         });
         setCards(tabHeroes);
