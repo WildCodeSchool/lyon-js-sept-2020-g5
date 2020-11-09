@@ -12,6 +12,7 @@ import HallOfHeroes from './Components/HallOfHeroes';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import CardsContext from './Contexts/CardsContext';
+import DeckContext from './Contexts/DeckContext';
 
 export default function App() {
   const [cards, setCards] = useState([]);
@@ -76,14 +77,11 @@ export default function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <CardsContext.Provider value={{ cards, setCards }}>
-              <Route path="/game">
-                <Game
-                  heroesChosen={deck}
-                  addToDeck={addToDeck}
-                  pseudo={pseudo}
-                  maxPower={maxPower}
-                />
-              </Route>
+              <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
+                <Route path="/game">
+                  <Game pseudo={pseudo} maxPower={maxPower} />
+                </Route>
+              </DeckContext.Provider>
               <Route path="/hallofheroes" component={HallOfHeroes} />
             </CardsContext.Provider>
             <Route path="/rules" component={Rules} />
