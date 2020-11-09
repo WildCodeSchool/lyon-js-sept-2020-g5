@@ -21,17 +21,6 @@ function Options() {
     window.alert(`Bienvenue ${pseudo}`);
   };
 
-  /*   handleSubmit = (event) => {
-    event.preventDefault();
-    if (this.state.name) {
-      this.props.onSubmit(this.state.name);
-    } else {
-      this.setState({
-        error: 'Please provide a name',
-      });
-    }
-  }; */
-
   return (
     <div className="options-body">
       <h1 className="options-title">Options</h1>
@@ -44,8 +33,6 @@ function Options() {
               type="text"
               className="options-btn pseudos"
               value={pseudo}
-              id="pseudo"
-              name="pseudo"
               onChange={(e) => handleChangeInput(e)}
             />
           </label>
