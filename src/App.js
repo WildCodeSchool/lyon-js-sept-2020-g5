@@ -11,6 +11,7 @@ import ContactUs from './Components/ContactUs';
 import HallOfHeroes from './Components/HallOfHeroes';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
+import CardsContext from './Contexts/CardsContext';
 
 export default function App() {
   const [cards, setCards] = useState([]);
@@ -35,6 +36,7 @@ export default function App() {
             atk: parseInt(hero.powerstats.strength, 10),
             hp: parseInt(hero.powerstats.durability, 10),
             power: parseInt(hero.powerstats.power, 10),
+            alignment: hero.biography.alignment,
           };
         });
         setCards(tabHeroes);
@@ -73,20 +75,21 @@ export default function App() {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/game">
-              <Game
-                heroes={cards}
-                heroesChosen={deck}
-                addToDeck={addToDeck}
-                pseudo={pseudo}
-                maxPower={maxPower}
-              />
-            </Route>
+            <CardsContext.Provider value={{ cards, setCards }}>
+              <Route path="/game">
+                <Game
+                  heroesChosen={deck}
+                  addToDeck={addToDeck}
+                  pseudo={pseudo}
+                  maxPower={maxPower}
+                />
+              </Route>
+              <Route path="/hallofheroes" component={HallOfHeroes} />
+            </CardsContext.Provider>
             <Route path="/rules" component={Rules} />
             <Route path="/options" component={Options} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/contactus" component={ContactUs} />
-            <Route path="/hallofheroes" component={HallOfHeroes} />
           </Switch>
         </main>
         <Footer />

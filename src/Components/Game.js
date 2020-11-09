@@ -3,17 +3,12 @@ import CardList from './CardList';
 import DeckList from './DeckList';
 import '../Style/Game.css';
 
-function Game({ heroes, heroesChosen, addToDeck, maxPower, pseudo }) {
+function Game({ heroesChosen, addToDeck, maxPower, pseudo }) {
   return (
     <div>
       <div className="containerDeck">
-        <CardList
-          heroes={heroes}
-          addToDeck={addToDeck}
-          heroesChosen={heroesChosen}
-        />
+        <CardList addToDeck={addToDeck} heroesChosen={heroesChosen} />
         <DeckList
-          heroes={heroes}
           heroesChosen={heroesChosen}
           addToDeck={addToDeck}
           maxPower={maxPower}
