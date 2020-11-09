@@ -13,12 +13,25 @@ import Footer from './Components/Footer';
 import Header from './Components/Header';
 import CardsContext from './Contexts/CardsContext';
 import DeckContext from './Contexts/DeckContext';
+import OptionsContext from './Contexts/OptionsContext';
+import hallWaiting from './Pictures/hallWaiting.png';
 
 export default function App() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([
+    {
+      alignment: 'XXXX',
+      id: 'XXXX',
+      name: 'Chargement en cours',
+      img: hallWaiting,
+      atk: 'XXXX',
+      hp: 'XXXX',
+      power: 'XXXX',
+    },
+  ]);
   const [deck, setDeck] = useState([]);
-  const maxPower = 500;
-  const pseudo = 'Js Player';
+  const [isMute, setIsMute] = useState(false);
+  const [pseudo, setPseudo] = useState('JS lover player');
+  const [maxPower, setMaxPower] = useState(500);
 
   useEffect(() => {
     axios
@@ -75,19 +88,28 @@ export default function App() {
         <Header />
         <main>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <CardsContext.Provider value={{ cards, setCards }}>
-              <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
-                <Route path="/game">
-                  <Game pseudo={pseudo} maxPower={maxPower} />
-                </Route>
-              </DeckContext.Provider>
-              <Route path="/hallofheroes" component={HallOfHeroes} />
-            </CardsContext.Provider>
-            <Route path="/rules" component={Rules} />
-            <Route path="/options" component={Options} />
-            <Route path="/aboutus" component={AboutUs} />
-            <Route path="/contactus" component={ContactUs} />
+            <OptionsContext.Provider
+              value={{
+                isMute,
+                setIsMute,
+                pseudo,
+                setPseudo,
+                maxPower,
+                setMaxPower,
+              }}
+            >
+              <Route exact path="/" component={Home} />
+              <CardsContext.Provider value={{ cards, setCards }}>
+                <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
+                  <Route path="/game" component={Game} />
+                </DeckContext.Provider>
+                <Route path="/hallofheroes" component={HallOfHeroes} />
+              </CardsContext.Provider>
+              <Route path="/rules" component={Rules} />
+              <Route path="/options" component={Options} />
+              <Route path="/aboutus" component={AboutUs} />
+              <Route path="/contactus" component={ContactUs} />
+            </OptionsContext.Provider>
           </Switch>
         </main>
         <Footer />

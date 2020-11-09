@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import DeckContext from '../Contexts/DeckContext';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
+import OptionsContext from '../Contexts/OptionsContext';
 
-function DeckList(props) {
-  const { pseudo, maxPower } = props;
+function DeckList() {
+  const { pseudo, maxPower } = useContext(OptionsContext);
   const { deck, addToDeck } = useContext(DeckContext);
   return (
     <div className="playerDeck">
