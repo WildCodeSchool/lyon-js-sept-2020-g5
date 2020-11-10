@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import Home from './Components/Home';
 import Game from './Components/Game';
+import DeckBoard from './Components/DeckBoard';
 import Rules from './Components/Rules';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs';
@@ -102,6 +103,7 @@ export default function App() {
               <CardsContext.Provider value={{ cards, setCards }}>
                 <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
                   <Route path="/game" component={Game} />
+                  <Route path="/deckBoard" component={DeckBoard} />
                 </DeckContext.Provider>
                 <Route path="/hallofheroes" component={HallOfHeroes} />
               </CardsContext.Provider>
