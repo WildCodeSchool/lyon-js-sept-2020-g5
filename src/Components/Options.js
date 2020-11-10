@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import '../Style/Options.css';
 import { FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import OptionsContext from '../Contexts/OptionsContext';
 
 function Options() {
@@ -19,6 +20,12 @@ function Options() {
     const newPseudo = e.target.value;
     setPseudo(newPseudo);
     window.alert(`Bienvenue ${pseudo}`);
+  };
+
+  let history = useHistory();
+
+  const handleBackHome = () => {
+    history.push('/');
   };
 
   return (
@@ -49,7 +56,11 @@ function Options() {
           {isMute ? 'Sound ON' : 'Sound OFF'}
         </button>
 
-        <button type="button" className="options-btn backHome">
+        <button
+          onClick={handleBackHome}
+          type="button"
+          className="options-btn backHome"
+        >
           Back Home
         </button>
       </div>
