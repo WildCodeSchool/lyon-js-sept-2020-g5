@@ -15,14 +15,7 @@ function Options() {
     setPseudo(e.target.value);
   };
 
-  const changeThePseudo = (e) => {
-    e.preventDefault();
-    const newPseudo = e.target.value;
-    setPseudo(newPseudo);
-    window.alert(`Bienvenue ${pseudo}`);
-  };
-
-  let history = useHistory();
+  const history = useHistory();
 
   const handleBackHome = () => {
     history.push('/');
@@ -32,20 +25,13 @@ function Options() {
     <div className="options-body">
       <h1 className="options-title">Options</h1>
       <div className="buttonsContainer">
-        <form onSubmit={changeThePseudo}>
-          <label htmlFor="pseudo">
-            Pseudo :
-            <input
-              placeholder="pseudo"
-              type="text"
-              className="options-btn pseudos"
-              value={pseudo}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </label>
-          <button type="submit">Save</button>
-        </form>
-
+        <input
+          placeholder="pseudo"
+          type="text"
+          className="options-btn pseudos"
+          value={pseudo}
+          onChange={(e) => handleChangeInput(e)}
+        />
         <button
           type="button"
           className="options-btn mute"
