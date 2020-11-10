@@ -39,7 +39,7 @@ function Options() {
         >
           {' '}
           <FiPower className="fi-icons" />
-          {isMute ? 'Sound ON' : 'Sound OFF'}
+          {isMute ? 'Sound OFF' : 'Sound ON'}
         </button>
 
         <button
