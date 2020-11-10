@@ -14,18 +14,11 @@ function Options() {
     setPseudo(e.target.value);
   };
 
-  const changeThePseudo = (e) => {
-    e.preventDefault();
-    const newPseudo = e.target.value;
-    setPseudo(newPseudo);
-    window.alert(`Bienvenue ${pseudo}`);
-  };
-
   return (
     <div className="options-body">
       <h1 className="options-title">Options</h1>
       <div className="buttonsContainer">
-        <form onSubmit={changeThePseudo}>
+        <form>
           <label htmlFor="pseudo">
             Pseudo :
             <input
@@ -36,7 +29,6 @@ function Options() {
               onChange={(e) => handleChangeInput(e)}
             />
           </label>
-          <button type="submit">Save</button>
         </form>
 
         <button
