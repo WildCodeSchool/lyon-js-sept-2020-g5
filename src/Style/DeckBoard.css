@@ -6,3 +6,8 @@
 .mainContainer {
   background-color: green;
 }
+
+.playerHand {
+  display: flex;
+  flex-direction: row;
+}

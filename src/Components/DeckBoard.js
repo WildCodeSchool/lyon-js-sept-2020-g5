@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../Style/DeckBoard.css';
+import '../Style/CardOfDeckBoard.css';
+import DeckContext from '../Contexts/DeckContext';
+import CardOfDeckBoard from './CardOfDeckBoard';
 
 function DeckBoard() {
+  const { deck } = useContext(DeckContext);
   return (
     <div className="deckBoard">
       <div className="mainContainer">
@@ -15,6 +19,11 @@ function DeckBoard() {
         </div>
 
         <div className="playerHand">
+          {deck
+            .filter((heroe) => heroe.position === 'hand')
+            .map((heroe) => (
+              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
+            ))}
           <div className="hiddenCardPlayer1" />
         </div>
       </div>

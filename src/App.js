@@ -27,6 +27,7 @@ export default function App() {
       atk: 'XXXX',
       hp: 'XXXX',
       power: 'XXXX',
+      position: 'deck',
     },
   ]);
   const [deck, setDeck] = useState([]);
@@ -52,6 +53,7 @@ export default function App() {
             hp: parseInt(hero.powerstats.durability, 10),
             power: parseInt(hero.powerstats.power, 10),
             alignment: hero.biography.alignment,
+            position: 'deck',
           };
         });
         setCards(tabHeroes);
@@ -107,6 +109,7 @@ export default function App() {
                 </DeckContext.Provider>
                 <Route path="/hallofheroes" component={HallOfHeroes} />
               </CardsContext.Provider>
+
               <Route path="/rules" component={Rules} />
               <Route path="/options" component={Options} />
               <Route path="/aboutus" component={AboutUs} />
