@@ -6,6 +6,7 @@ import hammer from '../Pictures/icons-marteau-de-thor.png';
 
 const CardOfDeckBoard = (props) => {
   const { heroe } = props;
+
   return (
     <div className="cardOfDeckBoard">
       <div className="heroName">{heroe.name}</div>

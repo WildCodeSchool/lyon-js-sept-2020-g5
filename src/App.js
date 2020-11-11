@@ -24,13 +24,15 @@ export default function App() {
       id: 'XXXX',
       name: 'Chargement en cours',
       img: hallWaiting,
-      atk: 'XXXX',
-      hp: 'XXXX',
-      power: 'XXXX',
+      atk: 'XX',
+      hp: 'XX',
+      power: 'XX',
       position: 'deck',
+      dead: false,
     },
   ]);
   const [deck, setDeck] = useState([]);
+  const [deckIa, setDeckIa] = useState([]);
   const [isMute, setIsMute] = useState(false);
   const [pseudo, setPseudo] = useState('JS lover player');
   const [maxPower, setMaxPower] = useState(500);
@@ -54,6 +56,7 @@ export default function App() {
             power: parseInt(hero.powerstats.power, 10),
             alignment: hero.biography.alignment,
             position: 'deck',
+            dead: false,
           };
         });
         setCards(tabHeroes);
@@ -103,7 +106,9 @@ export default function App() {
             >
               <Route exact path="/" component={Home} />
               <CardsContext.Provider value={{ cards, setCards }}>
-                <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
+                <DeckContext.Provider
+                  value={{ deck, setDeck, addToDeck, deckIa, setDeckIa }}
+                >
                   <Route path="/game" component={Game} />
                   <Route path="/deckBoard" component={DeckBoard} />
                 </DeckContext.Provider>
