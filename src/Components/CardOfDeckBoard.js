@@ -2,25 +2,29 @@ import React from 'react';
 import '../Style/CardOfDeckBoard.css';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
-import hammer from '../Pictures/icons-marteau-de-thor.png';
 
 const CardOfDeckBoard = (props) => {
   const { heroe } = props;
 
   return (
-    <div className="cardOfDeckBoard">
+    <div
+      className={
+        heroe.position === 'hand' ? 'cardOfDeckBoard' : 'cardOfDeckBoard IaHand'
+      }
+    >
       <div className="heroName">{heroe.name}</div>
       <div className="imgCardDeck">
         <img src={heroe.img} alt={heroe.name} />
       </div>
-      <div className="attack">
-        <img src={sword} alt="sword icons" /> {heroe.atk}
+      <div className={heroe.position === 'hand' ? 'attack' : 'forIaHand'}>
+        <span className="forIaHand">
+          <img src={sword} alt="sword icons" /> {heroe.atk}
+        </span>
       </div>
-      <div className="healthPoints">
-        <img src={heart} alt="heart icons" /> {heroe.hp}
-      </div>
-      <div className="power">
-        <img src={hammer} alt="hammer icons" /> {heroe.power}
+      <div className={heroe.position === 'hand' ? 'healthPoints' : 'forIaHand'}>
+        <span className="forIaHand">
+          <img src={heart} alt="heart icons" /> {heroe.hp}
+        </span>
       </div>
     </div>
   );
