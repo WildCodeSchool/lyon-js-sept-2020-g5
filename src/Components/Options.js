@@ -1,58 +1,57 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import '../Style/Options.css';
 import { FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import OptionsContext from '../Contexts/OptionsContext';
 
-class Options extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isSoundOn: true };
-  }
+function Options() {
+  const { isMute, setIsMute, pseudo, setPseudo } = useContext(OptionsContext);
 
-  handleOnOffClick = () => {
-    this.setState((state) => ({
-      isSoundOn: !state.isSoundOn,
-    }));
+  const handleOnOffClick = () => {
+    setIsMute(!isMute);
   };
 
-  handleBackHomeClick = () => {
-    const { history } = this.props;
+  const handleChangeInput = (e) => {
+    setPseudo(e.target.value);
+  };
+
+  const history = useHistory();
+
+  const handleBackHome = () => {
     history.push('/');
   };
 
-  render() {
-    const { isSoundOn } = this.state;
+  return (
+    <div className="options-body">
+      <h1 className="options-title">Options</h1>
+      <div className="buttonsContainer">
+        <input
+          placeholder="pseudo"
+          type="text"
+          className="options-btn pseudos"
+          value={pseudo}
+          onChange={(e) => handleChangeInput(e)}
+        />
+        <button
+          type="button"
+          className="options-btn mute"
+          onClick={handleOnOffClick}
+        >
+          {' '}
+          <FiPower className="fi-icons" />
+          {isMute ? 'Sound OFF' : 'Sound ON'}
+        </button>
 
-    return (
-      <div className="options-body">
-        <h1 className="options-title">Options</h1>
-        <div className="buttonsContainer">
-          <input
-            placeholder="pseudo"
-            type="text"
-            className="options-btn pseudos"
-          />
-
-          <button
-            type="button"
-            className="options-btn mute"
-            onClick={this.handleOnOffClick}
-          >
-            {' '}
-            <FiPower className="fi-icons" />
-            {isSoundOn ? 'Sound ON' : 'Sound OFF'}
-          </button>
-
-          <button
-            type="button"
-            className="options-btn backHome"
-            onClick={this.handleBackHomeClick}
-          >
-            Back Home
-          </button>
-        </div>
+        <button
+          onClick={handleBackHome}
+          type="button"
+          className="options-btn backHome"
+        >
+          Back Home
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Options;

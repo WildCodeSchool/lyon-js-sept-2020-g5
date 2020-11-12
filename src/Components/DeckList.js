@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import DeckContext from '../Contexts/DeckContext';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
+import OptionsContext from '../Contexts/OptionsContext';
 
-function DeckList(props) {
-  const { heroesChosen, addToDeck, pseudo, maxPower } = props;
+function DeckList() {
+  const { pseudo, maxPower } = useContext(OptionsContext);
+  const { deck, addToDeck } = useContext(DeckContext);
   return (
     <div className="playerDeck">
       <div className="totalPower">TOTAL POWER : XX /{maxPower}</div>
 
       <div className="deck">DECK</div>
-      {heroesChosen.map((heroe) => (
+      {deck.map((heroe) => (
         <CardsInDeck
           key={heroe.name}
           heroechoice={heroe}
