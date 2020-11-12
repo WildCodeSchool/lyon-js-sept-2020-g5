@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import Home from './Components/Home';
 import Game from './Components/Game';
+import DeckBoard from './Components/DeckBoard';
 import Rules from './Components/Rules';
 import Options from './Components/Options';
 import AboutUs from './Components/AboutUs';
@@ -23,12 +24,15 @@ export default function App() {
       id: 'XXXX',
       name: 'Chargement en cours',
       img: hallWaiting,
-      atk: 'XXXX',
-      hp: 'XXXX',
-      power: 'XXXX',
+      atk: 'XX',
+      hp: 'XX',
+      power: 'XX',
+      position: 'deck',
+      dead: false,
     },
   ]);
   const [deck, setDeck] = useState([]);
+  const [deckIa, setDeckIa] = useState([]);
   const [isMute, setIsMute] = useState(false);
   const [pseudo, setPseudo] = useState('JS lover player');
   const [maxPower, setMaxPower] = useState(500);
@@ -51,6 +55,8 @@ export default function App() {
             hp: parseInt(hero.powerstats.durability, 10),
             power: parseInt(hero.powerstats.power, 10),
             alignment: hero.biography.alignment,
+            position: 'deck',
+            dead: false,
           };
         });
         setCards(tabHeroes);
@@ -100,11 +106,15 @@ export default function App() {
             >
               <Route exact path="/" component={Home} />
               <CardsContext.Provider value={{ cards, setCards }}>
-                <DeckContext.Provider value={{ deck, setDeck, addToDeck }}>
+                <DeckContext.Provider
+                  value={{ deck, setDeck, addToDeck, deckIa, setDeckIa }}
+                >
                   <Route path="/game" component={Game} />
+                  <Route path="/deckBoard" component={DeckBoard} />
                 </DeckContext.Provider>
                 <Route path="/hallofheroes" component={HallOfHeroes} />
               </CardsContext.Provider>
+
               <Route path="/rules" component={Rules} />
               <Route path="/options" component={Options} />
               <Route path="/aboutus" component={AboutUs} />
