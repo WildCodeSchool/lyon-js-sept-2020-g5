@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import DeckContext from '../Contexts/DeckContext';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
-import OptionsContext from '../Contexts/OptionsContext';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 function DeckList() {
   const { pseudo, maxPower } = useContext(OptionsContext);

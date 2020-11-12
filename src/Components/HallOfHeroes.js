@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import HallCard from './HallCard';
-import CardsContext from '../Contexts/CardsContext';
+import { CardsContext } from '../Contexts/CardsContextProvider';
 
-export default function HallOfHeroes() {
+const HallOfHeroes = () => {
   const { cards } = useContext(CardsContext);
 
   return (
@@ -15,4 +15,6 @@ export default function HallOfHeroes() {
       </div>
     </div>
   );
-}
+};
+
+export default HallOfHeroes;

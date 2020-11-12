@@ -4,13 +4,16 @@ import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 
 const CardOfDeckBoard = (props) => {
-  const { heroe } = props;
+  const { heroe, handToBoard, index } = props;
 
   return (
     <div
       className={
         heroe.position === 'hand' ? 'cardOfDeckBoard' : 'cardOfDeckBoard IaHand'
       }
+      onClick={() => handToBoard(heroe.name)}
+      role="button"
+      tabIndex={index}
     >
       <div className="heroName">{heroe.name}</div>
       <div className="imgCardDeck">
