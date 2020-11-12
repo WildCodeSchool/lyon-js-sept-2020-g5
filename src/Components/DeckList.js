@@ -7,9 +7,20 @@ import OptionsContext from '../Contexts/OptionsContext';
 function DeckList() {
   const { pseudo, maxPower } = useContext(OptionsContext);
   const { deck, addToDeck } = useContext(DeckContext);
+
+  function sumPower() {
+    let currentPower = 0;
+    currentPower = deck
+      .map((heroeChoosen) => heroeChoosen.power)
+      .reduce((acc, cur) => acc + cur, 0);
+    return currentPower;
+  }
+
   return (
     <div className="playerDeck">
-      <div className="totalPower">TOTAL POWER : XX /{maxPower}</div>
+      <div className="totalPower">
+        TOTAL POWER : {sumPower()} /{maxPower}
+      </div>
 
       <div className="deck">DECK</div>
       {deck.map((heroe) => (
