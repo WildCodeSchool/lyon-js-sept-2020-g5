@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import '../Style/Options.css';
 import { FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import OptionsContext from '../Contexts/OptionsContext';
 
 function Options() {
@@ -14,23 +15,23 @@ function Options() {
     setPseudo(e.target.value);
   };
 
+  const history = useHistory();
+
+  const handleBackHome = () => {
+    history.push('/');
+  };
+
   return (
     <div className="options-body">
       <h1 className="options-title">Options</h1>
       <div className="buttonsContainer">
-        <form>
-          <label htmlFor="pseudo">
-            Pseudo :
-            <input
-              placeholder="pseudo"
-              type="text"
-              className="options-btn pseudos"
-              value={pseudo}
-              onChange={(e) => handleChangeInput(e)}
-            />
-          </label>
-        </form>
-
+        <input
+          placeholder="pseudo"
+          type="text"
+          className="options-btn pseudos"
+          value={pseudo}
+          onChange={(e) => handleChangeInput(e)}
+        />
         <button
           type="button"
           className="options-btn mute"
@@ -38,10 +39,14 @@ function Options() {
         >
           {' '}
           <FiPower className="fi-icons" />
-          {isMute ? 'Sound ON' : 'Sound OFF'}
+          {isMute ? 'Sound OFF' : 'Sound ON'}
         </button>
 
-        <button type="button" className="options-btn backHome">
+        <button
+          onClick={handleBackHome}
+          type="button"
+          className="options-btn backHome"
+        >
           Back Home
         </button>
       </div>
