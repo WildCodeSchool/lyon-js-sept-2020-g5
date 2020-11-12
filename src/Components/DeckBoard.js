@@ -48,9 +48,14 @@ function DeckBoard() {
 
         <div className="boardContainer">
           <div className="boardIa" />
+          {deckIa
+            .filter((heroe) => heroe.position === 'boardIa' && !heroe.dead)
+            .map((heroe) => (
+              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
+            ))}
           <div className="boarPlayer" />
           {deck
-            .filter((heroe) => heroe.position === 'board' && !heroe.dead)
+            .filter((heroe) => heroe.position === 'boardPlayer' && !heroe.dead)
             .map((heroe) => (
               <CardOfDeckBoard key={heroe.name} heroe={heroe} />
             ))}
