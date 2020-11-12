@@ -49,7 +49,7 @@ const ContactUs = () => {
         />
         <input
           className="contact-input"
-          placeholder="email"
+          placeholder="Email"
           onChange={(e) => handleInputChange(e)}
           value={inputs.email}
           name="email"
@@ -60,7 +60,7 @@ const ContactUs = () => {
 
         <textarea
           className="contact-textarea"
-          placeholder="message"
+          placeholder="Message"
           onChange={(e) => handleInputChange(e)}
           value={inputs.message}
           required
