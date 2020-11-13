@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../Style/Card.css';
-import DeckContext from '../Contexts/DeckContext';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 import hammer from '../Pictures/icons-marteau-de-thor.png';

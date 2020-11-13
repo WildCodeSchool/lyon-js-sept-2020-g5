@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import '../Style/Options.css';
 import { FiPower } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import OptionsContext from '../Contexts/OptionsContext';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 function Options() {
   const { isMute, setIsMute, pseudo, setPseudo } = useContext(OptionsContext);

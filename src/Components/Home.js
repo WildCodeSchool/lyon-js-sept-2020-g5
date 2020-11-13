@@ -3,7 +3,7 @@ import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
-import OptionsContext from '../Contexts/OptionsContext';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 const audioClips = new Howl({
   src: [Punch],
