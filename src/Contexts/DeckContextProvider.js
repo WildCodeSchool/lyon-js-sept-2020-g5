@@ -67,6 +67,19 @@ const DeckContextProvider = ({ children }) => {
     setBoardPlayer(cardChosen);
   };
 
+  const handIaToBoardIa = () => {
+    const shuffleDeckIaCards = _.shuffle(deckIa);
+    const cardIA = [];
+    if (shuffleDeckIaCards.length !== 0) {
+      cardIA.push({ ...shuffleDeckIaCards[0], position: 'Board' });
+      shuffleDeckIaCards.shift();
+    } else {
+      console.log("plus de carte dispo pour l'ia");
+    }
+    setBoardIa(cardIA);
+    setDeckIa(shuffleDeckIaCards);
+  };
+
   return (
     <DeckContext.Provider
       value={{
@@ -81,6 +94,7 @@ const DeckContextProvider = ({ children }) => {
         boardIa,
         setBoardIa,
         handToBoard,
+        handIaToBoardIa,
       }}
     >
       {children}

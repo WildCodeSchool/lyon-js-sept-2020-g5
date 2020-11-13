@@ -14,6 +14,7 @@ function DeckBoard() {
     boardPlayer,
     boardIa,
     handToBoard,
+    handIaToBoardIa,
   } = useContext(DeckContext);
 
   const history = useHistory();
@@ -66,6 +67,15 @@ function DeckBoard() {
           </button>
         </div>
         <div className="graveyard">Graveyard</div>
+        <div className="divButtonEndTurn">
+          <button
+            className="buttonEndTurn"
+            type="button"
+            onClick={handIaToBoardIa}
+          >
+            End turn
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -37,7 +37,8 @@
   padding: 10px;
 }
 
-.buttonQuit {
+.buttonQuit,
+.buttonEndTurn {
   text-align: center;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.7);
@@ -46,11 +47,13 @@
   height: 50px;
   width: 100px;
 }
-.buttonQuit:hover {
+.buttonQuit:hover,
+.buttonEndTurn:hover {
   color: #f3d403;
 }
 
-.divButtonQuit {
+.divButtonQuit,
+.divButtonEndTurn {
   text-align: center;
   margin-top: 20px;
 }
