@@ -3,17 +3,19 @@
   margin-top: 10px;
 }
 .totalPower {
-  background-color: blue;
-  height: 80px;
+  background-color: #f3d403;
+  height: 30px;
 }
 
 .deck {
-  background-color: chartreuse;
+  background-color: #2a75b3;
+  color: white;
 }
 
 .pseudoPlayer {
-  background-color: red;
-  height: 80px;
+  background-color: #cc4224;
+  height: 30px;
+  color: white;
 }
 
 .totalPower,
@@ -22,4 +24,22 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.buttonStart {
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-color: white;
+  height: 50px;
+  width: 100px;
+}
+.buttonStart:hover {
+  color: #f3d403;
+}
+
+.buttonStartDiv {
+  text-align: center;
+  margin-top: 20px;
 }

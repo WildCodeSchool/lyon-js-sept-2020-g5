@@ -43,8 +43,12 @@ function DeckList() {
         />
       ))}
       <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
-      <div>
-        <button type="button" onClick={handlePositionHand}>
+      <div className="buttonStartDiv">
+        <button
+          className="buttonStart"
+          type="button"
+          onClick={handlePositionHand}
+        >
           START
         </button>
       </div>

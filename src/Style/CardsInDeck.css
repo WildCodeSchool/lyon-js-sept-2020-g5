@@ -1,7 +1,8 @@
 .cardInTheDeck {
-  background-color: burlywood;
+  background-color: rgba(5, 5, 5, 0.722);
   height: 30px;
   text-align: center;
   font-size: large;
-  color: black;
+  color: white;
+  padding: 10px;
 }

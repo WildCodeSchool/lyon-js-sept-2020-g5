@@ -44,7 +44,7 @@
 
 .attack {
   grid-area: atk;
-  background-color: red;
+  background-color: #cc4224;
   width: 30px;
   height: 30px;
   display: flex;
@@ -68,7 +68,7 @@
 
 .power {
   grid-area: pw;
-  background-color: yellow;
+  background-color: #f3d403;
   width: 30px;
   height: 30px;
   display: flex;
