@@ -1,0 +1,14 @@
+.hiddenCardBlock {
+  width: 180px;
+  height: 120px;
+  background: no-repeat center/100% url('../Pictures/thorCardHidden.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.deckCount {
+  color: white;
+  font-size: 2em;
+}

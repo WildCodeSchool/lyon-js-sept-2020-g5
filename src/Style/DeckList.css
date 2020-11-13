@@ -9,12 +9,18 @@
 }
 
 .deck {
-  background-color: #2a75b3;
+  background-color: rgba(5, 5, 5, 0.9);
   color: white;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 50vh;
 }
-
+.totalPower p {
+  color: #cc4224;
+}
 .pseudoPlayer {
-  background-color: #cc4224;
+  background-color: #2a75b3; /* #cc4224; */
   height: 30px;
   color: white;
   border-radius: 0 0 15px 15px;

@@ -6,6 +6,7 @@ import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
 import BoardIa from './BoardIa';
 import '../Style/DeckBoard.css';
+import HiddenCards from './hiddenCards';
 
 function DeckBoard() {
   const {
@@ -38,6 +39,7 @@ function DeckBoard() {
               <CardOfDeckBoardIa key={heroe.name} heroe={heroe} />
             ))}
           <div className="hiddenCardIa" />
+          <HiddenCards heroes={deckIa} />
         </div>
 
         <div className="boardContainer">
@@ -58,6 +60,7 @@ function DeckBoard() {
               />
             ))}
           <div className="hiddenCardPlayer1" />
+          <HiddenCards heroes={deck} />
         </div>
       </div>
 

@@ -30,19 +30,25 @@ function DeckList() {
   return (
     <div className="playerDeck">
       <div className="totalPower">
-        TOTAL POWER : {sumPower()} /{maxPower}
+        <p>
+          TOTAL POWER : {sumPower()} /{maxPower}
+        </p>
       </div>
 
-      <div className="deck">DECK</div>
-      {deck.map((heroe) => (
-        <CardsInDeck
-          key={heroe.name}
-          heroechoice={heroe}
-          addToDeck={addToDeck}
-          heroe={heroe}
-        />
-      ))}
-      <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
+      <div className="deck">
+        DECK
+        {deck.map((heroe) => (
+          <CardsInDeck
+            key={heroe.name}
+            heroechoice={heroe}
+            addToDeck={addToDeck}
+            heroe={heroe}
+          />
+        ))}
+      </div>
+      <div className="pseudoPlayer">
+        <p>PSEUDO : {pseudo}</p>
+      </div>
       <div className="buttonStartDiv">
         <button
           className="buttonStart"
