@@ -5,6 +5,7 @@
 .totalPower {
   background-color: #f3d403;
   height: 30px;
+  border-radius: 15px 15px 0 0;
 }
 
 .deck {
@@ -16,6 +17,7 @@
   background-color: #cc4224;
   height: 30px;
   color: white;
+  border-radius: 0 0 15px 15px;
 }
 
 .totalPower,
