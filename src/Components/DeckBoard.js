@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
+import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
+import BoardIa from './BoardIa';
 import '../Style/DeckBoard.css';
-import '../Style/CardOfDeckBoard.css';
 
 function DeckBoard() {
   const {
@@ -34,14 +35,14 @@ function DeckBoard() {
           {deckIa
             .filter((heroe) => heroe.position === 'handIA')
             .map((heroe) => (
-              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
+              <CardOfDeckBoardIa key={heroe.name} heroe={heroe} />
             ))}
           <div className="hiddenCardIa" />
         </div>
 
         <div className="boardContainer">
           <div className="boardIa" />
-          <Board heroes={boardIa} />
+          <BoardIa heroes={boardIa} />
           <div className="boarPlayer" />
           <Board heroes={boardPlayer} />
         </div>
