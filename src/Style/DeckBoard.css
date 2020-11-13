@@ -62,4 +62,20 @@
   border-radius: 15px;
   text-align: center;
   padding-top: 10px;
+  border: 1px solid white;
+}
+
+.boardContainer {
+  min-height: 250px;
+  background-color: rgba(168, 169, 173, 0.7);
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.boardIa {
+  min-height: 120px;
+}
+.boardPlayer {
+  min-height: 120px;
 }
