@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../Style/Card.css';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 import hammer from '../Pictures/icons-marteau-de-thor.png';
 
-function Card({ heroe, addToDeck, index, heroesChosen }) {
+function Card({ heroe, index }) {
+  const { deck, addToDeck } = useContext(DeckContext);
   return (
     <div
       className={
-        heroesChosen.filter((heroeDeck) => heroeDeck.name === heroe.name)
-          .length === 0
+        deck.filter((heroeDeck) => heroeDeck.name === heroe.name).length === 0
           ? 'cardDeck'
           : 'cardDeck selected'
       }

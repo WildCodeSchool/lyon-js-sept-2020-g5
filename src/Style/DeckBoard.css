@@ -1,0 +1,37 @@
+.deckBoard {
+  display: flex;
+}
+.sideContainer {
+  color: white;
+  background-color: red;
+  width: 25%;
+}
+
+.mainContainer {
+  width: 75%;
+}
+
+.playerHand {
+  display: flex;
+  flex-direction: row;
+}
+
+.iaHand {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px black solid;
+  border-radius: 20px;
+  background-image: url('../Pictures/background_deck_ia.jpg');
+  margin: 10px;
+  padding: 10px;
+}
+
+.playerHand {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px black solid;
+  border-radius: 20px;
+  background-image: url('../Pictures/background_deck_player.jpg');
+  margin: 10px;
+  padding: 10px;
+}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 const audioClips = new Howl({
   src: [Punch],
@@ -13,24 +14,34 @@ const audioClips2 = new Howl({
 });
 
 const Home = (props) => {
+  const { isMute } = useContext(OptionsContext);
+
   const handleNewGameClick = () => {
     props.history.push('/game');
-    audioClips2.play();
+    if (!isMute) {
+      audioClips2.play();
+    }
   };
 
   const handleRulesClick = () => {
     props.history.push('/rules');
-    audioClips.play();
+    if (!isMute) {
+      audioClips.play();
+    }
   };
 
   const handleOptionsClick = () => {
     props.history.push('/options');
-    audioClips.play();
+    if (!isMute) {
+      audioClips.play();
+    }
   };
 
   const handleAboutClick = () => {
     props.history.push('/aboutUs');
-    audioClips.play();
+    if (!isMute) {
+      audioClips.play();
+    }
   };
 
   return (
