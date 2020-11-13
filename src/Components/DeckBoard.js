@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
 import Board from './Board';
@@ -15,9 +16,15 @@ function DeckBoard() {
     handToBoard,
   } = useContext(DeckContext);
 
+  const history = useHistory();
+
   useEffect(() => {
     createIaDeck();
   }, []);
+
+  const buttonQuit = () => {
+    history.push('/');
+  };
 
   return (
     <div className="deckBoard">
@@ -53,7 +60,11 @@ function DeckBoard() {
       </div>
 
       <div className="sideContainer">
-        <div>button quit</div>
+        <div className="divButtonQuit">
+          <button className="buttonQuit" type="button" onClick={buttonQuit}>
+            Quit
+          </button>
+        </div>
         <div className="graveyard">Graveyard</div>
       </div>
     </div>

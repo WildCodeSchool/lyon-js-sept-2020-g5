@@ -3,8 +3,9 @@
 }
 .sideContainer {
   color: white;
-  background-color: red;
+
   width: 25%;
+  border-radius: 15px;
 }
 
 .mainContainer {
@@ -34,4 +35,31 @@
   background-image: url('../Pictures/background_deck_player.jpg');
   margin: 10px;
   padding: 10px;
+}
+
+.buttonQuit {
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-color: white;
+  height: 50px;
+  width: 100px;
+}
+.buttonQuit:hover {
+  color: #f3d403;
+}
+
+.divButtonQuit {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.graveyard {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 400px;
+  margin-top: 10px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 10px;
 }

@@ -77,3 +77,18 @@
 .cardOfDeckBoard .healthPoints img {
   display: none;
 }
+
+.boardContainer {
+  min-height: 240px;
+  background-color: grey;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.boardIa {
+  min-height: 120px;
+}
+.boardPlayer {
+  min-height: 120px;
+}
