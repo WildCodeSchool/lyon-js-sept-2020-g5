@@ -11,33 +11,6 @@
   width: 75%;
 }
 
-.playerHand {
-  display: flex;
-  flex-direction: row;
-}
-
-.iaHand {
-  display: flex;
-  flex-wrap: wrap;
-  border: 2px black solid;
-  border-radius: 20px;
-  background-image: url('../Pictures/background_deck_ia.jpg');
-  margin: 10px;
-  padding: 10px;
-  min-height: 120px;
-}
-
-.playerHand {
-  display: flex;
-  flex-wrap: wrap;
-  border: 2px black solid;
-  border-radius: 20px;
-  background-image: url('../Pictures/background_deck_player.jpg');
-  margin: 10px;
-  padding: 10px;
-  min-height: 120px;
-}
-
 .buttonQuit,
 .buttonEndTurn {
   text-align: center;
@@ -79,5 +52,40 @@
   border-radius: 15px;
   margin-left: 10px;
   margin-right: 10px;
+  padding: 10px;
+}
+
+.containerHandPlayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px black solid;
+  border-radius: 20px;
+  background-image: url('../Pictures/background_deck_player.jpg');
+  min-height: 120px;
+  margin: 10px;
+}
+.containerHandIa {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px black solid;
+  border-radius: 20px;
+  background-image: url('../Pictures/background_deck_ia.jpg');
+  min-height: 120px;
+  margin: 10px;
+}
+
+.playerHand,
+.iaHand {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.hiddenCardPlayer1,
+.hiddenCardIa {
   padding: 10px;
 }

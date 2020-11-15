@@ -39,14 +39,17 @@ function DeckBoard() {
   return (
     <div className="deckBoard">
       <div className="mainContainer">
-        <div className="iaHand">
-          {deckIa
-            .filter((heroe) => heroe.position === 'handIA')
-            .map((heroe) => (
-              <CardOfDeckBoardIa key={heroe.name} heroe={heroe} />
-            ))}
-          <div className="hiddenCardIa" />
-          <HiddenCards heroes={deckIa} />
+        <div className="containerHandIa">
+          <div className="iaHand">
+            {deckIa
+              .filter((heroe) => heroe.position === 'handIA')
+              .map((heroe) => (
+                <CardOfDeckBoardIa key={heroe.name} heroe={heroe} />
+              ))}
+          </div>
+          <div className="hiddenCardIa">
+            <HiddenCards heroes={deckIa} />
+          </div>
         </div>
 
         <div className="boardContainer">
@@ -55,19 +58,21 @@ function DeckBoard() {
           <div className="boarPlayer" />
           <Board heroes={boardPlayer} />
         </div>
-
-        <div className="playerHand">
-          {deck
-            .filter((heroe) => heroe.position === 'hand')
-            .map((heroe) => (
-              <CardOfDeckBoard
-                key={heroe.name}
-                heroe={heroe}
-                handToBoard={handToBoard}
-              />
-            ))}
-          <div className="hiddenCardPlayer1" />
-          <HiddenCards heroes={deck} />
+        <div className="containerHandPlayer">
+          <div className="playerHand">
+            {deck
+              .filter((heroe) => heroe.position === 'hand')
+              .map((heroe) => (
+                <CardOfDeckBoard
+                  key={heroe.name}
+                  heroe={heroe}
+                  handToBoard={handToBoard}
+                />
+              ))}
+          </div>
+          <div className="hiddenCardPlayer1">
+            <HiddenCards heroes={deck} />
+          </div>
         </div>
       </div>
 
@@ -84,7 +89,9 @@ function DeckBoard() {
             End turn
           </button>
           <div>
+            <br />
             <p>Score de l'IA : {scoreIa}</p>
+            <br />
             <p>
               Score de {pseudo} : {scorePlayer}
             </p>
