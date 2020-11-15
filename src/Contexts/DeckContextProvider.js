@@ -10,6 +10,9 @@ const DeckContextProvider = ({ children }) => {
   const [deckIa, setDeckIa] = useState([]);
   const [boardPlayer, setBoardPlayer] = useState([]);
   const [boardIa, setBoardIa] = useState([]);
+  const [scorePlayer, setScorePlayer] = useState(0);
+  const [scoreIa, setScoreIa] = useState(0);
+  const [graveyard, setGraveyard] = useState([]);
   const { cards } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
 
@@ -59,25 +62,81 @@ const DeckContextProvider = ({ children }) => {
   const handToBoard = (heroeName) => {
     const deckToBoard = deck.slice();
     const cardChosen = [];
+
+    // boucle pour ajouter la carte sur la board du player
     for (let j = 0; j < deckToBoard.length; j += 1) {
       if (deckToBoard[j].name === heroeName) {
         cardChosen.push(deckToBoard[j]);
       }
     }
+
+    // boucle pour supprimer la carte du deck
+    for (let k = 0; k < deckToBoard.length; k += 1)
+      if (deckToBoard[k] === cardChosen[0]) {
+        deckToBoard.splice(k, 1);
+      }
+
     setBoardPlayer(cardChosen);
+    setDeck(deckToBoard);
   };
 
-  const handIaToBoardIa = () => {
+  function handIaToBoardIa() {
     const shuffleDeckIaCards = _.shuffle(deckIa);
     const cardIA = [];
+
     if (shuffleDeckIaCards.length !== 0) {
       cardIA.push({ ...shuffleDeckIaCards[0], position: 'Board' });
       shuffleDeckIaCards.shift();
+      setBoardIa(cardIA);
+      setDeckIa(shuffleDeckIaCards);
     } else {
-      console.log("plus de carte dispo pour l'ia");
+      window.alert("plus de carte dispo pour l'ia");
     }
-    setBoardIa(cardIA);
-    setDeckIa(shuffleDeckIaCards);
+  }
+
+  const attackCard = () => {
+    const iaCardInBoard = boardIa.slice();
+
+    const playerCardInBoard = boardPlayer.slice();
+    const graveyardInContext = [];
+
+    // mise a jour des points de vie des cartes
+    while (playerCardInBoard[0].hp > 0 || iaCardInBoard[0].hp > 0) {
+      iaCardInBoard[0].hp = boardIa[0].hp - boardPlayer[0].atk;
+      playerCardInBoard[0].hp = boardPlayer[0].hp - boardIa[0].atk;
+    }
+    // si Pv joueur > PV Ia
+    // verification que les points de vies ne soit pas négatifs
+    /*     if ((playerCardInBoard[0].hp && iaCardInBoard[0].hp) > 0) {
+     */ if (playerCardInBoard[0].hp > iaCardInBoard[0].hp) {
+      setScorePlayer(scorePlayer + 1);
+      setBoardPlayer(playerCardInBoard);
+      setBoardIa(iaCardInBoard);
+    }
+
+    // si Pv joueur < PV Ia
+    if (playerCardInBoard[0].hp < iaCardInBoard[0].hp) {
+      setScoreIa(scoreIa + 1);
+      setBoardPlayer(playerCardInBoard);
+      setBoardIa(iaCardInBoard);
+    }
+    /* } */
+    // envoi de la carte du joueur au cimetiere si PV < = 0
+    if (playerCardInBoard[0].hp <= 0) {
+      graveyardInContext.push(boardPlayer[0]);
+      // setGraveyard(graveyardInContext);
+      setBoardPlayer([]);
+    }
+
+    // remise a 0 de la board de l'IA si PV de l'IA < = 0
+    if (iaCardInBoard[0].hp <= 0) {
+      setBoardIa([]);
+    }
+  };
+
+  const endTurn = () => {
+    handIaToBoardIa();
+    attackCard();
   };
 
   return (
@@ -94,7 +153,12 @@ const DeckContextProvider = ({ children }) => {
         boardIa,
         setBoardIa,
         handToBoard,
+        endTurn,
+        graveyard,
+        setGraveyard,
         handIaToBoardIa,
+        scorePlayer,
+        scoreIa,
       }}
     >
       {children}

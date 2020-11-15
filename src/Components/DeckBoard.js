@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
 import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
 import BoardIa from './BoardIa';
 import '../Style/DeckBoard.css';
 import HiddenCards from './hiddenCards';
+import Graveyard from './Graveyard';
 
 function DeckBoard() {
   const {
@@ -16,8 +18,13 @@ function DeckBoard() {
     boardPlayer,
     boardIa,
     handToBoard,
-    handIaToBoardIa,
+    endTurn,
+    scorePlayer,
+    scoreIa,
+    graveyard,
   } = useContext(DeckContext);
+
+  const { pseudo } = useContext(OptionsContext);
 
   const history = useHistory();
 
@@ -71,14 +78,17 @@ function DeckBoard() {
           </button>
         </div>
         <div className="graveyard">Graveyard</div>
+        <Graveyard heroes={graveyard} />
         <div className="divButtonEndTurn">
-          <button
-            className="buttonEndTurn"
-            type="button"
-            onClick={handIaToBoardIa}
-          >
+          <button className="buttonEndTurn" type="button" onClick={endTurn}>
             End turn
           </button>
+          <div>
+            <p>Score de l'IA : {scoreIa}</p>
+            <p>
+              Score de {pseudo} : {scorePlayer}
+            </p>
+          </div>
         </div>
       </div>
     </div>
