@@ -82,8 +82,11 @@ function DeckBoard() {
             Quit
           </button>
         </div>
-        <div className="graveyard">Graveyard</div>
-        <Graveyard heroes={graveyard} />
+        <div className="graveyard">
+          Graveyard
+          <Graveyard heroes={graveyard} />
+        </div>
+
         <div className="divButtonEndTurn">
           <button className="buttonEndTurn" type="button" onClick={endTurn}>
             End turn

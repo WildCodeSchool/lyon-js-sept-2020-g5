@@ -96,7 +96,6 @@ const DeckContextProvider = ({ children }) => {
 
   const attackCard = () => {
     const iaCardInBoard = boardIa.slice();
-
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = [];
 
@@ -107,8 +106,8 @@ const DeckContextProvider = ({ children }) => {
     }
     // si Pv joueur > PV Ia
     // verification que les points de vies ne soit pas négatifs
-    /*     if ((playerCardInBoard[0].hp && iaCardInBoard[0].hp) > 0) {
-     */ if (playerCardInBoard[0].hp > iaCardInBoard[0].hp) {
+
+    if (playerCardInBoard[0].hp > iaCardInBoard[0].hp) {
       setScorePlayer(scorePlayer + 1);
       setBoardPlayer(playerCardInBoard);
       setBoardIa(iaCardInBoard);
@@ -120,11 +119,11 @@ const DeckContextProvider = ({ children }) => {
       setBoardPlayer(playerCardInBoard);
       setBoardIa(iaCardInBoard);
     }
-    /* } */
+
     // envoi de la carte du joueur au cimetiere si PV < = 0
     if (playerCardInBoard[0].hp <= 0) {
       graveyardInContext.push(boardPlayer[0]);
-      // setGraveyard(graveyardInContext);
+      setGraveyard(graveyardInContext);
       setBoardPlayer([]);
     }
 
