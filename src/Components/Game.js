@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import CardList from './CardList';
 import DeckList from './DeckList';
 import '../Style/Game.css';
-import DeckContext from '../Contexts/DeckContext';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 
 function Game() {
   const { readyForFight } = useContext(DeckContext);

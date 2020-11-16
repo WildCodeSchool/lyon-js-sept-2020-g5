@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import DeckContext from '../Contexts/DeckContext';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
-import OptionsContext from '../Contexts/OptionsContext';
 import Card from './Card';
+import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 function DeckList() {
   const { pseudo, maxPower } = useContext(OptionsContext);
@@ -42,8 +42,10 @@ function DeckList() {
 
   const toggleReadyForFight = () => {
     setReadyForFight(!readyForFight);
+    console.log(`readyForFight is now equal to ${readyForFight}`);
   };
 
+  console.log(`readyForFight is now equal to ${readyForFight}`);
   return (
     <div className="deckContainer">
       <div className={view}>
@@ -68,19 +70,19 @@ function DeckList() {
         </div>
       </div>
       <div className={confirmationWindow}>
-        <h2>Your team is composed of these valourous heroes</h2>
+        <h2>Your team</h2>
         <div className="confirmationView">
           {deck.map((hero, index) => {
             return <Card key={hero.id} heroe={hero} index={index} />;
           })}
         </div>
-        <h2>Are you sure of the composition of your deck ?</h2>
+        <h3>Are you sure of the composition of your team ?</h3>
         <div>
-          <button type="button" onClick={handlePositionHand}>
-            START
-          </button>
           <button type="button" onClick={toggleReadyForFight}>
-            {readyForFight ? 'Come back' : 'Start'}
+            Come back
+          </button>
+          <button type="button" onClick={handlePositionHand}>
+            fight
           </button>
         </div>
       </div>

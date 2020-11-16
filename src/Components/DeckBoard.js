@@ -1,34 +1,19 @@
 import React, { useContext, useEffect } from 'react';
-import _ from 'lodash';
-import DeckContext from '../Contexts/DeckContext';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
-import CardsContext from '../Contexts/CardsContext';
+import Board from './Board';
 import '../Style/DeckBoard.css';
 import '../Style/CardOfDeckBoard.css';
-import OptionsContext from '../Contexts/OptionsContext';
 
 function DeckBoard() {
-  const { deck, deckIa, setDeckIa } = useContext(DeckContext);
-  const { cards } = useContext(CardsContext);
-  const { maxPower } = useContext(OptionsContext);
-
-  const createIaDeck = () => {
-    const shuffleCards = _.shuffle(cards); // utilisation de lodash pour melanger les carte provenant de l'API
-    let iaDeckPower = 0;
-    const cardForIa = [];
-
-    for (
-      let i = 0;
-      i < shuffleCards.length && iaDeckPower <= maxPower;
-      i += 1
-    ) {
-      if (shuffleCards[i].power < maxPower - iaDeckPower) {
-        cardForIa.push({ ...shuffleCards[i], position: 'handIA' });
-        iaDeckPower += shuffleCards[i].power;
-      }
-    }
-    setDeckIa(cardForIa);
-  };
+  const {
+    deck,
+    deckIa,
+    createIaDeck,
+    boardPlayer,
+    boardIa,
+    handToBoard,
+  } = useContext(DeckContext);
 
   useEffect(() => {
     createIaDeck();
@@ -48,19 +33,20 @@ function DeckBoard() {
 
         <div className="boardContainer">
           <div className="boardIa" />
+          <Board heroes={boardIa} />
           <div className="boarPlayer" />
-          {deck
-            .filter((heroe) => heroe.position === 'board' && !heroe.dead)
-            .map((heroe) => (
-              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
-            ))}
+          <Board heroes={boardPlayer} />
         </div>
 
         <div className="playerHand">
           {deck
             .filter((heroe) => heroe.position === 'hand')
             .map((heroe) => (
-              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
+              <CardOfDeckBoard
+                key={heroe.name}
+                heroe={heroe}
+                handToBoard={handToBoard}
+              />
             ))}
           <div className="hiddenCardPlayer1" />
         </div>

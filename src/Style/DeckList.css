@@ -59,9 +59,19 @@
 h2 {
   font-family: pink;
   color: yellow;
-  text-shadow: 2px 2px red, -2px 2px red, 2px -2px red, -2px -2px red;
-  font-size: 2.5em;
+  text-shadow: 3px 3px red, -3px 3px red, 3px -3px red, -3px -3px red;
+  font-size: 3.5em;
   text-align: center;
+  margin: 30px;
+}
+
+h3 {
+  font-family: pink;
+  color: yellow;
+  text-shadow: 2px 2px red, -2px 2px red, 2px -2px red, -2px -2px red;
+  font-size: 2em;
+  text-align: center;
+  margin: 30px;
 }
 
 button {
