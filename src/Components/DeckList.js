@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Howl } from 'howler';
+import Go from '../Audio/go.wav';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
@@ -17,6 +19,10 @@ function DeckList() {
   } = useContext(DeckContext);
   const history = useHistory();
 
+  const audioClips2 = new Howl({
+    src: [Go],
+  });
+
   const confirmationWindow = readyForFight
     ? 'cardList display specialFlex'
     : 'cardList displayNone';
@@ -32,20 +38,32 @@ function DeckList() {
   }
 
   const handlePositionHand = () => {
-    const deckForHand = deck.slice();
-    for (let i = 0; i < deckForHand.length; i += 1) {
-      deckForHand[i].position = 'hand';
+    if (sumPower() === 0) {
+      window.alert('You must choose at leat one heroe');
+    } else {
+      const deckForHand = deck.slice();
+      for (let i = 0; i < deckForHand.length; i += 1) {
+        deckForHand[i].position = 'hand';
+      }
+      setDeck(deckForHand);
+      history.push('/deckBoard');
+      audioClips2.play();
     }
-    setDeck(deckForHand);
-    history.push('/deckBoard');
   };
 
-  const toggleReadyForFight = () => {
+  const toggleReadyForFightAlert = () => {
+    if (sumPower() === 0) {
+      window.alert('You must choose at leat one heroe');
+    } else {
+      setReadyForFight(!readyForFight);
+      audioClips2.play();
+    }
+  };
+
+  const toggleReadyForFightNoAlert = () => {
     setReadyForFight(!readyForFight);
-    console.log(`readyForFight is now equal to ${readyForFight}`);
   };
 
-  console.log(`readyForFight is now equal to ${readyForFight}`);
   return (
     <div className="deckContainer">
       <div className={view}>
@@ -64,7 +82,7 @@ function DeckList() {
               heroe={heroe}
             />
           ))}
-          <button type="button" onClick={toggleReadyForFight}>
+          <button type="button" onClick={toggleReadyForFightAlert}>
             Start
           </button>
         </div>
@@ -78,7 +96,7 @@ function DeckList() {
         </div>
         <h3>Are you sure of the composition of your team ?</h3>
         <div>
-          <button type="button" onClick={toggleReadyForFight}>
+          <button type="button" onClick={toggleReadyForFightNoAlert}>
             Come back
           </button>
           <button type="button" onClick={handlePositionHand}>

@@ -53,7 +53,9 @@
 .confirmationView {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
+  width: 70%;
 }
 
 h2 {
@@ -83,11 +85,13 @@ button {
   border-color: white;
   border: 0.1px solid white;
   padding: 1em;
-  margin: 30px;
+  margin: 20px 30px;
 }
 
-.button:hover {
+button:hover {
+  background-color: black;
   cursor: pointer;
+  border-color: #fbff2c;
 }
 
 .specialFlex {
