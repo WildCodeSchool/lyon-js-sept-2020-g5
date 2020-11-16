@@ -48,3 +48,11 @@
     display: none;
   }
 }
+
+.containerDeckConfirmation {
+  height: 100%;
+}
+
+.containerGame {
+  height: 100%;
+}

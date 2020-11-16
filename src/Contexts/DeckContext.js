@@ -6,6 +6,8 @@ const DeckContext = createContext({
   addToDeck: () => {},
   deckIa: [],
   setDeckIa: () => {},
+  readyForFight: '',
+  setReadyForFight: () => {},
 });
 
 export default DeckContext;

@@ -33,6 +33,7 @@ export default function App() {
   ]);
   const [deck, setDeck] = useState([]);
   const [deckIa, setDeckIa] = useState([]);
+  const [readyForFight, setReadyForFight] = useState(false);
   const [isMute, setIsMute] = useState(false);
   const [pseudo, setPseudo] = useState('JS lover player');
   const [maxPower, setMaxPower] = useState(500);
@@ -107,7 +108,15 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <CardsContext.Provider value={{ cards, setCards }}>
                 <DeckContext.Provider
-                  value={{ deck, setDeck, addToDeck, deckIa, setDeckIa }}
+                  value={{
+                    deck,
+                    setDeck,
+                    addToDeck,
+                    deckIa,
+                    setDeckIa,
+                    readyForFight,
+                    setReadyForFight,
+                  }}
                 >
                   <Route path="/game" component={Game} />
                   <Route path="/deckBoard" component={DeckBoard} />

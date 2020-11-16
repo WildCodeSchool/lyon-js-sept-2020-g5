@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CardList from './CardList';
 import DeckList from './DeckList';
 import '../Style/Game.css';
+import DeckContext from '../Contexts/DeckContext';
 
 function Game() {
+  const { readyForFight } = useContext(DeckContext);
+
+  const view = readyForFight ? 'containerDeckConfirmation' : 'containerDeck';
+
   return (
-    <div>
-      <div className="containerDeck">
+    <div className="containerGame">
+      <div className={view}>
         <CardList />
         <DeckList />
       </div>
