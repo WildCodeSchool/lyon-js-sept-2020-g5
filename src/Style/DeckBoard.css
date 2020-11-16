@@ -89,3 +89,11 @@
 .hiddenCardIa {
   padding: 10px;
 }
+
+.modalShow {
+  display: block;
+}
+
+.hideModal {
+  display: none;
+}

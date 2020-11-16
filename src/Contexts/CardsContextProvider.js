@@ -5,6 +5,7 @@ import hallWaiting from '../Pictures/hallWaiting.png';
 export const CardsContext = createContext();
 
 const CardsContextProvider = ({ children }) => {
+  const [newGame, setNewGame] = useState(false);
   const [cards, setCards] = useState([
     {
       alignment: 'XXXX',
@@ -42,13 +43,15 @@ const CardsContextProvider = ({ children }) => {
         });
         setCards(tabHeroes);
       });
-  }, []);
+  }, [newGame]);
 
   return (
     <CardsContext.Provider
       value={{
         cards,
         setCards,
+        newGame,
+        setNewGame,
       }}
     >
       {children}

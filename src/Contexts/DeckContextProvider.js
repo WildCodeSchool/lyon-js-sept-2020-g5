@@ -13,7 +13,9 @@ const DeckContextProvider = ({ children }) => {
   const [scorePlayer, setScorePlayer] = useState(0);
   const [scoreIa, setScoreIa] = useState(0);
   const [graveyard, setGraveyard] = useState([]);
-  const { cards } = useContext(CardsContext);
+  const [showmodal, setShowModal] = useState(false);
+  const [endgame, setEndGame] = useState(undefined);
+  const { cards, setNewGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
 
   const addToDeck = (cardName) => {
@@ -99,7 +101,7 @@ const DeckContextProvider = ({ children }) => {
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
     // mise a jour des points de vie des cartes
-    /*  while (playerCardInBoard[0].hp > 0 || iaCardInBoard[0].hp > 0) { */
+
     iaCardInBoard[0].hp -= boardPlayer[0].atk;
 
     playerCardInBoard[0].hp -= boardIa[0].atk;
@@ -138,6 +140,31 @@ const DeckContextProvider = ({ children }) => {
     attackCard();
   };
 
+  const startNewGame = () => {
+    setNewGame(true);
+  };
+
+  const endGameVerify = () => {
+    if (
+      deck.length === 0 &&
+      deckIa.length === 0 &&
+      boardIa.length === 0 &&
+      boardPlayer.length === 0
+    ) {
+      window.alert('egalité');
+      setEndGame('equality');
+      setShowModal(true);
+    } else if (deck.length === 0 && boardPlayer.length === 0) {
+      window.alert('lose');
+      setEndGame('lose');
+      setShowModal(true);
+    } else if (deckIa.length === 0 && boardIa.length === 0) {
+      window.alert('win');
+      setEndGame('win');
+      setShowModal(true);
+    }
+  };
+
   return (
     <DeckContext.Provider
       value={{
@@ -158,6 +185,10 @@ const DeckContextProvider = ({ children }) => {
         handIaToBoardIa,
         scorePlayer,
         scoreIa,
+        startNewGame,
+        endGameVerify,
+        showmodal,
+        endgame,
       }}
     >
       {children}

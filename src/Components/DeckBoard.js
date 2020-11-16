@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
+import Modal from './Modal';
 import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
 import BoardIa from './BoardIa';
@@ -23,6 +24,10 @@ function DeckBoard() {
     scoreIa,
     graveyard,
     handIaToBoardIa,
+    startNewGame,
+    showModal,
+    endGame,
+    endGameVerify,
   } = useContext(DeckContext);
 
   const { pseudo } = useContext(OptionsContext);
@@ -99,6 +104,20 @@ function DeckBoard() {
           <button className="buttonEndTurn" type="button" onClick={endTurn}>
             End turn
           </button>
+          <button
+            className="buttonEndTurn"
+            type="button"
+            onClick={startNewGame}
+          >
+            new Game
+          </button>
+          <button
+            className="buttonEndTurn"
+            type="button"
+            onClick={endGameVerify}
+          >
+            end verify
+          </button>
           <div>
             <br />
             <p>Score de l'IA : {scoreIa}</p>
@@ -108,6 +127,9 @@ function DeckBoard() {
             </p>
           </div>
         </div>
+      </div>
+      <div className={showModal ? 'modalShow' : 'hideModal'}>
+        <Modal showModal={showModal} endGame={endGame} pseudo={pseudo} />
       </div>
     </div>
   );
