@@ -97,15 +97,16 @@ const DeckContextProvider = ({ children }) => {
   const attackCard = () => {
     const iaCardInBoard = boardIa.slice();
     const playerCardInBoard = boardPlayer.slice();
-    const graveyardInContext = [];
-
+    const graveyardInContext = graveyard.slice();
     // mise a jour des points de vie des cartes
-    while (playerCardInBoard[0].hp > 0 || iaCardInBoard[0].hp > 0) {
-      iaCardInBoard[0].hp = boardIa[0].hp - boardPlayer[0].atk;
-      playerCardInBoard[0].hp = boardPlayer[0].hp - boardIa[0].atk;
-    }
+    /*  while (playerCardInBoard[0].hp > 0 || iaCardInBoard[0].hp > 0) { */
+    iaCardInBoard[0].hp -= boardPlayer[0].atk;
+
+    playerCardInBoard[0].hp -= boardIa[0].atk;
+
+    /*   } */
+
     // si Pv joueur > PV Ia
-    // verification que les points de vies ne soit pas négatifs
 
     if (playerCardInBoard[0].hp > iaCardInBoard[0].hp) {
       setScorePlayer(scorePlayer + 1);
@@ -122,7 +123,7 @@ const DeckContextProvider = ({ children }) => {
 
     // envoi de la carte du joueur au cimetiere si PV < = 0
     if (playerCardInBoard[0].hp <= 0) {
-      graveyardInContext.push(boardPlayer[0]);
+      graveyardInContext.unshift(boardPlayer[0]);
       setGraveyard(graveyardInContext);
       setBoardPlayer([]);
     }
@@ -134,7 +135,6 @@ const DeckContextProvider = ({ children }) => {
   };
 
   const endTurn = () => {
-    handIaToBoardIa();
     attackCard();
   };
 

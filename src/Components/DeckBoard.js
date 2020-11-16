@@ -22,6 +22,7 @@ function DeckBoard() {
     scorePlayer,
     scoreIa,
     graveyard,
+    handIaToBoardIa,
   } = useContext(DeckContext);
 
   const { pseudo } = useContext(OptionsContext);
@@ -88,6 +89,13 @@ function DeckBoard() {
         </div>
 
         <div className="divButtonEndTurn">
+          <button
+            className="buttonEndTurn"
+            type="button"
+            onClick={handIaToBoardIa}
+          >
+            Ia Turn
+          </button>
           <button className="buttonEndTurn" type="button" onClick={endTurn}>
             End turn
           </button>
