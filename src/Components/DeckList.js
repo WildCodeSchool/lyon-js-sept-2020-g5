@@ -82,28 +82,37 @@ function DeckList() {
               heroe={heroe}
             />
           ))}
-          <button type="button" onClick={toggleReadyForFightAlert}>
+          <button
+            className="decklist-btn"
+            type="button"
+            onClick={toggleReadyForFightAlert}
+          >
             Start
           </button>
         </div>
       </div>
       <div className={confirmationWindow}>
         <h2>Your team</h2>
+        <h3>Are you sure of the composition of your team ?</h3>
+
         <div className="confirmationView">
           {deck.map((hero, index) => {
             return <Card key={hero.id} heroe={hero} index={index} />;
           })}
         </div>
-        <h3>Are you sure of the composition of your team ?</h3>
         <div>
           <button
-            className="whiteButton"
+            className="decklist-btn whiteButton"
             type="button"
             onClick={toggleReadyForFightNoAlert}
           >
             Come back
           </button>
-          <button type="button" onClick={handlePositionHand}>
+          <button
+            className="decklist-btn"
+            type="button"
+            onClick={handlePositionHand}
+          >
             fight
           </button>
         </div>

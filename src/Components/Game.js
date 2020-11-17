@@ -3,6 +3,7 @@ import CardList from './CardList';
 import DeckList from './DeckList';
 import '../Style/Game.css';
 import { DeckContext } from '../Contexts/DeckContextProvider';
+import Rotate from '../Pictures/rotate_img_proj.gif';
 
 function Game() {
   const { readyForFight } = useContext(DeckContext);
@@ -16,10 +17,7 @@ function Game() {
         <DeckList />
       </div>
       <div className="Portrait">
-        <img
-          src="https://karagezwebstudio.com/fr/img/rotate.gif"
-          alt="turn phone"
-        />
+        <img src={Rotate} alt="turn phone" />
         <p>Please turn your Smartphone into landcape orientation</p>
       </div>
     </div>
