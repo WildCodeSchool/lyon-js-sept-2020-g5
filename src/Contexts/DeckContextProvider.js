@@ -15,7 +15,7 @@ const DeckContextProvider = ({ children }) => {
   const [graveyard, setGraveyard] = useState([]);
   const [showmodal, setShowModal] = useState(false);
   const [endgame, setEndGame] = useState(undefined);
-  const { cards, setNewGame } = useContext(CardsContext);
+  const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
 
   const addToDeck = (cardName) => {
@@ -100,24 +100,27 @@ const DeckContextProvider = ({ children }) => {
     const iaCardInBoard = boardIa.slice();
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
+
     // mise a jour des points de vie des cartes
-
     iaCardInBoard[0].hp -= boardPlayer[0].atk;
-
     playerCardInBoard[0].hp -= boardIa[0].atk;
-
-    /*   } */
 
     // si Pv joueur > PV Ia
 
-    if (playerCardInBoard[0].hp > iaCardInBoard[0].hp) {
+    if (
+      playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
+      iaCardInBoard[0].hp <= 0
+    ) {
       setScorePlayer(scorePlayer + 1);
       setBoardPlayer(playerCardInBoard);
       setBoardIa(iaCardInBoard);
     }
 
     // si Pv joueur < PV Ia
-    if (playerCardInBoard[0].hp < iaCardInBoard[0].hp) {
+    if (
+      playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
+      playerCardInBoard[0].hp <= 0
+    ) {
       setScoreIa(scoreIa + 1);
       setBoardPlayer(playerCardInBoard);
       setBoardIa(iaCardInBoard);
@@ -141,7 +144,7 @@ const DeckContextProvider = ({ children }) => {
   };
 
   const startNewGame = () => {
-    setNewGame(true);
+    setNewGame(!newGame);
   };
 
   const endGameVerify = () => {

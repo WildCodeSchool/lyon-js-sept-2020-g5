@@ -49,7 +49,6 @@ const CardsContextProvider = ({ children }) => {
     <CardsContext.Provider
       value={{
         cards,
-        setCards,
         newGame,
         setNewGame,
       }}
