@@ -96,7 +96,11 @@ function DeckList() {
         </div>
         <h3>Are you sure of the composition of your team ?</h3>
         <div>
-          <button type="button" onClick={toggleReadyForFightNoAlert}>
+          <button
+            className="whiteButton"
+            type="button"
+            onClick={toggleReadyForFightNoAlert}
+          >
             Come back
           </button>
           <button type="button" onClick={handlePositionHand}>

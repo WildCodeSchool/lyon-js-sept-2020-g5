@@ -68,9 +68,7 @@ h2 {
 }
 
 h3 {
-  font-family: pink;
-  color: yellow;
-  text-shadow: 2px 2px red, -2px 2px red, 2px -2px red, -2px -2px red;
+  color: white;
   font-size: 2em;
   text-align: center;
   margin: 30px;
@@ -86,6 +84,11 @@ button {
   border: 0.1px solid white;
   padding: 1em;
   margin: 20px 30px;
+}
+
+.whiteButton {
+  color: #fff;
+  text-shadow: none;
 }
 
 button:hover {
