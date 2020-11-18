@@ -107,13 +107,6 @@ function DeckBoard() {
           <button
             className="buttonEndTurn"
             type="button"
-            onClick={startNewGame}
-          >
-            new Game
-          </button>
-          <button
-            className="buttonEndTurn"
-            type="button"
             onClick={endGameVerify}
           >
             end verify
@@ -128,9 +121,9 @@ function DeckBoard() {
           </div>
         </div>
       </div>
-      <div className={showModal ? 'modalShow' : 'hideModal'}>
+      {/* <div className={showModal ? 'modalShow' : 'hideModal'}>
         <Modal showModal={showModal} endGame={endGame} pseudo={pseudo} />
-      </div>
+      </div> */}
     </div>
   );
 }

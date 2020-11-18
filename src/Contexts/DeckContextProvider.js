@@ -96,7 +96,37 @@ const DeckContextProvider = ({ children }) => {
     }
   }
 
-  const attackCard = () => {
+  const endGameVerify = () => {
+    console.log('Debut FONCTION ENDGAMEVERIFY');
+    console.log(`LE DECK : ${deck.length}`);
+    console.log(`LE DECK IA: ${deckIa.length} `);
+    console.log(`LE Board IA : ${boardIa.length}`);
+    console.log(`LE Board PLAYER: ${boardPlayer.length} `);
+    if (
+      deck.length === 0 &&
+      deckIa.length === 0 &&
+      boardIa.length === 0 &&
+      boardPlayer.length === 0
+    ) {
+      window.alert('egalité');
+      setNewGame(!newGame);
+      /* setEndGame('equality');
+      setShowModal(true); */
+    } else if (deck.length === 0 && boardPlayer.length === 0) {
+      window.alert('lose');
+      setNewGame(!newGame);
+      /* setEndGame('lose');
+      setShowModal(true); */
+    } else if (deckIa.length === 0 && boardIa.length === 0) {
+      window.alert('win');
+      setNewGame(!newGame);
+      /*  setEndGame('win');
+      setShowModal(true); */
+    }
+    console.log('fin fonction endgameVERIFY');
+  };
+
+  function attackCard() {
     const iaCardInBoard = boardIa.slice();
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
@@ -144,35 +174,12 @@ const DeckContextProvider = ({ children }) => {
         setBoardIa([]);
       }
     }
-  };
+    console.log('fin fonction attack');
+  }
 
   const endTurn = () => {
     attackCard();
-  };
-
-  const startNewGame = () => {
-    setNewGame(!newGame);
-  };
-
-  const endGameVerify = () => {
-    if (
-      deck.length === 0 &&
-      deckIa.length === 0 &&
-      boardIa.length === 0 &&
-      boardPlayer.length === 0
-    ) {
-      window.alert('egalité');
-      setEndGame('equality');
-      setShowModal(true);
-    } else if (deck.length === 0 && boardPlayer.length === 0) {
-      window.alert('lose');
-      setEndGame('lose');
-      setShowModal(true);
-    } else if (deckIa.length === 0 && boardIa.length === 0) {
-      window.alert('win');
-      setEndGame('win');
-      setShowModal(true);
-    }
+    endGameVerify();
   };
 
   return (
@@ -195,7 +202,6 @@ const DeckContextProvider = ({ children }) => {
         handIaToBoardIa,
         scorePlayer,
         scoreIa,
-        startNewGame,
         endGameVerify,
         showmodal,
         endgame,
