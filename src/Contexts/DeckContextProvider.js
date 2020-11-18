@@ -12,6 +12,7 @@ const DeckContextProvider = ({ children }) => {
   const [boardIa, setBoardIa] = useState([]);
   const { cards } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
+  const [readyForFight, setReadyForFight] = useState(false);
 
   const addToDeck = (cardName) => {
     let newDeck = deck.slice();
@@ -81,6 +82,8 @@ const DeckContextProvider = ({ children }) => {
         boardIa,
         setBoardIa,
         handToBoard,
+        readyForFight,
+        setReadyForFight,
       }}
     >
       {children}
