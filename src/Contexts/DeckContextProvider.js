@@ -102,40 +102,47 @@ const DeckContextProvider = ({ children }) => {
     const graveyardInContext = graveyard.slice();
 
     // mise a jour des points de vie des cartes
-    iaCardInBoard[0].hp -= boardPlayer[0].atk;
-    playerCardInBoard[0].hp -= boardIa[0].atk;
-
-    // si Pv joueur > PV Ia
-
-    if (
-      playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
-      iaCardInBoard[0].hp <= 0
+    while (
+      (playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
+        iaCardInBoard[0].hp >= 0) ||
+      (playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
+        playerCardInBoard[0].hp >= 0)
     ) {
-      setScorePlayer(scorePlayer + 1);
-      setBoardPlayer(playerCardInBoard);
-      setBoardIa(iaCardInBoard);
-    }
+      iaCardInBoard[0].hp -= boardPlayer[0].atk;
+      playerCardInBoard[0].hp -= boardIa[0].atk;
 
-    // si Pv joueur < PV Ia
-    if (
-      playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
-      playerCardInBoard[0].hp <= 0
-    ) {
-      setScoreIa(scoreIa + 1);
-      setBoardPlayer(playerCardInBoard);
-      setBoardIa(iaCardInBoard);
-    }
+      // si Pv joueur > PV Ia
 
-    // envoi de la carte du joueur au cimetiere si PV < = 0
-    if (playerCardInBoard[0].hp <= 0) {
-      graveyardInContext.unshift(boardPlayer[0]);
-      setGraveyard(graveyardInContext);
-      setBoardPlayer([]);
-    }
+      if (
+        playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
+        iaCardInBoard[0].hp <= 0
+      ) {
+        setScorePlayer(scorePlayer + 1);
+        setBoardPlayer(playerCardInBoard);
+        setBoardIa(iaCardInBoard);
+      }
 
-    // remise a 0 de la board de l'IA si PV de l'IA < = 0
-    if (iaCardInBoard[0].hp <= 0) {
-      setBoardIa([]);
+      // si Pv joueur < PV Ia
+      if (
+        playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
+        playerCardInBoard[0].hp <= 0
+      ) {
+        setScoreIa(scoreIa + 1);
+        setBoardPlayer(playerCardInBoard);
+        setBoardIa(iaCardInBoard);
+      }
+
+      // envoi de la carte du joueur au cimetiere si PV < = 0
+      if (playerCardInBoard[0].hp <= 0) {
+        graveyardInContext.unshift(boardPlayer[0]);
+        setGraveyard(graveyardInContext);
+        setBoardPlayer([]);
+      }
+
+      // remise a 0 de la board de l'IA si PV de l'IA < = 0
+      if (iaCardInBoard[0].hp <= 0) {
+        setBoardIa([]);
+      }
     }
   };
 
