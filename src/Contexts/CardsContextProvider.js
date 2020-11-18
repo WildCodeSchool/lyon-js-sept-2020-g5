@@ -19,6 +19,7 @@ const CardsContextProvider = ({ children }) => {
       dead: false,
     },
   ]);
+
   useEffect(() => {
     axios
       .get(

@@ -83,17 +83,20 @@ const DeckContextProvider = ({ children }) => {
   };
 
   function handIaToBoardIa() {
-    const shuffleDeckIaCards = _.shuffle(deckIa);
-    const cardIA = [];
+    return new Promise((resolve) => {
+      const shuffleDeckIaCards = _.shuffle(deckIa);
+      const cardIA = [];
 
-    if (shuffleDeckIaCards.length !== 0) {
-      cardIA.push({ ...shuffleDeckIaCards[0], position: 'Board' });
-      shuffleDeckIaCards.shift();
-      setBoardIa(cardIA);
-      setDeckIa(shuffleDeckIaCards);
-    } else {
-      window.alert("plus de carte dispo pour l'ia");
-    }
+      if (shuffleDeckIaCards.length !== 0) {
+        cardIA.push({ ...shuffleDeckIaCards[0], position: 'Board' });
+        shuffleDeckIaCards.shift();
+        setBoardIa(cardIA);
+        setDeckIa(shuffleDeckIaCards);
+        resolve();
+      } else {
+        window.alert("plus de carte dispo pour l'ia");
+      }
+    });
   }
 
   const attackCard = () => {
@@ -139,9 +142,11 @@ const DeckContextProvider = ({ children }) => {
     }
   };
 
-  const endTurn = () => {
+  async function endTurn() {
+    const deplacementCarte = handIaToBoardIa();
+    await deplacementCarte;
     attackCard();
-  };
+  }
 
   const startNewGame = () => {
     setNewGame(!newGame);
