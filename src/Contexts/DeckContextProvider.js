@@ -13,8 +13,7 @@ const DeckContextProvider = ({ children }) => {
   const [scorePlayer, setScorePlayer] = useState(0);
   const [scoreIa, setScoreIa] = useState(0);
   const [graveyard, setGraveyard] = useState([]);
-  const [showmodal, setShowModal] = useState(false);
-  const [endgame, setEndGame] = useState(undefined);
+  const [endgame] = useState(undefined);
   const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
 
@@ -110,18 +109,12 @@ const DeckContextProvider = ({ children }) => {
     ) {
       window.alert('egalité');
       setNewGame(!newGame);
-      /* setEndGame('equality');
-      setShowModal(true); */
     } else if (deck.length === 0 && boardPlayer.length === 0) {
       window.alert('lose');
       setNewGame(!newGame);
-      /* setEndGame('lose');
-      setShowModal(true); */
     } else if (deckIa.length === 0 && boardIa.length === 0) {
       window.alert('win');
       setNewGame(!newGame);
-      /*  setEndGame('win');
-      setShowModal(true); */
     }
     console.log('fin fonction endgameVERIFY');
   };
@@ -203,7 +196,6 @@ const DeckContextProvider = ({ children }) => {
         scorePlayer,
         scoreIa,
         endGameVerify,
-        showmodal,
         endgame,
       }}
     >

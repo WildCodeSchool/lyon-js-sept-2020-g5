@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
-import Modal from './Modal';
 import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
 import BoardIa from './BoardIa';
@@ -24,9 +23,6 @@ function DeckBoard() {
     scoreIa,
     graveyard,
     handIaToBoardIa,
-    startNewGame,
-    showModal,
-    endGame,
     endGameVerify,
   } = useContext(DeckContext);
 
@@ -121,9 +117,6 @@ function DeckBoard() {
           </div>
         </div>
       </div>
-      {/* <div className={showModal ? 'modalShow' : 'hideModal'}>
-        <Modal showModal={showModal} endGame={endGame} pseudo={pseudo} />
-      </div> */}
     </div>
   );
 }
