@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Popup from 'reactjs-popup';
 import BurgerIcon from './BurgerIcon';
 import Menu from './Menu';
@@ -15,18 +15,21 @@ const contentStyle = {
   border: 'none',
 };
 
-const BurgerMenu = () => (
-  <div style={styles}>
-    <Popup
-      modal
-      overlayStyle={{ background: '#0d0c0c', top: '79px' }}
-      contentStyle={contentStyle}
-      closeOnDocumentClick={false}
-      trigger={(open) => <BurgerIcon open={open} />}
-    >
-      {(close) => <Menu close={close} />}
-    </Popup>
-  </div>
-);
+const BurgerMenu = forwardRef((ref) => {
+  return (
+    <div style={styles}>
+      <Popup
+        ref={ref}
+        modal
+        overlayStyle={{ background: '#0d0c0c', top: '79px' }}
+        contentStyle={contentStyle}
+        closeOnDocumentClick={false}
+        trigger={(open) => <BurgerIcon open={open} />}
+      >
+        {(close) => <Menu close={close} />}
+      </Popup>
+    </div>
+  );
+});
 
 export default BurgerMenu;

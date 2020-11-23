@@ -4,7 +4,7 @@ import '../Style/Header.css';
 import BurgerMenu from './Burgermenu';
 import logowildClash from '../Pictures/logo-wildClash.png';
 
-const Header = () => {
+const Header = React.forwardRef((ref) => {
   return (
     <header>
       <div className="logo">
@@ -32,9 +32,9 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <BurgerMenu />
+      <BurgerMenu ref={ref} />
     </header>
   );
-};
+});
 
 export default Header;
