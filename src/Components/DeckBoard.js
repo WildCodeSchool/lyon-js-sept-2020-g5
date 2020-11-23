@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
 import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
@@ -19,14 +18,11 @@ function DeckBoard() {
     boardIa,
     handToBoard,
     endTurn,
-    scorePlayer,
-    scoreIa,
     graveyard,
     handIaToBoardIa,
     endGameVerify,
+    enchainement,
   } = useContext(DeckContext);
-
-  const { pseudo } = useContext(OptionsContext);
 
   const history = useHistory();
 
@@ -107,14 +103,13 @@ function DeckBoard() {
           >
             end verify
           </button>
-          <div>
-            <br />
-            <p>Score de l'IA : {scoreIa}</p>
-            <br />
-            <p>
-              Score de {pseudo} : {scorePlayer}
-            </p>
-          </div>
+          <button
+            className="buttonEndTurn"
+            type="button"
+            onClick={enchainement}
+          >
+            enchainement
+          </button>
         </div>
       </div>
     </div>
