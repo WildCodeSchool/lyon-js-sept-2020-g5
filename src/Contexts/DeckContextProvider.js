@@ -116,7 +116,7 @@ const DeckContextProvider = ({ children }) => {
       window.alert('win');
       setNewGame(!newGame);
     }
-    console.log('fin fonction endgameVERIFY');
+    console.log('fin fonction endgame VERIFY');
   };
 
   function attackCard() {
