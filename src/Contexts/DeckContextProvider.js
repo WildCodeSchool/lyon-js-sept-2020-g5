@@ -137,7 +137,7 @@ const DeckContextProvider = ({ children }) => {
     console.log('wow so empty : ', boardIa);
     console.log('wow not not empty : ', boardIaRef.current);
     debugger; // eslint-disable-line
-    const iaCardInBoard = boardIa.slice();
+    const iaCardInBoard = boardIaRef.current.slice();
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
 
@@ -149,7 +149,7 @@ const DeckContextProvider = ({ children }) => {
         playerCardInBoard[0].hp >= 0)
     ) {
       iaCardInBoard[0].hp -= boardPlayer[0].atk;
-      playerCardInBoard[0].hp -= boardIa[0].atk;
+      playerCardInBoard[0].hp -= iaCardInBoard[0].atk;
 
       // si Pv joueur > PV Ia
       // le joueur a battu une carte de l'IA
