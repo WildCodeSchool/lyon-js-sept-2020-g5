@@ -110,11 +110,12 @@ const DeckContextProvider = ({ children }) => {
     console.log(`LE DECK : ${deck.length}`);
     console.log(`LE DECK IA: ${deckIa.length} `);
     console.log(`LE Board IA : ${boardIa.length}`);
+    console.log(`LE Board IA Ref : ${boardIaRef.current.length}`);
     console.log(`LE Board PLAYER: ${boardPlayer.length} `);
     if (
       deck.length === 0 &&
       deckIa.length === 0 &&
-      boardIa.length === 0 &&
+      boardIaRef.current.length === 0 &&
       boardPlayer.length === 0
     ) {
       window.alert('egalité');
@@ -122,7 +123,7 @@ const DeckContextProvider = ({ children }) => {
     } else if (deck.length === 0 && boardPlayer.length === 0) {
       window.alert('lose');
       changes.push(setNewGame(!newGame));
-    } else if (deckIa.length === 0 && boardIa.length === 0) {
+    } else if (deckIa.length === 0 && boardIaRef.current.length === 0) {
       window.alert('win');
       changes.push(setNewGame(!newGame));
     }
@@ -136,7 +137,7 @@ const DeckContextProvider = ({ children }) => {
 
     console.log('wow so empty : ', boardIa);
     console.log('wow not not empty : ', boardIaRef.current);
-    debugger; // eslint-disable-line
+    // debugger; // eslint-disable-line
     const iaCardInBoard = boardIaRef.current.slice();
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
@@ -149,7 +150,9 @@ const DeckContextProvider = ({ children }) => {
         playerCardInBoard[0].hp >= 0)
     ) {
       iaCardInBoard[0].hp -= boardPlayer[0].atk;
+      console.log(' PV IA Card in board ', iaCardInBoard[0].hp);
       playerCardInBoard[0].hp -= iaCardInBoard[0].atk;
+      console.log(' PV Player Card in board ', playerCardInBoard[0].hp);
 
       // si Pv joueur > PV Ia
       // le joueur a battu une carte de l'IA
