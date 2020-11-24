@@ -25,10 +25,9 @@ function DeckBoard() {
   } = useContext(DeckContext);
 
   const history = useHistory();
-
   useEffect(() => {
     createIaDeck();
-  }, []);
+  }, []); // eslint-disable-line
 
   const buttonQuit = () => {
     history.push('/');

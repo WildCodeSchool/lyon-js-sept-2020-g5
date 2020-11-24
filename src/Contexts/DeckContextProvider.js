@@ -1,19 +1,20 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import _ from 'lodash';
 import { CardsContext } from './CardsContextProvider';
 import { OptionsContext } from './OptionsContextProvider';
+import useAwaitableState from '../Hooks/useAwaitableState';
 
 export const DeckContext = createContext();
 
 const DeckContextProvider = ({ children }) => {
-  const [deck, setDeck] = useState([]);
-  const [deckIa, setDeckIa] = useState([]);
-  const [boardPlayer, setBoardPlayer] = useState([]);
-  const [boardIa, setBoardIa] = useState([]);
-  const [scorePlayer, setScorePlayer] = useState(0);
-  const [scoreIa, setScoreIa] = useState(0);
-  const [graveyard, setGraveyard] = useState([]);
-  const [endgame] = useState(undefined);
+  const [deck, setDeck] = useAwaitableState([], 'deckPlayer');
+  const [deckIa, setDeckIa] = useAwaitableState([], 'deckIA');
+  const [boardPlayer, setBoardPlayer] = useAwaitableState([], 'boardPlayer');
+  const [boardIa, setBoardIa, boardIaRef] = useAwaitableState([], 'boardIa');
+  const [scorePlayer, setScorePlayer] = useAwaitableState(0, 'scorePlayer');
+  const [scoreIa, setScoreIa] = useAwaitableState(0, 'scoreIa');
+  const [graveyard, setGraveyard] = useAwaitableState([], 'graveyard');
+  const [endgame] = useAwaitableState(undefined, 'endGame');
   const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
 
@@ -81,21 +82,30 @@ const DeckContextProvider = ({ children }) => {
     setDeck(deckToBoard);
   };
 
-  function handIaToBoardIa() {
+  async function handIaToBoardIa() {
+    console.log('debut handIaToBoardIa');
+    const changes = [];
     const shuffleDeckIaCards = _.shuffle(deckIa);
     const cardIA = [];
 
     if (shuffleDeckIaCards.length !== 0) {
       cardIA.push({ ...shuffleDeckIaCards[0], position: 'Board' });
       shuffleDeckIaCards.shift();
-      setBoardIa(cardIA);
-      setDeckIa(shuffleDeckIaCards);
+      const boardiaPromise = setBoardIa(cardIA);
+      boardiaPromise.then((board) => {
+        console.log('board ia set', board);
+      });
+      changes.push(boardiaPromise);
+      changes.push(setDeckIa(shuffleDeckIaCards));
     } else {
       window.alert("plus de carte dispo pour l'ia");
     }
+    console.log('debut handIaToBoardIa');
+    return Promise.all(changes);
   }
 
-  const endGameVerify = () => {
+  const endGameVerify = async () => {
+    const changes = [];
     console.log('Debut FONCTION ENDGAMEVERIFY');
     console.log(`LE DECK : ${deck.length}`);
     console.log(`LE DECK IA: ${deckIa.length} `);
@@ -108,18 +118,25 @@ const DeckContextProvider = ({ children }) => {
       boardPlayer.length === 0
     ) {
       window.alert('egalité');
-      setNewGame(!newGame);
+      changes.push(setNewGame(!newGame));
     } else if (deck.length === 0 && boardPlayer.length === 0) {
       window.alert('lose');
-      setNewGame(!newGame);
+      changes.push(setNewGame(!newGame));
     } else if (deckIa.length === 0 && boardIa.length === 0) {
       window.alert('win');
-      setNewGame(!newGame);
+      changes.push(setNewGame(!newGame));
     }
     console.log('fin fonction endgame VERIFY');
+    return Promise.all(changes);
   };
 
   function attackCard() {
+    console.log('debut fonction attack');
+    const changes = [];
+
+    console.log('wow so empty : ', boardIa);
+    console.log('wow not not empty : ', boardIaRef.current);
+    debugger; // eslint-disable-line
     const iaCardInBoard = boardIa.slice();
     const playerCardInBoard = boardPlayer.slice();
     const graveyardInContext = graveyard.slice();
@@ -135,24 +152,26 @@ const DeckContextProvider = ({ children }) => {
       playerCardInBoard[0].hp -= boardIa[0].atk;
 
       // si Pv joueur > PV Ia
+      // le joueur a battu une carte de l'IA
 
       if (
         playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
         iaCardInBoard[0].hp <= 0
       ) {
-        setScorePlayer(scorePlayer + 1);
-        setBoardPlayer(playerCardInBoard);
-        setBoardIa(iaCardInBoard);
+        changes.push(setScorePlayer(scorePlayer + 1));
+        changes.push(setBoardPlayer(playerCardInBoard));
+        changes.push(setBoardIa(iaCardInBoard));
       }
 
+      // l'IA a battu une carte du joueur
       // si Pv joueur < PV Ia
       if (
         playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
         playerCardInBoard[0].hp <= 0
       ) {
-        setScoreIa(scoreIa + 1);
-        setBoardPlayer(playerCardInBoard);
-        setBoardIa(iaCardInBoard);
+        changes.push(setScoreIa(scoreIa + 1));
+        changes.push(setBoardPlayer(playerCardInBoard));
+        changes.push(setBoardIa(iaCardInBoard));
       }
 
       // envoi de la carte du joueur au cimetiere si PV < = 0
@@ -168,6 +187,7 @@ const DeckContextProvider = ({ children }) => {
       }
     }
     console.log('fin fonction attack');
+    return Promise.all(changes);
   }
 
   const endTurn = () => {
@@ -175,9 +195,17 @@ const DeckContextProvider = ({ children }) => {
     endGameVerify();
   };
 
+  const enchainement = async () => {
+    await handIaToBoardIa();
+    console.log("état de la board de l'IA dans l'enchainement", boardIa);
+    await attackCard();
+    await endGameVerify();
+  };
+
   return (
     <DeckContext.Provider
       value={{
+        enchainement,
         deck,
         setDeck,
         deckIa,
