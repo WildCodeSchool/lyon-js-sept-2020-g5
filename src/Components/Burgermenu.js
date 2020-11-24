@@ -1,4 +1,3 @@
-import React, { forwardRef } from 'react';
 import Popup from 'reactjs-popup';
 import BurgerIcon from './BurgerIcon';
 import Menu from './Menu';
@@ -15,11 +14,10 @@ const contentStyle = {
   border: 'none',
 };
 
-const BurgerMenu = forwardRef((ref) => {
+function BurgerMenu() {
   return (
     <div style={styles}>
       <Popup
-        ref={ref}
         modal
         overlayStyle={{ background: '#0d0c0c', top: '79px' }}
         contentStyle={contentStyle}
@@ -30,6 +28,6 @@ const BurgerMenu = forwardRef((ref) => {
       </Popup>
     </div>
   );
-});
+}
 
 export default BurgerMenu;
