@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import _ from 'lodash';
 import { CardsContext } from './CardsContextProvider';
 import { OptionsContext } from './OptionsContextProvider';
@@ -20,6 +20,7 @@ const DeckContextProvider = ({ children }) => {
   const [endgame] = useAwaitableState(undefined, 'endGame');
   const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
+  const [readyForFight, setReadyForFight] = useState(false);
 
   /* creation d'ue pause pour avoir le temps de voir les cartes */
   const delay = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -240,6 +241,8 @@ const DeckContextProvider = ({ children }) => {
         graveyard,
         endGameVerify,
         endgame,
+        readyForFight,
+        setReadyForFight,
       }}
     >
       {children}
