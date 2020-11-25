@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Howl } from 'howler';
 import Go from '../Audio/go.wav';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardsInDeck from './CardsInDeck';
+import { DeckContext } from '../Contexts/DeckContextProvider';
 import '../Style/DeckList.css';
 import Card from './Card';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
@@ -67,28 +67,33 @@ function DeckList() {
   return (
     <div className="deckContainer">
       <div className={view}>
-        <div className="deckContainer">
-          <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
+        <div className="playerDeck">
           <div className="totalPower">
             TOTAL POWER : {sumPower()} /{maxPower}
           </div>
-          <div className="deck">DECK</div>
-          {deck.map((heroe) => (
-            <CardsInDeck
-              key={heroe.name}
-              j
-              heroechoice={heroe}
-              addToDeck={addToDeck}
-              heroe={heroe}
-            />
-          ))}
-          <button
-            className="decklist-btn"
-            type="button"
-            onClick={toggleReadyForFightAlert}
-          >
-            Start
-          </button>
+          <div className="deck">
+            DECK
+            {deck.map((heroe) => (
+              <CardsInDeck
+                key={heroe.name}
+                j
+                heroechoice={heroe}
+                addToDeck={addToDeck}
+                heroe={heroe}
+              />
+            ))}
+          </div>
+          <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
+
+          <div className="buttonStartDiv">
+            <button
+              className="decklist-btn"
+              type="button"
+              onClick={toggleReadyForFightAlert}
+            >
+              Start
+            </button>
+          </div>
         </div>
       </div>
       <div className={confirmationWindow}>

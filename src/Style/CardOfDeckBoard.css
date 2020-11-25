@@ -15,23 +15,10 @@
   justify-items: center;
   gap: 10px;
   margin-right: 10px;
-}
-
-.IaHand {
-  transform: rotate(180deg);
-  background: no-repeat center/100% url('../Pictures/back-card.jpg');
-}
-
-.IaHand .heroName,
-.IaHand .imgCardDeck,
-.IaHand .attack,
-.IaHand .healthPoints,
-.IaHand .forIaHand {
-  display: none;
+  cursor: copy;
 }
 .cardOfDeckBoard:hover {
-  background-color: #cc0000;
-  opacity: 0.8;
+  background-color: tomato;
 }
 
 .cardOfDeckBoard .heroName {

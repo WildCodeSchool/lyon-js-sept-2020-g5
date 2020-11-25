@@ -1,9 +1,13 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import CardOfDeckBoard from './CardOfDeckBoard';
+import CardOfDeckBoardIa from './CardOfDeckBoardIa';
 import Board from './Board';
+import BoardIa from './BoardIa';
 import '../Style/DeckBoard.css';
-import '../Style/CardOfDeckBoard.css';
+import HiddenCards from './hiddenCards';
+import Graveyard from './Graveyard';
 
 function DeckBoard() {
   const {
@@ -13,48 +17,86 @@ function DeckBoard() {
     boardPlayer,
     boardIa,
     handToBoard,
+    graveyard,
+    endGameVerify,
+    enchainement,
   } = useContext(DeckContext);
 
+  const history = useHistory();
   useEffect(() => {
     createIaDeck();
-  }, []);
+  }, []); // eslint-disable-line
+
+  const buttonQuit = () => {
+    history.push('/');
+  };
 
   return (
     <div className="deckBoard">
       <div className="mainContainer">
-        <div className="iaHand">
-          {deckIa
-            .filter((heroe) => heroe.position === 'handIA')
-            .map((heroe) => (
-              <CardOfDeckBoard key={heroe.name} heroe={heroe} />
-            ))}
-          <div className="hiddenCardIa" />
+        <div className="containerHandIa">
+          <div className="iaHand">
+            {deckIa
+              .filter((heroe) => heroe.position === 'handIA')
+              .map((heroe) => (
+                <CardOfDeckBoardIa key={heroe.name} heroe={heroe} />
+              ))}
+          </div>
+          <div className="hiddenCardIa">
+            <HiddenCards heroes={deckIa} />
+          </div>
         </div>
 
         <div className="boardContainer">
           <div className="boardIa" />
-          <Board heroes={boardIa} />
+          <BoardIa heroes={boardIa} />
           <div className="boarPlayer" />
           <Board heroes={boardPlayer} />
         </div>
-
-        <div className="playerHand">
-          {deck
-            .filter((heroe) => heroe.position === 'hand')
-            .map((heroe) => (
-              <CardOfDeckBoard
-                key={heroe.name}
-                heroe={heroe}
-                handToBoard={handToBoard}
-              />
-            ))}
-          <div className="hiddenCardPlayer1" />
+        <div className="containerHandPlayer">
+          <div className="playerHand">
+            {deck
+              .filter((heroe) => heroe.position === 'hand')
+              .map((heroe) => (
+                <CardOfDeckBoard
+                  key={heroe.name}
+                  heroe={heroe}
+                  handToBoard={handToBoard}
+                />
+              ))}
+          </div>
+          <div className="hiddenCardPlayer1">
+            <HiddenCards heroes={deck} />
+          </div>
         </div>
       </div>
 
       <div className="sideContainer">
-        <div>button quit</div>
-        <div className="graveyard">Graveyard</div>
+        <div className="divButtonQuit">
+          <button className="buttonQuit" type="button" onClick={buttonQuit}>
+            Quit
+          </button>
+        </div>
+        <div className="graveyard">
+          Graveyard
+          <Graveyard heroes={graveyard} />
+        </div>
+        <div className="GameButtonsContainer">
+          <button
+            className="buttonGameEndTurn"
+            type="button"
+            onClick={enchainement}
+          >
+            End turn
+          </button>
+          <button
+            className="buttonVictory"
+            type="button"
+            onClick={endGameVerify}
+          >
+            Victory ?
+          </button>
+        </div>
       </div>
     </div>
   );
