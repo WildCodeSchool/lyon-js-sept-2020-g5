@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default React.forwardRef(({ open, ...props }, ref) => (
+const BurgerIcon = React.forwardRef(({ open, ...props }, ref) => (
   <div
     ref={ref}
     className={open ? 'burger-menu open' : 'burger-menu'}
@@ -11,3 +11,5 @@ export default React.forwardRef(({ open, ...props }, ref) => (
     <div className="bar3" key="b3" />
   </div>
 ));
+
+export default BurgerIcon;
