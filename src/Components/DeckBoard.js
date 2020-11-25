@@ -17,9 +17,7 @@ function DeckBoard() {
     boardPlayer,
     boardIa,
     handToBoard,
-    endTurn,
     graveyard,
-    handIaToBoardIa,
     endGameVerify,
     enchainement,
   } = useContext(DeckContext);
@@ -83,31 +81,20 @@ function DeckBoard() {
           Graveyard
           <Graveyard heroes={graveyard} />
         </div>
-
-        <div className="divButtonEndTurn">
+        <div className="GameButtonsContainer">
           <button
-            className="buttonEndTurn"
-            type="button"
-            onClick={handIaToBoardIa}
-          >
-            Ia Turn
-          </button>
-          <button className="buttonEndTurn" type="button" onClick={endTurn}>
-            End turn
-          </button>
-          <button
-            className="buttonEndTurn"
-            type="button"
-            onClick={endGameVerify}
-          >
-            end verify
-          </button>
-          <button
-            className="buttonEndTurn"
+            className="buttonGameEndTurn"
             type="button"
             onClick={enchainement}
           >
-            enchainement
+            End turn
+          </button>
+          <button
+            className="buttonVictory"
+            type="button"
+            onClick={endGameVerify}
+          >
+            Victory ?
           </button>
         </div>
       </div>

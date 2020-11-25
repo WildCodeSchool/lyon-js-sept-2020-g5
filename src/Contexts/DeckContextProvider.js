@@ -9,7 +9,10 @@ export const DeckContext = createContext();
 const DeckContextProvider = ({ children }) => {
   const [deck, setDeck] = useAwaitableState([], 'deckPlayer');
   const [deckIa, setDeckIa] = useAwaitableState([], 'deckIA');
-  const [boardPlayer, setBoardPlayer] = useAwaitableState([], 'boardPlayer');
+  const [boardPlayer, setBoardPlayer, boardPlayerRef] = useAwaitableState(
+    [],
+    'boardPlayer'
+  );
   const [boardIa, setBoardIa, boardIaRef] = useAwaitableState([], 'boardIa');
   const [scorePlayer, setScorePlayer] = useAwaitableState(0, 'scorePlayer');
   const [scoreIa, setScoreIa] = useAwaitableState(0, 'scoreIa');
@@ -17,6 +20,9 @@ const DeckContextProvider = ({ children }) => {
   const [endgame] = useAwaitableState(undefined, 'endGame');
   const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
+
+  /* creation d'ue pause pour avoir le temps de voir les cartes */
+  const delay = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const addToDeck = (cardName) => {
     let newDeck = deck.slice();
@@ -112,36 +118,46 @@ const DeckContextProvider = ({ children }) => {
     console.log(`LE Board IA : ${boardIa.length}`);
     console.log(`LE Board IA Ref : ${boardIaRef.current.length}`);
     console.log(`LE Board PLAYER: ${boardPlayer.length} `);
+    console.log(`LE Board PLAYER Ref: ${boardPlayerRef.current.length} `);
+
     if (
       deck.length === 0 &&
       deckIa.length === 0 &&
       boardIaRef.current.length === 0 &&
-      boardPlayer.length === 0
+      boardPlayerRef.current.length === 0
     ) {
-      window.alert('egalité');
+      window.alert('equality !!! ');
       changes.push(setNewGame(!newGame));
-    } else if (deck.length === 0 && boardPlayer.length === 0) {
-      window.alert('lose');
+    } else if (deck.length === 0 && boardPlayerRef.current.length === 0) {
+      window.alert('You lose !!!!');
       changes.push(setNewGame(!newGame));
     } else if (deckIa.length === 0 && boardIaRef.current.length === 0) {
-      window.alert('win');
+      window.alert('Congratulation !! You win');
       changes.push(setNewGame(!newGame));
     }
     console.log('fin fonction endgame VERIFY');
     return Promise.all(changes);
   };
 
-  function attackCard() {
+  async function attackCard() {
     console.log('debut fonction attack');
     const changes = [];
 
-    console.log('wow so empty : ', boardIa);
-    console.log('wow not not empty : ', boardIaRef.current);
+    console.log('Board Ia : wow so empty : ', boardIa);
+    console.log('Board IA REF : wow not not empty : ', boardIaRef.current);
+    console.log('Board Player : wow so empty : ', boardPlayer);
+    console.log(
+      'Board Player REF : wow not not empty : ',
+      boardPlayerRef.current
+    );
+
     // debugger; // eslint-disable-line
     const iaCardInBoard = boardIaRef.current.slice();
-    const playerCardInBoard = boardPlayer.slice();
+    const playerCardInBoard = boardPlayerRef.current.slice();
     const graveyardInContext = graveyard.slice();
 
+    // pause pour voir le temps de voir les cartes
+    await delay(1000);
     // mise a jour des points de vie des cartes
     while (
       (playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
@@ -193,16 +209,17 @@ const DeckContextProvider = ({ children }) => {
     return Promise.all(changes);
   }
 
-  const endTurn = () => {
-    attackCard();
-    endGameVerify();
-  };
-
   const enchainement = async () => {
-    await handIaToBoardIa();
-    console.log("état de la board de l'IA dans l'enchainement", boardIa);
-    await attackCard();
-    await endGameVerify();
+    if (boardIaRef.current.length > 0) {
+      await attackCard();
+      await endGameVerify();
+    } else {
+      await handIaToBoardIa();
+
+      console.log("état de la board de l'IA dans l'enchainement", boardIa);
+      await attackCard();
+      await endGameVerify();
+    }
   };
 
   return (
@@ -220,12 +237,7 @@ const DeckContextProvider = ({ children }) => {
         boardIa,
         setBoardIa,
         handToBoard,
-        endTurn,
         graveyard,
-        setGraveyard,
-        handIaToBoardIa,
-        scorePlayer,
-        scoreIa,
         endGameVerify,
         endgame,
       }}
