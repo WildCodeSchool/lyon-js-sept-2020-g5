@@ -1,0 +1,90 @@
+.cardOfDeckBoardIa {
+  width: 120px;
+  height: 180px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'name name name'
+    'image image image'
+    'atk vide hp';
+  background-color: #752126;
+  border-radius: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+  justify-items: center;
+  gap: 10px;
+  margin-right: 10px;
+}
+
+.cardOfDeckBoardIaHand {
+  width: 120px;
+  height: 180px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'name name name'
+    'image image image'
+    'atk vide hp';
+  border-radius: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 5px;
+  justify-items: center;
+  gap: 10px;
+  margin-right: 10px;
+  background: no-repeat center/100% url('../Pictures/back-card.jpg');
+  transform: rotate(180deg);
+}
+
+.cardOfDeckBoardIaHand .heroName,
+.cardOfDeckBoardIaHand .imgCardDeck,
+.cardOfDeckBoardIaHand .attack,
+.cardOfDeckBoardIaHand .healthPoints,
+.cardOfDeckBoardIaHand .forIaHand {
+  display: none;
+}
+
+.cardOfDeckBoardIa .heroName {
+  grid-area: name;
+  align-self: center;
+  color: white;
+  font-size: 15px;
+}
+
+.cardOfDeckBoardIa .imgCardDeck {
+  grid-area: image;
+  justify-self: center;
+  width: 75px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.cardOfDeckBoardIa .attack {
+  grid-area: atk;
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.cardOfDeckBoardIa .healthPoints {
+  background-color: green;
+  grid-area: hp;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.cardOfDeckBoardIa .attack img,
+.cardOfDeckBoardIa .healthPoints img {
+  display: none;
+}

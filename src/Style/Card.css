@@ -22,8 +22,8 @@
   opacity: 0.8;
 }
 .selected {
-  border: 3px solid yellow;
-  background-color: #cc0000;
+  background-color: #2a75b3;
+  opacity: 0.75;
 }
 .selected:hover {
   cursor: url('https://img.icons8.com/color/48/000000/undo.png'), auto;
@@ -45,7 +45,7 @@
 
 .attack {
   grid-area: atk;
-  background-color: red;
+  background-color: #cc4224;
   width: 30px;
   height: 30px;
   display: flex;
@@ -69,7 +69,7 @@
 
 .power {
   grid-area: pw;
-  background-color: yellow;
+  background-color: #f3d403;
   width: 30px;
   height: 30px;
   display: flex;
