@@ -162,9 +162,9 @@ const DeckContextProvider = ({ children }) => {
     // mise a jour des points de vie des cartes
     while (
       (playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
-        iaCardInBoard[0].hp >= 0) ||
+        iaCardInBoard[0].hp > 0) ||
       (playerCardInBoard[0].hp < iaCardInBoard[0].hp &&
-        playerCardInBoard[0].hp >= 0)
+        playerCardInBoard[0].hp > 0)
     ) {
       iaCardInBoard[0].hp -= boardPlayer[0].atk;
       console.log(' PV IA Card in board ', iaCardInBoard[0].hp);
