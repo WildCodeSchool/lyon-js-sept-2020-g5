@@ -97,9 +97,7 @@ function DeckList() {
         </div>
       </div>
       <div className={confirmationWindow}>
-        <h2>Your team</h2>
-        <h3>Are you sure of the composition of your team ?</h3>
-
+        <h2>Check your team</h2>
         <div className="confirmationView">
           {deck.map((hero, index) => {
             return <Card key={hero.id} heroe={hero} index={index} />;
@@ -111,7 +109,7 @@ function DeckList() {
             type="button"
             onClick={toggleReadyForFightNoAlert}
           >
-            Come back
+            Manage your team
           </button>
           <button
             className="decklist-btn"
