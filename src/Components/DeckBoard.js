@@ -20,6 +20,7 @@ function DeckBoard() {
     graveyard,
     endGameVerify,
     enchainement,
+    restart,
   } = useContext(DeckContext);
 
   const history = useHistory();
@@ -28,6 +29,7 @@ function DeckBoard() {
   }, []); // eslint-disable-line
 
   const buttonQuit = () => {
+    restart();
     history.push('/');
   };
 
