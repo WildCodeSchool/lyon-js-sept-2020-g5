@@ -215,7 +215,7 @@ const DeckContextProvider = ({ children }) => {
         setBoardIa([]);
       }
 
-      //fonction verif fin de partie
+      // fonction verif fin de partie
       console.log('Debut fonction endgame VERIFY dans attackCard');
 
       console.log(`LE DECK : ${deck.length}`);
