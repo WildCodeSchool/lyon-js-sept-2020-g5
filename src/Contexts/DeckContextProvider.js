@@ -90,7 +90,6 @@ const DeckContextProvider = ({ children }) => {
   };
 
   async function handIaToBoardIa() {
-    console.log('debut handIaToBoardIa');
     const changes = [];
     const shuffleDeckIaCards = _.shuffle(deckIa);
     const cardIA = [];
@@ -107,24 +106,11 @@ const DeckContextProvider = ({ children }) => {
     } else {
       window.alert("plus de carte dispo pour l'ia");
     }
-    console.log('debut handIaToBoardIa');
     return Promise.all(changes);
   }
 
   const endGameVerify = async () => {
     const changes = [];
-    console.log('Debut FONCTION ENDGAMEVERIFY');
-
-    console.log(`LE DECK : ${deck.length}`);
-    console.log(`LE DECK Ref: ${deckRef.current.length}`);
-    console.log(`LE DECK IA: ${deckIa.length} `);
-    console.log(`LE DECK IA Ref: ${deckIaRef.current.length} `);
-    console.log(`LE Board IA : ${boardIa.length}`);
-    console.log(`LE Board IA Ref : ${boardIaRef.current.length}`);
-    console.log(`LE Board PLAYER: ${boardPlayer.length} `);
-    console.log(
-      `LE Board PLAYER Ref.current: ${boardPlayerRef.current.length} `
-    );
 
     if (
       deckRef.current.length === 0 &&
@@ -147,26 +133,19 @@ const DeckContextProvider = ({ children }) => {
       window.alert('Congratulation !! You win');
       changes.push(setNewGame(!newGame));
     }
-    console.log('fin fonction endgame VERIFY');
+
     return Promise.all(changes);
   };
 
   async function attackCard() {
-    console.log('debut fonction attack');
     const changes = [];
 
-    console.log('Board Ia : wow so empty : ', boardIa);
-    console.log('Board IA REF : wow not not empty : ', boardIaRef.current);
-    console.log('Board Player : ', boardPlayer);
-    console.log('Board Player REF : ', boardPlayerRef.current);
-
-    // debugger; // eslint-disable-line
     const iaCardInBoard = boardIaRef.current.slice();
     const playerCardInBoard = boardPlayerRef.current.slice();
     const graveyardInContext = graveyard.slice();
 
     // pause pour voir le temps de voir les cartes
-    await delay(1000);
+    await delay(2000);
     // mise a jour des points de vie des cartes
     while (
       (playerCardInBoard[0].hp > iaCardInBoard[0].hp &&
@@ -176,9 +155,8 @@ const DeckContextProvider = ({ children }) => {
       playerCardInBoard[0].hp === iaCardInBoard[0].hp
     ) {
       playerCardInBoard[0].hp -= iaCardInBoard[0].atk;
-      console.log(' PV Player Card in board ', playerCardInBoard[0].hp);
+
       iaCardInBoard[0].hp -= boardPlayer[0].atk;
-      console.log(' PV IA Card in board ', iaCardInBoard[0].hp);
 
       // si Pv joueur > PV Ia
       // le joueur a battu une carte de l'IA
@@ -216,18 +194,6 @@ const DeckContextProvider = ({ children }) => {
       }
 
       // fonction verif fin de partie
-      console.log('Debut fonction endgame VERIFY dans attackCard');
-
-      console.log(`LE DECK : ${deck.length}`);
-      console.log(`LE DECK Ref: ${deckRef.current.length}`);
-      console.log(`LE DECK IA: ${deckIa.length} `);
-      console.log(`LE DECK IA Ref: ${deckIaRef.current.length} `);
-      console.log(`LE Board IA : ${boardIa.length}`);
-      console.log(`LE Board IA Ref : ${boardIaRef.current.length}`);
-      console.log(`LE Board PLAYER: ${boardPlayer.length} `);
-      console.log(
-        `LE Board PLAYER Ref.current: ${boardPlayerRef.current.length} `
-      );
 
       if (
         deckRef.current.length === 0 &&
@@ -250,22 +216,18 @@ const DeckContextProvider = ({ children }) => {
         window.alert('Congratulation !! You win');
         changes.push(setNewGame(!newGame));
       }
-      console.log('fin fonction endgame VERIFY dans attackCard');
     }
-    console.log('fin fonction attack');
+
     return Promise.all(changes);
   }
 
   const enchainement = async () => {
     if (boardIaRef.current.length > 0) {
       await attackCard();
-      /*  await endGameVerify(); */
     } else {
       await handIaToBoardIa();
 
-      console.log("état de la board de l'IA dans l'enchainement", boardIa);
       await attackCard();
-      /*  await endGameVerify(); */
     }
   };
 
