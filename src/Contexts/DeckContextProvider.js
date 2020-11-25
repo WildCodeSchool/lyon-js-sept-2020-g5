@@ -7,9 +7,12 @@ import useAwaitableState from '../Hooks/useAwaitableState';
 export const DeckContext = createContext();
 
 const DeckContextProvider = ({ children }) => {
-  const [deck, setDeck] = useAwaitableState([], 'deckPlayer');
-  const [deckIa, setDeckIa] = useAwaitableState([], 'deckIA');
-  const [boardPlayer, setBoardPlayer] = useAwaitableState([], 'boardPlayer');
+  const [deck, setDeck, deckRef] = useAwaitableState([], 'deckPlayer');
+  const [deckIa, setDeckIa, deckIaRef] = useAwaitableState([], 'deckIa');
+  const [boardPlayer, setBoardPlayer, boardPlayerRef] = useAwaitableState(
+    [],
+    'boardPlayer'
+  );
   const [boardIa, setBoardIa, boardIaRef] = useAwaitableState([], 'boardIa');
   const [scorePlayer, setScorePlayer] = useAwaitableState(0, 'scorePlayer');
   const [scoreIa, setScoreIa] = useAwaitableState(0, 'scoreIa');
@@ -104,31 +107,35 @@ const DeckContextProvider = ({ children }) => {
     return Promise.all(changes);
   }
 
-  const endGameVerify = async () => {
+  async function endGameVerify() {
     const changes = [];
     console.log('Debut FONCTION ENDGAMEVERIFY');
     console.log(`LE DECK : ${deck.length}`);
+    console.log(`LE DECK Ref : ${deckRef.current.length}`);
     console.log(`LE DECK IA: ${deckIa.length} `);
+    console.log(`LE DECK IA Ref: ${deckIaRef.current.length} `);
     console.log(`LE Board IA : ${boardIa.length}`);
+    console.log(`LE Board IA Ref : ${boardIaRef.current.length}`);
     console.log(`LE Board PLAYER: ${boardPlayer.length} `);
+    console.log(`LE Board PLAYER ref: ${boardPlayerRef.current.length} `);
     if (
       deck.length === 0 &&
       deckIa.length === 0 &&
-      boardIa.length === 0 &&
-      boardPlayer.length === 0
+      boardIaRef.current.length === 0 &&
+      boardPlayerRef.current.length === 0
     ) {
       window.alert('egalité');
       changes.push(setNewGame(!newGame));
-    } else if (deck.length === 0 && boardPlayer.length === 0) {
+    } else if (deck.length === 0 && boardPlayerRef.current.length === 0) {
       window.alert('lose');
       changes.push(setNewGame(!newGame));
-    } else if (deckIa.length === 0 && boardIa.length === 0) {
+    } else if (deckIa.length === 0 && boardIaRef.current.length === 0) {
       window.alert('win');
       changes.push(setNewGame(!newGame));
     }
     console.log('fin fonction endgame VERIFY');
     return Promise.all(changes);
-  };
+  }
 
   function attackCard() {
     console.log('debut fonction attack');
@@ -136,9 +143,9 @@ const DeckContextProvider = ({ children }) => {
 
     console.log('wow so empty : ', boardIa);
     console.log('wow not not empty : ', boardIaRef.current);
-    debugger; // eslint-disable-line
-    const iaCardInBoard = boardIa.slice();
-    const playerCardInBoard = boardPlayer.slice();
+    // debugger; // eslint-disable-line
+    const iaCardInBoard = boardIaRef.current.slice();
+    const playerCardInBoard = boardPlayerRef.current.slice();
     const graveyardInContext = graveyard.slice();
 
     // mise a jour des points de vie des cartes
@@ -149,7 +156,9 @@ const DeckContextProvider = ({ children }) => {
         playerCardInBoard[0].hp >= 0)
     ) {
       iaCardInBoard[0].hp -= boardPlayer[0].atk;
-      playerCardInBoard[0].hp -= boardIa[0].atk;
+      console.log(' PV IA Card in board ', iaCardInBoard[0].hp);
+      playerCardInBoard[0].hp -= iaCardInBoard[0].atk;
+      console.log(' PV Player Card in board ', playerCardInBoard[0].hp);
 
       // si Pv joueur > PV Ia
       // le joueur a battu une carte de l'IA
@@ -190,9 +199,9 @@ const DeckContextProvider = ({ children }) => {
     return Promise.all(changes);
   }
 
-  const endTurn = () => {
-    attackCard();
-    endGameVerify();
+  const endTurn = async () => {
+    await attackCard();
+    await endGameVerify();
   };
 
   const enchainement = async () => {
