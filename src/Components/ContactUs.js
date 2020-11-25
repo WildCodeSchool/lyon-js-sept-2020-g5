@@ -4,14 +4,13 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 const ContactUs = () => {
-
   const [inputs, setInputs] = useState({
     firstName: '',
     lastName: '',
     email: '',
     message: '',
-  });  
-  
+  });
+
   const { register, handleSubmit, reset: restFrom } = useForm();
   const onSubmit = (data) => {
     axios
@@ -25,8 +24,6 @@ const ContactUs = () => {
       })
       .catch(console.error);
   };
-
-  
 
   const handleInputChange = (e) => {
     setInputs((newInputs) => ({
