@@ -19,7 +19,7 @@ const ContactUs = () => {
         data
       )
       .then(() => {
-        alert(`Your message has been successfully sent ${inputs.firstName}`);
+        alert(`Your message has been successfully sent ${inputs.firstName} ${inputs.lastName}`);
         restFrom();
       })
       .catch(console.error);
@@ -92,35 +92,3 @@ const ContactUs = () => {
 
 export default ContactUs;
 
-/* import "./App.css";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-
-function App() {
-  
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input name="name" required placeholder="Nom" ref={register} />
-        <input
-          name="email"
-          required
-          type="email"
-          placeholder="Email"
-          ref={register}
-        />
-        <textarea
-          name="message"
-          required
-          placeholder="Message"
-          ref={register}
-        ></textarea>
-        <br />
-        <input type="submit" />
-      </form>
-    </div>
-  );
-}
-
-export default App; */
