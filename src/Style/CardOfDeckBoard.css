@@ -73,3 +73,24 @@
 .cardOfDeckBoard .healthPoints img {
   display: none;
 }
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .cardOfDeckBoard {
+    width: 80px;
+    height: 120px;
+  }
+  .cardOfDeckBoard .imgCardDeck {
+    grid-area: image;
+    justify-self: center;
+    width: 60px;
+    height: 65px;
+    border-radius: 5px;
+  }
+  .cardOfDeckBoard .healthPoints,
+  .cardOfDeckBoard .attack {
+    width: 20px;
+    height: 20px;
+  }
+  .cardOfDeckBoard .heroName {
+    font-size: 10px;
+  }
+}

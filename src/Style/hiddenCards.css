@@ -12,3 +12,11 @@
   color: white;
   font-size: 2em;
 }
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .hiddenCardBlock {
+    width: 80px;
+    height: 80px;
+    border-radius: 300px;
+  }
+}
