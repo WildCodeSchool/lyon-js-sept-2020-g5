@@ -1,11 +1,13 @@
 .hiddenCardBlock {
   width: 180px;
   height: 120px;
-  background: no-repeat center/100% url('../Pictures/thorCardHidden.jpg');
+  background: no-repeat center/100% url('../Pictures/cardHidden.jpg');
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 50px;
+  opacity: 0.9;
 }
 
 .deckCount {

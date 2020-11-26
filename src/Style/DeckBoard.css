@@ -1,19 +1,27 @@
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
 .deckBoard {
   display: flex;
+  margin: 10px;
 }
 .sideContainer {
   color: white;
   width: 25%;
   border-radius: 15px;
   background-image: url('../Pictures/side-container-deckboard.jpg');
+  border: 1px solid white;
+  margin-right: 10px;
 }
 
 .mainContainer {
   width: 75%;
   background-image: url('../Pictures/board-container.jpg');
-  margin-right: 20px;
+  margin-right: 10px;
   border: 2px solid white;
   border-radius: 25px;
+  margin-left: 10px;
 }
 
 .buttonQuit,
@@ -62,17 +70,23 @@
 
 .graveyard {
   background-color: rgba(0, 0, 0, 0.7);
-  min-height: 400px;
+  min-height: 550px;
   margin-top: 10px;
   border-radius: 15px;
   text-align: center;
   padding-top: 10px;
-  border: 1px solid white;
+  border: 1px solid #cc0000;
+  margin: 10px;
+  font-family: 'Pink';
+}
+.graveyard p {
+  color: #cc0000;
+  font-size: larger;
 }
 
 .boardContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   height: 300px;
@@ -88,10 +102,9 @@
   justify-content: center;
   align-items: center;
   border: 2px black solid;
-  border-radius: 20px;
+  border-radius: 0px 0px 20px 20px;
   background-image: url('../Pictures/background_deck_player.jpg');
   padding: 10px;
-  margin: 10px;
 }
 .containerHandIa {
   display: flex;
@@ -99,10 +112,9 @@
   justify-content: center;
   align-items: center;
   border: 2px black solid;
-  border-radius: 20px;
+  border-radius: 20px 20px 0px 0px;
   background-image: url('../Pictures/background_deck_ia.jpg');
   padding: 10px;
-  margin: 10px;
 }
 
 .iaHand {

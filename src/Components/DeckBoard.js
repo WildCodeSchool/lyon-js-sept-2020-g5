@@ -79,7 +79,7 @@ function DeckBoard() {
           </button>
         </div>
         <div className="graveyard">
-          Graveyard
+          <p>Graveyard</p>
           <Graveyard heroes={graveyard} />
         </div>
         <div className="GameButtonsContainer">

@@ -39,7 +39,7 @@ function AboutUs() {
         image={Casserole}
         alt="."
         nameOfWilder="Cedric"
-        textRule=""
+        wilderQuote="Le chevalier à la casserole d'argent"
       />
     </div>
   );

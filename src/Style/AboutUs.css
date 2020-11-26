@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
 }
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
 
 .WilderContainer {
   width: auto;
@@ -104,6 +108,12 @@ img {
   display: flex;
   flex-direction: column;
   overflow: auto;
+}
+.AboutUsDetails h3 {
+  font-family: 'Pink';
+}
+.AboutUsDetails p {
+  font-size: larger;
 }
 @media (max-width: 640px) {
   .WilderContainer {
