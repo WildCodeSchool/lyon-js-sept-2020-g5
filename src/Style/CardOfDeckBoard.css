@@ -19,8 +19,17 @@
 }
 .cardOfDeckBoard:hover {
   background-color: tomato;
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
 }
-
+.cardOfDeckBoard:hover ~ .cardOfDeckBoard {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+.cardOfDeckBoard:not(:first-child) {
+  margin-left: -50px;
+}
 .cardOfDeckBoard .heroName {
   grid-area: name;
   align-self: center;

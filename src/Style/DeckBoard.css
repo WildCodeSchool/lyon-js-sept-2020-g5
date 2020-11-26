@@ -81,7 +81,7 @@
 .containerHandPlayer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border: 2px black solid;
   border-radius: 20px;
@@ -101,7 +101,6 @@
   margin: 10px;
 }
 
-.playerHand,
 .iaHand {
   display: flex;
   flex-wrap: wrap;
@@ -119,4 +118,14 @@
 
 .hideModal {
   display: none;
+}
+
+.playerHand {
+  height: 300px;
+  width: 800px;
+  top: 60px;
+  left: calc(50% - 300px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

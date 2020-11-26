@@ -19,7 +19,9 @@ const ContactUs = () => {
         data
       )
       .then(() => {
-        alert(`Your message has been successfully sent ${inputs.firstName} ${inputs.lastName}`);
+        alert(
+          `Your message has been successfully sent ${inputs.firstName} ${inputs.lastName}`
+        );
         restFrom();
       })
       .catch(console.error);
@@ -91,4 +93,3 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
-
