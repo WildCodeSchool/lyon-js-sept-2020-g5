@@ -102,9 +102,13 @@
   justify-self: center;
 }
 
-img {
+/* .blockRules img {
   width: 100%;
   height: auto;
+} */
+.rulesimg {
+  height: 400px;
+  width: 400px;
 }
 
 /*simgle block rules*/
