@@ -1,14 +1,13 @@
 import React from 'react';
 import '../Style/Rules.css';
-import selectioncartes from '../Pictures/selectioncartes.png'
-import powermax from '../Pictures/powermax.png'
+import selectioncartes from '../Pictures/selectioncartes.png';
+import powermax from '../Pictures/powermax.png';
 import checkteamwindow from '../Pictures/checkteamwindow.png';
 import fightphase from '../Pictures/fightphase.png';
 import graveyardfull from '../Pictures/graveyardfull.png';
 import iaturnfight from '../Pictures/iaturnfight.png';
 import yourturnfight from '../Pictures/yourturnfight.png';
 import win from '../Pictures/win.png';
-
 
 import RulesComponents from './RulesComponents';
 

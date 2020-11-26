@@ -6,7 +6,7 @@ function RulesComponents(props) {
   return (
     <div className="blockRules">
       <div>
-        <img classname="rulesimg" src={image} alt={alt} />
+        <img className="rulesimg" src={image} alt={alt} />
       </div>
       <div className="rulesDetails">
         <h3>{nameOfRule}</h3>
