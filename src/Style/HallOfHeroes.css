@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
+
+.Hall {
+  font-family: 'Pink';
+  text-align: center;
+  margin-top: 10px;
+  font-size: 60px;
+  color: white !important;
+  text-shadow: 3px 3px rgb(0, 0, 0), -2px 2px rgb(0, 0, 0),
+    2px -2px rgb(0, 0, 0), -2px -2px rgb(0, 0, 0);
+
+  border-color: rgb(0, 0, 0);
+}

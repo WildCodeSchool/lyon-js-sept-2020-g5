@@ -9,7 +9,7 @@ function HallCard(props) {
         <img src={img} alt={name} />
       </div>
       <div className="stats">
-        <h1>{name}</h1>
+        <h1 className="heroName">{name}</h1>
         <br />
         <p>
           Attack : <span className="statsInfo">{atk}</span>

@@ -9,8 +9,8 @@ function RulesComponents(props) {
         <img src={image} alt={alt} />
       </div>
       <div className="rulesDetails">
-        <h3>{nameOfRule}</h3>
-        <p>{textRule}</p>
+        <h3 className="titleRules">{nameOfRule}</h3>
+        <p className="textRules">{textRule}</p>
       </div>
     </div>
   );

@@ -1,13 +1,23 @@
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
 img {
   max-width: 200px;
   max-height: 250px;
   border-radius: 15px;
 }
 
-h1 {
+.heroName {
   text-align: center;
   margin-top: 10px;
-  color: white;
+  font-family: 'Pink';
+  font-size: 35px;
+  color: white !important;
+  text-shadow: 3px 3px rgb(0, 0, 0), -2px 2px rgb(0, 0, 0),
+    2px -2px rgb(0, 0, 0), -2px -2px rgb(0, 0, 0);
+
+  border-color: rgb(0, 0, 0);
 }
 .hallOfHeroes {
   display: flex;
