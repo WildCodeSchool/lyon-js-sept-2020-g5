@@ -102,13 +102,9 @@
   justify-self: center;
 }
 
-/* .blockRules img {
-  width: 100%;
-  height: auto;
-} */
 .rulesimg {
-  height: 400px;
-  width: 400px;
+  max-height: 300px;
+  max-width: 600px;
 }
 
 /*simgle block rules*/
