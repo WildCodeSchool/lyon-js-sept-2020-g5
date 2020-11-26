@@ -192,30 +192,6 @@ const DeckContextProvider = ({ children }) => {
       if (iaCardInBoard[0].hp <= 0) {
         setBoardIa([]);
       }
-
-      // fonction verif fin de partie
-
-      if (
-        deckRef.current.length === 0 &&
-        deckIaRef.current.length === 0 &&
-        boardIaRef.current.length === 0 &&
-        boardPlayerRef.current.length === 0
-      ) {
-        window.alert('equality !!! ');
-        changes.push(setNewGame(!newGame));
-      } else if (
-        deckRef.current.length === 0 &&
-        boardPlayerRef.current.length === 0
-      ) {
-        window.alert('You lose !!!!');
-        changes.push(setNewGame(!newGame));
-      } else if (
-        deckIaRef.current.length === 0 &&
-        boardIaRef.current.length === 0
-      ) {
-        window.alert('Congratulation !! You win');
-        changes.push(setNewGame(!newGame));
-      }
     }
 
     return Promise.all(changes);
@@ -224,10 +200,11 @@ const DeckContextProvider = ({ children }) => {
   const enchainement = async () => {
     if (boardIaRef.current.length > 0) {
       await attackCard();
+      await endGameVerify();
     } else {
       await handIaToBoardIa();
-
       await attackCard();
+      await endGameVerify();
     }
   };
 
