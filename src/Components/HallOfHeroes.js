@@ -7,7 +7,7 @@ const HallOfHeroes = () => {
 
   return (
     <div>
-      <h1>Hall of heroes</h1>
+      <h1 className="hall-title" style={{fontFamily:'Pink' }}>Hall of heroes</h1>
       <div className="hallOfHeroes">
         {cards.map((hero) => (
           <HallCard key={hero.id} {...hero} />

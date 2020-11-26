@@ -123,9 +123,8 @@
   display: none;
 }
 
-
-@media screen and (min-width:1200px){
-  .boardContainer{
+@media screen and (min-width: 1200px) {
+  .boardContainer {
     height: 400px;
   }
 }

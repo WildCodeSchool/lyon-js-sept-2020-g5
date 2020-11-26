@@ -92,14 +92,14 @@ h2 {
   text-shadow: 3px 3px red, -3px 3px red, 3px -3px red, -3px -3px red;
   font-size: 3.5em;
   text-align: center;
-  margin: 30px;
+  
 }
 
 h3 {
   color: white;
   font-size: 2em;
   text-align: center;
-  margin: 30px;
+  margin: 10px;
 }
 
 .decklist-btn {
