@@ -5,6 +5,7 @@ const {
   useDebugValue,
   useCallback,
 } = require('react');
+
 export default function useAwaitableState(defaultValue, debugValue = '') {
   const resolverFunction = useRef(null);
   const valueRef = useRef(defaultValue);
