@@ -18,7 +18,6 @@ function DeckBoard() {
     boardIa,
     handToBoard,
     graveyard,
-    endGameVerify,
     enchainement,
     restart,
   } = useContext(DeckContext);
@@ -90,13 +89,6 @@ function DeckBoard() {
             onClick={enchainement}
           >
             End turn
-          </button>
-          <button
-            className="buttonVictory"
-            type="button"
-            onClick={endGameVerify}
-          >
-            Victory ?
           </button>
         </div>
       </div>

@@ -110,6 +110,7 @@ const DeckContextProvider = ({ children }) => {
   }
 
   const endGameVerify = async () => {
+    console.log("fonction endgame verify")
     const changes = [];
 
     if (
@@ -200,11 +201,13 @@ const DeckContextProvider = ({ children }) => {
   const enchainement = async () => {
     if (boardIaRef.current.length > 0) {
       await attackCard();
-      await endGameVerify();
+      setTimeout(endGameVerify, 100)
+  
     } else {
       await handIaToBoardIa();
       await attackCard();
-      await endGameVerify();
+      setTimeout(endGameVerify, 100)
+    
     }
   };
 
@@ -232,7 +235,6 @@ const DeckContextProvider = ({ children }) => {
         setBoardIa,
         handToBoard,
         graveyard,
-        endGameVerify,
         endgame,
         readyForFight,
         setReadyForFight,
