@@ -10,7 +10,7 @@ const Header = () => {
       <div className="logo">
         <Link to="/">
           <img
-            classname="logoWildClash"
+            className="logoWildClash"
             src={logowildClash}
             alt="logo Wild CLash"
           />

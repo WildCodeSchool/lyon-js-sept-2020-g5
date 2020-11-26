@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import HallCard from './HallCard';
 import { CardsContext } from '../Contexts/CardsContextProvider';
 import '../Style/hallOfHeroes.css';
+
 const HallOfHeroes = () => {
   const { cards } = useContext(CardsContext);
 

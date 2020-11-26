@@ -48,17 +48,17 @@ function DeckBoard() {
       >
         <div className={win ? 'win' : 'winDisplaynone'}>
           <div>
-            <img classname="imgEndGame" src={youwin} alt="You win" />
+            <img className="imgEndGame" src={youwin} alt="You win" />
           </div>
         </div>
         <div className={loose ? 'loose' : 'LooseDisplaynone'}>
           <div>
-            <img classname="imgEndGame" src={youloose} alt="You loose" />
+            <img className="imgEndGame" src={youloose} alt="You loose" />
           </div>
         </div>
         <div className={equality ? 'equality' : 'EqualityDisplaynone'}>
           <div>
-            <img classname="imgEndGame" src={equalityGame} alt="Equality" />
+            <img className="imgEndGame" src={equalityGame} alt="Equality" />
           </div>
         </div>
         <div className="divButtonQuit">
