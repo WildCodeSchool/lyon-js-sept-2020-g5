@@ -153,3 +153,27 @@ header {
     flex-wrap: wrap;
   }
 }
+
+/*--------- affichage fin de partie -----*/
+.endGameContainer {
+  color: #cc0000;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.endGameContainerDisplaynone,
+.winDisplaynone,
+.LooseDisplaynone,
+.EqualityDisplaynone,
+.deckBoardDisplayNone {
+  display: none;
+}
+
+.imgEndGame {
+  width: 327px;
+  height: 190px;
+}

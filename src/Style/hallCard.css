@@ -22,7 +22,7 @@ h1 {
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
-  max-width: 400px;
+  width: 400px;
   background-color: rgba(5, 5, 5, 0.722);
   border-radius: 20px;
   margin: 10px;

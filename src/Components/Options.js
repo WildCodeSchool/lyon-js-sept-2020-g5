@@ -28,7 +28,7 @@ function Options() {
         <input
           placeholder="pseudo"
           type="text"
-          className="options-btn pseudos"
+          className="options-btn"
           value={pseudo}
           onChange={(e) => handleChangeInput(e)}
         />

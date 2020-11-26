@@ -9,7 +9,11 @@ const Header = () => {
     <header>
       <div className="logo">
         <Link to="/">
-          <img src={logowildClash} alt="logo Wild CLash" />
+          <img
+            classname="logoWildClash"
+            src={logowildClash}
+            alt="logo Wild CLash"
+          />
         </Link>
       </div>
       <nav>

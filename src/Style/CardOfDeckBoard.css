@@ -45,6 +45,11 @@
   border-radius: 5px;
 }
 
+.imgCardDeck > img {
+  width: 75px;
+  height: 100px;
+}
+
 .cardOfDeckBoard .attack {
   grid-area: atk;
   background-color: red;
