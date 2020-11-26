@@ -3,6 +3,7 @@ import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
+import wildClash from '../Audio/wildClash.mp3';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
 
 const audioClips = new Howl({
@@ -13,11 +14,16 @@ const audioClips2 = new Howl({
   src: [Go],
 });
 
+const audioClips3 = new Howl({
+  src: [wildClash],
+});
+
 const Home = (props) => {
   const { isMute } = useContext(OptionsContext);
 
   const handleNewGameClick = () => {
     props.history.push('/game');
+    audioClips3.stop();
     if (!isMute) {
       audioClips2.play();
     }
@@ -25,6 +31,7 @@ const Home = (props) => {
 
   const handleRulesClick = () => {
     props.history.push('/rules');
+    audioClips3.stop();
     if (!isMute) {
       audioClips.play();
     }
@@ -32,6 +39,7 @@ const Home = (props) => {
 
   const handleOptionsClick = () => {
     props.history.push('/options');
+    audioClips3.stop();
     if (!isMute) {
       audioClips.play();
     }
@@ -39,10 +47,17 @@ const Home = (props) => {
 
   const handleAboutClick = () => {
     props.history.push('/aboutUs');
+    audioClips3.stop();
     if (!isMute) {
       audioClips.play();
     }
   };
+
+  if (!isMute) {
+    audioClips3.play();
+  } else {
+    audioClips3.stop();
+  }
 
   return (
     <div className="body-home-container">
