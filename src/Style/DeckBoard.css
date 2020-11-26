@@ -92,7 +92,7 @@
 .containerHandIa {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border: 2px black solid;
   border-radius: 20px;
@@ -103,8 +103,12 @@
 
 .iaHand {
   display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 800px;
+  top: 60px;
+  left: calc(50% - 300px);
 }
 
 .hiddenCardPlayer1,
@@ -112,20 +116,12 @@
   padding: 10px;
 }
 
-.modalShow {
-  display: block;
-}
-
-.hideModal {
-  display: none;
-}
-
 .playerHand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 300px;
   width: 800px;
   top: 60px;
   left: calc(50% - 300px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

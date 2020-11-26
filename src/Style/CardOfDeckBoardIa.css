@@ -36,7 +36,9 @@
   background: no-repeat center/100% url('../Pictures/back-card.jpg');
   transform: rotate(180deg);
 }
-
+.cardOfDeckBoardIaHand:not(:first-child) {
+  margin-left: -50px;
+}
 .cardOfDeckBoardIaHand .heroName,
 .cardOfDeckBoardIaHand .imgCardDeck,
 .cardOfDeckBoardIaHand .attack,
