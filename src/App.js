@@ -18,13 +18,13 @@ import OptionsContextProvider from './Contexts/OptionsContextProvider';
 export default function App() {
   return (
     <div className="page">
-      <Router>
-        <Header />
-        <main>
-          <Switch>
-            <OptionsContextProvider>
-              <CardsContextProvider>
-                <DeckContextProvider>
+      <OptionsContextProvider>
+        <CardsContextProvider>
+          <DeckContextProvider>
+            <Router>
+              <Header />
+              <main>
+                <Switch>
                   <Route exact path="/" component={Home} />
                   <Route path="/game" component={Game} />
                   <Route path="/deckBoard" component={DeckBoard} />
@@ -33,13 +33,13 @@ export default function App() {
                   <Route path="/options" component={Options} />
                   <Route path="/aboutus" component={AboutUs} />
                   <Route path="/contactus" component={ContactUs} />
-                </DeckContextProvider>
-              </CardsContextProvider>
-            </OptionsContextProvider>
-          </Switch>
-        </main>
-        <Footer />
-      </Router>
+                </Switch>
+              </main>
+              <Footer />
+            </Router>
+          </DeckContextProvider>
+        </CardsContextProvider>
+      </OptionsContextProvider>
     </div>
   );
 }

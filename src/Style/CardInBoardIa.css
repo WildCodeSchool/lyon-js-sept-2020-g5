@@ -1,6 +1,6 @@
-.cardOfDeckBoard {
-  width: 120px;
-  height: 180px;
+.CardInBoardIa {
+  width: 100px;
+  height: 160px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -8,44 +8,31 @@
     'name name name'
     'image image image'
     'atk vide hp';
-  background-color: #0c0b13;
+  background-color: #752126;
   border-radius: 20px;
   border: 1px solid rgb(255, 255, 255);
   padding: 5px;
   justify-items: center;
   gap: 10px;
-  margin-right: 10px;
-  cursor: copy;
+  margin: 0px 20px 20px 20px;
 }
-.cardOfDeckBoard:hover {
-  background-color: tomato;
-  transform: translateY(-20px);
-  transition: 0.4s ease-out;
-}
-.cardOfDeckBoard:hover ~ .cardOfDeckBoard {
-  position: relative;
-  left: 50px;
-  transition: 0.4s ease-out;
-}
-.cardOfDeckBoard:not(:first-child) {
-  margin-left: -50px;
-}
-.cardOfDeckBoard .heroName {
+
+.CardInBoardIa .heroName {
   grid-area: name;
   align-self: center;
   color: white;
-  font-size: 15px;
+  font-size: 12px;
 }
 
-.cardOfDeckBoard .imgCardDeck {
+.CardInBoardIa .imgCardDeck {
   grid-area: image;
   justify-self: center;
-  width: 75px;
-  height: 100px;
+  width: 70px;
+  height: 95px;
   border-radius: 5px;
 }
 
-.cardOfDeckBoard .attack {
+.CardInBoardIa .attack {
   grid-area: atk;
   background-color: red;
   width: 30px;
@@ -57,7 +44,7 @@
   color: white;
 }
 
-.cardOfDeckBoard .healthPoints {
+.CardInBoardIa .healthPoints {
   background-color: green;
   grid-area: hp;
   width: 30px;
@@ -69,28 +56,29 @@
   color: white;
 }
 
-.cardOfDeckBoard .attack img,
-.cardOfDeckBoard .healthPoints img {
+.CardInBoardIa .attack img,
+.CardInBoardIa .healthPoints img {
   display: none;
 }
+
 @media screen and (max-width: 1024px) and (orientation: landscape) {
-  .cardOfDeckBoard {
+  .CardInBoardIa {
     width: 80px;
     height: 120px;
   }
-  .cardOfDeckBoard .imgCardDeck {
+  .CardInBoardIa .imgCardDeck {
     grid-area: image;
     justify-self: center;
     width: 60px;
     height: 65px;
     border-radius: 5px;
   }
-  .cardOfDeckBoard .healthPoints,
-  .cardOfDeckBoard .attack {
+  .CardInBoardIa .healthPoints,
+  .CardInBoardIa .attack {
     width: 20px;
     height: 20px;
   }
-  .cardOfDeckBoard .heroName {
+  .CardInBoardIa .heroName {
     font-size: 10px;
   }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import CardOfDeckBoard from './CardOfDeckBoard';
+import CardInBoard from './CardInBoard';
 
 const Board = (props) => {
   const { heroes } = props;
   return (
     <>
       {heroes.map((hero, index) => {
-        return <CardOfDeckBoard key={hero.name} heroe={hero} index={index} />;
+        return <CardInBoard key={hero.name} heroe={hero} index={index} />;
       })}
     </>
   );

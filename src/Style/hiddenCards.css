@@ -1,0 +1,24 @@
+.hiddenCardBlock {
+  width: 180px;
+  height: 120px;
+  background: no-repeat center/100% url('../Pictures/cardHidden.jpg');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  opacity: 0.9;
+}
+
+.deckCount {
+  color: white;
+  font-size: 2em;
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .hiddenCardBlock {
+    width: 80px;
+    height: 80px;
+    border-radius: 300px;
+  }
+}

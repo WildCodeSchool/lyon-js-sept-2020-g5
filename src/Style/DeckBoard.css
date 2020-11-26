@@ -1,37 +1,155 @@
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
 .deckBoard {
   display: flex;
+  margin: 10px;
 }
 .sideContainer {
   color: white;
-  background-color: red;
   width: 25%;
+  border-radius: 15px;
+  background-image: url('../Pictures/side-container-deckboard.jpg');
+  border: 1px solid white;
+  margin-right: 10px;
 }
 
 .mainContainer {
   width: 75%;
+  background-image: url('../Pictures/board-container.jpg');
+  margin-right: 10px;
+  border: 2px solid white;
+  border-radius: 25px;
+  margin-left: 10px;
 }
 
-.playerHand {
+.buttonQuit,
+.buttonVictory {
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-color: white;
+  height: 50px;
+  width: 100px;
+}
+.buttonQuit:hover,
+.buttonVictory:hover {
+  color: #f3d403;
+}
+
+.divButtonQuit,
+.divButtonEndTurn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttonGameEndTurn {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-shadow: 3px 3px red, -2px 2px red, 2px -2px red, -2px -2px red;
+  color: #fbff2c;
+  border-color: white;
+  border: 0.1px solid white;
+  height: 50px;
+  width: 200px;
+  font-size: larger;
+}
+
+.buttonGameEndTurn:hover {
+  background-color: #cc0000;
+  opacity: 0.8;
+}
+
+.GameButtonsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.graveyard {
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 550px;
+  margin-top: 10px;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 10px;
+  border: 1px solid #cc0000;
+  margin: 10px;
+  font-family: 'Pink';
+}
+.graveyard p {
+  color: #cc0000;
+  font-size: larger;
+}
+
+.boardContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  border-radius: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.containerHandPlayer {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px black solid;
+  border-radius: 0px 0px 20px 20px;
+  background-image: url('../Pictures/background_deck_player.jpg');
+  padding: 10px;
+}
+.containerHandIa {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px black solid;
+  border-radius: 20px 20px 0px 0px;
+  background-image: url('../Pictures/background_deck_ia.jpg');
+  padding: 10px;
 }
 
 .iaHand {
   display: flex;
-  flex-wrap: wrap;
-  border: 2px black solid;
-  border-radius: 20px;
-  background-image: url('../Pictures/background_deck_ia.jpg');
-  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 800px;
+  top: 60px;
+  left: calc(50% - 300px);
+}
+
+.hiddenCardPlayer1,
+.hiddenCardIa {
   padding: 10px;
 }
 
 .playerHand {
   display: flex;
-  flex-wrap: wrap;
-  border: 2px black solid;
-  border-radius: 20px;
-  background-image: url('../Pictures/background_deck_player.jpg');
-  margin: 10px;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 800px;
+  top: 60px;
+  left: calc(50% - 300px);
+}
+header {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .playerHand {
+    flex-wrap: wrap;
+  }
+  .iaHand {
+    flex-wrap: wrap;
+  }
 }
