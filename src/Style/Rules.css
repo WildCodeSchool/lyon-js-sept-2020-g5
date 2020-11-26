@@ -22,7 +22,7 @@
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
 
-  --stagger-delay: 1000ms;
+  --stagger-delay: 500ms;
 }
 
 @keyframes cardEntrance {

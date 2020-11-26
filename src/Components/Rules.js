@@ -10,63 +10,62 @@ function Rules() {
     <div className="RulesContainer">
       <RulesComponents
         image={boardgame1}
-        alt="image showing the maximum total power."
-        nameOfRule="1 step - Deck choice"
-        textRule="click on the cards to add the hero to your deck."
+        alt="Deck choice"
+        nameOfRule="Deck choice"
+        textRule="Click on the card to add the hero to your deck."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="2 step - Deck choice"
+        alt="Deck choice - Max Power"
+        nameOfRule="Deck choice - Max Power"
         textRule="Filled up to the maximum power allowed for your deck."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 1 - your game board"
+        alt="Your game board - Hand"
+        nameOfRule="Your game board - Hand"
         textRule="On your game board you can see the cards you can use for your fight."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 2 - your game board - your turn"
+        alt="Your game board - Your turn"
+        nameOfRule="Your game board - Your turn"
         textRule="Among your visible cards, select ('click') a card to send it to the battle board."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 3 - your game board - your turn"
-        textRule="The card you have selected is on the battle board.You can exchange it with another card before finishing your turn."
+        alt="Your game board - End of your turn"
+        nameOfRule="Your game board - End of your turn"
+        textRule="It's time to attack! 
+        The card you have selected is on the battle board. 
+        Click or press `End-turn` to finish your turn."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 3 - your game board - your turn"
-        textRule="it's time to attack! the card you have selected is on the battle board. click or press `FIGHT` for the opponent to play."
+        alt="Board opponent - turn"
+        nameOfRule="Board opponent - turn"
+        textRule="It's your opponent's turn!
+        He will attack you with a hero from his deck if he doesn't already have one on his board."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 1 - Board pponent - turn"
-        textRule="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        alt="Board, Fight phase"
+        nameOfRule="Board, Fight phase"
+        textRule="The cards are going to clash. The hit points decrease following the attacks. The red number corresponds to the attack points and the green one to the health points."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
-        nameOfRule="Step 1 - Board, Fight phase"
-        textRule="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-      />
-      <RulesComponents
-        image={playerboard}
-        alt="."
+        alt="Graveyard"
         nameOfRule="Graveyard"
-        textRule="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        textRule="If the hero is not powerful enough or too weak after these multiple fights, he dies and goes to the graveyard ! 
+        We love them 3,000....."
       />
       <RulesComponents
         image={playerboard}
-        alt="."
+        alt="How to win"
         nameOfRule="How to win"
-        textRule="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        textRule="You still have a hero still alive in your hand and or on your fighting board, while your opponent has none left. 
+        Congratulations, you can press Win verify and you will know what a leader you are !"
       />
     </div>
   );
