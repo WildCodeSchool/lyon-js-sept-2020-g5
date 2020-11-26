@@ -1,25 +1,6 @@
-.cardOfDeckBoardIa {
-  width: 120px;
-  height: 180px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    'name name name'
-    'image image image'
-    'atk vide hp';
-  background-color: #752126;
-  border-radius: 20px;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 5px;
-  justify-items: center;
-  gap: 10px;
-  margin-right: 10px;
-}
-
 .cardOfDeckBoardIaHand {
-  width: 120px;
-  height: 180px;
+  width: 100px;
+  height: 160px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
