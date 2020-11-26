@@ -76,6 +76,8 @@
   margin-left: 10px;
   margin-right: 10px;
   padding: 10px;
+  background: no-repeat center url('../Pictures/game-img.jpg');
+  background-size: cover;
 }
 
 .containerHandPlayer {
@@ -119,4 +121,11 @@
 
 .hideModal {
   display: none;
+}
+
+
+@media screen and (min-width:1200px){
+  .boardContainer{
+    height: 400px;
+  }
 }

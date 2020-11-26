@@ -5,7 +5,7 @@ const HiddenCards = (props) => {
   const { heroes } = props;
   return (
     <div className="hiddenCardBlock">
-      <div className="deckCount">{heroes.length}</div>
+      <div className="deckCount">Cards left : <strong>{heroes.length}</strong></div>
     </div>
   );
 };
