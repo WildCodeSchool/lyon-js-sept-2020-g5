@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Howl } from 'howler';
-import Go from '../Audio/go.wav';
+import fight from '../Audio/fight.wav';
 import CardsInDeck from './CardsInDeck';
 import { DeckContext } from '../Contexts/DeckContextProvider';
 import '../Style/DeckList.css';
@@ -19,8 +19,8 @@ function DeckList() {
   } = useContext(DeckContext);
   const history = useHistory();
 
-  const audioClips2 = new Howl({
-    src: [Go],
+  const audioClips3 = new Howl({
+    src: [fight],
   });
 
   const confirmationWindow = readyForFight
@@ -47,7 +47,7 @@ function DeckList() {
       }
       setDeck(deckForHand);
       history.push('/deckBoard');
-      audioClips2.play();
+      audioClips3.play();
     }
   };
 
@@ -56,7 +56,6 @@ function DeckList() {
       window.alert('You must choose at leat one heroe');
     } else {
       setReadyForFight(!readyForFight);
-      audioClips2.play();
     }
   };
 
