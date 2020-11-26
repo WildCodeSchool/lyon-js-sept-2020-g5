@@ -19,8 +19,17 @@
 }
 .cardOfDeckBoard:hover {
   background-color: tomato;
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
 }
-
+.cardOfDeckBoard:hover ~ .cardOfDeckBoard {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+.cardOfDeckBoard:not(:first-child) {
+  margin-left: -50px;
+}
 .cardOfDeckBoard .heroName {
   grid-area: name;
   align-self: center;
@@ -63,4 +72,25 @@
 .cardOfDeckBoard .attack img,
 .cardOfDeckBoard .healthPoints img {
   display: none;
+}
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .cardOfDeckBoard {
+    width: 80px;
+    height: 120px;
+  }
+  .cardOfDeckBoard .imgCardDeck {
+    grid-area: image;
+    justify-self: center;
+    width: 60px;
+    height: 65px;
+    border-radius: 5px;
+  }
+  .cardOfDeckBoard .healthPoints,
+  .cardOfDeckBoard .attack {
+    width: 20px;
+    height: 20px;
+  }
+  .cardOfDeckBoard .heroName {
+    font-size: 10px;
+  }
 }

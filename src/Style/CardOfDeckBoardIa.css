@@ -36,7 +36,9 @@
   background: no-repeat center/100% url('../Pictures/back-card.jpg');
   transform: rotate(180deg);
 }
-
+.cardOfDeckBoardIaHand:not(:first-child) {
+  margin-left: -50px;
+}
 .cardOfDeckBoardIaHand .heroName,
 .cardOfDeckBoardIaHand .imgCardDeck,
 .cardOfDeckBoardIaHand .attack,
@@ -87,4 +89,26 @@
 .cardOfDeckBoardIa .attack img,
 .cardOfDeckBoardIa .healthPoints img {
   display: none;
+}
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .cardOfDeckBoardIaHand {
+    width: 80px;
+    height: 120px;
+  }
+  .cardOfDeckBoardIa .imgCardDeck {
+    grid-area: image;
+    justify-self: center;
+    width: 60px;
+    height: 65px;
+    border-radius: 5px;
+  }
+  .cardOfDeckBoardIa .healthPoints,
+  .cardOfDeckBoardIa .attack {
+    width: 20px;
+    height: 20px;
+  }
+  .cardOfDeckBoardIa .heroName {
+    font-size: 10px;
+  }
 }

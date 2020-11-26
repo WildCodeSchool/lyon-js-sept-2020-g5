@@ -1,6 +1,6 @@
 .CardInBoardIa {
-  width: 120px;
-  height: 180px;
+  width: 100px;
+  height: 160px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -17,46 +17,18 @@
   margin-right: 10px;
 }
 
-.CardInBoardIaIaHand {
-  width: 120px;
-  height: 180px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-areas:
-    'name name name'
-    'image image image'
-    'atk vide hp';
-  border-radius: 20px;
-  border: 1px solid rgb(255, 255, 255);
-  padding: 5px;
-  justify-items: center;
-  gap: 10px;
-  margin-right: 10px;
-  background: no-repeat center/100% url('../Pictures/back-card.jpg');
-  transform: rotate(180deg);
-}
-
-.CardInBoardIaIaHand .heroName,
-.CardInBoardIaIaHand .imgCardDeck,
-.CardInBoardIaIaHand .attack,
-.CardInBoardIaIaHand .healthPoints,
-.CardInBoardIaIaHand .forIaHand {
-  display: none;
-}
-
 .CardInBoardIa .heroName {
   grid-area: name;
   align-self: center;
   color: white;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .CardInBoardIa .imgCardDeck {
   grid-area: image;
   justify-self: center;
-  width: 75px;
-  height: 100px;
+  width: 70px;
+  height: 95px;
   border-radius: 5px;
 }
 
@@ -130,5 +102,26 @@
   }
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  .CardInBoardIa {
+    width: 80px;
+    height: 120px;
+  }
+  .CardInBoardIa .imgCardDeck {
+    grid-area: image;
+    justify-self: center;
+    width: 60px;
+    height: 65px;
+    border-radius: 5px;
+  }
+  .CardInBoardIa .healthPoints,
+  .CardInBoardIa .attack {
+    width: 20px;
+    height: 20px;
+  }
+  .CardInBoardIa .heroName {
+    font-size: 10px;
   }
 }
