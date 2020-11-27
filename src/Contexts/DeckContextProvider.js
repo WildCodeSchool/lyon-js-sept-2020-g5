@@ -21,6 +21,10 @@ const DeckContextProvider = ({ children }) => {
   const { cards, setNewGame, newGame } = useContext(CardsContext);
   const { maxPower } = useContext(OptionsContext);
   const [readyForFight, setReadyForFight] = useState(false);
+  const [isEndGame, setIsEndgame] = useState(false);
+  const [win, setWin] = useState(false);
+  const [loose, setLoose] = useState(false);
+  const [equality, setEquality] = useState(false);
 
   /* creation d'ue pause pour avoir le temps de voir les cartes */
   const delay = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -119,19 +123,20 @@ const DeckContextProvider = ({ children }) => {
       boardIaRef.current.length === 0 &&
       boardPlayerRef.current.length === 0
     ) {
-      window.alert('equality !!! ');
+      setEquality(true);
       changes.push(setNewGame(!newGame));
     } else if (
       deckRef.current.length === 0 &&
       boardPlayerRef.current.length === 0
     ) {
-      window.alert('You lose !!!!');
+      setLoose(true);
       changes.push(setNewGame(!newGame));
+      setIsEndgame(true);
     } else if (
       deckIaRef.current.length === 0 &&
       boardIaRef.current.length === 0
     ) {
-      window.alert('Congratulation !! You win');
+      setWin(true);
       changes.push(setNewGame(!newGame));
     }
 
@@ -215,6 +220,10 @@ const DeckContextProvider = ({ children }) => {
     setDeck([]);
     setGraveyard([]);
     setNewGame(!newGame);
+    setIsEndgame(false);
+    setWin(false);
+    setLoose(false);
+    setEquality(false);
   };
 
   return (
@@ -237,6 +246,10 @@ const DeckContextProvider = ({ children }) => {
         readyForFight,
         setReadyForFight,
         restart,
+        isEndGame,
+        win,
+        loose,
+        equality,
       }}
     >
       {children}

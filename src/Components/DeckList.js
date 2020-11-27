@@ -68,10 +68,13 @@ function DeckList() {
       <div className={view}>
         <div className="playerDeck">
           <div className="totalPower">
-            TOTAL POWER : {sumPower()} /{maxPower}
+            TOTAL POWER :{' '}
+            <p>
+              {sumPower()} /{maxPower}
+            </p>
           </div>
           <div className="deck">
-            DECK
+            <p>DECK</p>
             {deck.map((heroe) => (
               <CardsInDeck
                 key={heroe.name}

@@ -28,22 +28,25 @@
 .selected:hover {
   cursor: url('https://img.icons8.com/color/48/000000/undo.png'), auto;
 }
-.heroName {
+.heroNameDecklist {
   grid-area: name;
   align-self: center;
   color: white;
   font-size: 15px;
 }
 
-.imgCardDeck {
+.imgCardDecklist {
   grid-area: image;
   justify-self: center;
-  width: 75px;
-  height: 100px;
-  border-radius: 5px;
 }
 
-.attack {
+.imgDecklist {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.attackDecklist {
   grid-area: atk;
   background-color: #cc4224;
   width: 30px;
@@ -55,7 +58,7 @@
   color: white;
 }
 
-.healthPoints {
+.healthPointsDecklist {
   background-color: green;
   grid-area: hp;
   width: 30px;
@@ -67,7 +70,7 @@
   color: white;
 }
 
-.power {
+.powerDecklist {
   grid-area: pw;
   background-color: #f3d403;
   width: 30px;
@@ -79,9 +82,9 @@
   color: red;
 }
 
-.attack img,
-.healthPoints img,
-.power img {
+.attackDecklist img,
+.healthPointsDecklist img,
+.powerDecklist img {
   display: none;
 }
 
@@ -95,25 +98,25 @@
     margin-bottom: 10px;
   }
 
-  .imgCardDeck {
+  .imgCardDecklist {
     width: 150px;
     height: 200px;
   }
 
-  .attack,
-  .healthPoints,
-  .power {
+  .attackDecklist,
+  .healthPointsDecklist,
+  .powerDecklist {
     width: 70px;
     height: 60px;
   }
-  .attack img,
-  .healthPoints img,
-  .power img {
+  .attackDecklist img,
+  .healthPointsDecklist img,
+  .powerDecklist img {
     display: block;
     width: 40px;
     height: 40px;
   }
-  .heroName {
+  .heroNameDecklist {
     font-size: larger;
   }
 }
