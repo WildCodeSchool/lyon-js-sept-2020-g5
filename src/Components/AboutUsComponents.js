@@ -6,7 +6,7 @@ function AboutUsComponents(props) {
   return (
     <div className="blockAboutUs">
       <div>
-        <img src={image} alt={alt} />
+        <img className="imgAboutUS" src={image} alt={alt} />
       </div>
       <div className="AboutUsDetails">
         <h3>{nameOfWilder}</h3>

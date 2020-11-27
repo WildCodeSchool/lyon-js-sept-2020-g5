@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Pink';
+  src: url(../Police/pink.ttf);
+}
+
+.hallOfHeroesContainer h1 {
+  font-family: 'Pink';
+}

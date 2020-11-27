@@ -16,6 +16,11 @@
   background-color: #f3d403;
   height: 30px;
   border-radius: 15px 15px 0 0;
+  text-align: center;
+  font-family: 'Pink';
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deck {
@@ -25,6 +30,12 @@
   overflow: auto;
   overflow-x: hidden;
   height: 50vh;
+  font-family: 'Pink';
+}
+
+.deck p {
+  font-size: larger;
+  color: #f3d403;
 }
 .totalPower p {
   color: #cc4224;
@@ -34,6 +45,7 @@
   height: 30px;
   color: white;
   border-radius: 0 0 15px 15px;
+  font-family: 'Pink';
 }
 
 .totalPower,
@@ -81,9 +93,8 @@
 .confirmationView {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 80%;
 }
 
 h2 {

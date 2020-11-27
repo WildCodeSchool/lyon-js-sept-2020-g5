@@ -13,31 +13,31 @@ function AboutUs() {
     <div className="WilderContainer">
       <AboutUsComponents
         image={skull}
-        alt="image showing the maximum total power."
+        alt="Eddy"
         nameOfWilder="Eddy"
-        wilderQuote="Je peux pas commit, y a ESlint qui block c'est chiant.."
+        wilderQuote="Je peux pas commit, y a ESlint qui block. Fais chier ..."
       />
       <AboutUsComponents
         image={Tick}
-        alt="."
+        alt="Julien"
         nameOfWilder="Julien"
         wilderQuote="Putain mon pc a encore Freeze !"
       />
       <AboutUsComponents
         image={RidiculeRemi}
-        alt="."
+        alt="Remi"
         nameOfWilder="Remi"
         wilderQuote="BURGER MENU LES GARS !!"
       />
       <AboutUsComponents
         image={Fat}
-        alt="."
+        alt="Clement"
         nameOfWilder="Clement"
         wilderQuote="Wild Clash, je regarde pour le logo, on va mettre W.C, euh non j'ai rien dis les gars!"
       />
       <AboutUsComponents
         image={Casserole}
-        alt="."
+        alt="Cedric"
         nameOfWilder="Cedric"
         wilderQuote="Le chevalier à la casserole d'argent"
       />
