@@ -15,7 +15,7 @@ function AboutUs() {
         image={skull}
         alt="Eddy"
         nameOfWilder="Eddy"
-        wilderQuote="Je peux pas commit, y a ESlint qui block. Fais chier ..."
+        wilderQuote="Je peux pas commit, y a ESlint qui block. Fait chier ..."
       />
       <AboutUsComponents
         image={Tick}

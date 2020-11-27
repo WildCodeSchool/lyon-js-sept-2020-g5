@@ -102,11 +102,6 @@
   justify-self: center;
 }
 
-.rulesimg {
-  max-height: 300px;
-  max-width: 600px;
-}
-
 /*simgle block rules*/
 .blockRules {
   padding: 10px;
@@ -117,7 +112,7 @@
   font-size: 1rem;
   border-radius: 10px;
   background-color: rgba(5, 5, 5, 0.722);
-  width: 70%;
+  max-width: 500px;
   height: auto;
   margin-bottom: 10px;
   display: flex;
@@ -146,9 +141,31 @@
 .rulesDetails p {
   font-size: larger;
 }
-@media (max-width: 640px) {
+.rulesimg {
+  height: auto;
+  max-width: 500px;
+}
+
+/*Smartphone*/
+@media screen and (max-width: 480px) {
   .RulesContainer {
     grid-template-areas: 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j';
     grid-template-columns: 1fr;
+  }
+  .rulesimg {
+    max-height: 100px;
+    width: auto;
+  }
+}
+
+/*Tablette*/
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+  .RulesContainer {
+    grid-template-areas: 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j';
+    grid-template-columns: 1fr;
+  }
+  .rulesimg {
+    max-height: 250px;
+    width: auto;
   }
 }
