@@ -39,8 +39,8 @@
 .CardInBoard .attack {
   grid-area: atk;
   background-color: red;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,8 +51,8 @@
 .CardInBoard .healthPoints {
   background-color: green;
   grid-area: hp;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

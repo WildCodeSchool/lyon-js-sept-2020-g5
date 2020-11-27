@@ -125,6 +125,7 @@ const DeckContextProvider = ({ children }) => {
     ) {
       setEquality(true);
       changes.push(setNewGame(!newGame));
+      setIsEndgame(true);
     } else if (
       deckRef.current.length === 0 &&
       boardPlayerRef.current.length === 0
@@ -138,6 +139,7 @@ const DeckContextProvider = ({ children }) => {
     ) {
       setWin(true);
       changes.push(setNewGame(!newGame));
+      setIsEndgame(true);
     }
 
     return Promise.all(changes);

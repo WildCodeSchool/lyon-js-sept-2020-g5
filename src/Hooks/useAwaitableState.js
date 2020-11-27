@@ -23,7 +23,7 @@ export default function useAwaitableState(defaultValue, debugValue = '') {
       // but the first one did not have time to resolve before the second one is requested,
       // resolve it now, otherwise the first will never be resolved
       if (resolverFunction.current) {
-        resolverFunction.current(value);
+        resolverFunction.current();
       }
       resolverFunction.current = resolve;
       setValue(newValueOrFunction);

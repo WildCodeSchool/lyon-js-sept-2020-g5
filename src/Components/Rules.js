@@ -36,16 +36,9 @@ function Rules() {
         image={yourturnfight}
         alt="Your game board - Your turn"
         nameOfRule="Your game board - Your turn"
-        textRule="Among your visible cards, select ('click') a card to send it to the battle board."
+        textRule="Among your visible cards, select ('click') a card to send it to the battle board and press 'end turn'."
       />
-      <RulesComponents
-        image={yourturnfight}
-        alt="Your game board - End of your turn"
-        nameOfRule="Your game board - End of your turn"
-        textRule="It's time to attack! 
-        The card you have selected is on the battle board. 
-        Click or press `End-turn` to finish your turn."
-      />
+
       <RulesComponents
         image={iaturnfight}
         alt="Board opponent - turn"
@@ -70,8 +63,7 @@ function Rules() {
         image={win}
         alt="How to win"
         nameOfRule="How to win"
-        textRule="You still have a hero still alive in your hand and or on your fighting board, while your opponent has none left. 
-        Congratulations, you can press Win verify and you will know what a leader you are !"
+        textRule="You still have a hero still alive in your hand and or on your fighting board, while your opponent has none left."
       />
     </div>
   );
