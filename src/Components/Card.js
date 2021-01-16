@@ -1,22 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
 import '../Style/Card.css';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 import hammer from '../Pictures/icons-marteau-de-thor.png';
+import {
+  addToPlayerDeck,
+  removeFromPlayerDeck,
+  isInDeck,
+} from '../Redux/cardsSlice';
 
-function Card({ heroe, index }) {
-  const { deck, addToDeck } = useContext(DeckContext);
+function Card({ heroe, index, togglePresenceInDeck, inDeck }) {
   return (
     <div
-      className={
-        deck.filter((heroeDeck) => heroeDeck.name === heroe.name).length === 0
-          ? 'cardDeck'
-          : 'cardDeck selected'
-      }
+      className={!inDeck ? 'cardDeck' : 'cardDeck selected'}
       role="button"
       tabIndex={index}
-      onClick={() => addToDeck(heroe.name)}
+      onClick={togglePresenceInDeck}
     >
       <div className="heroNameDecklist">{heroe.name}</div>
       <div className="imgCardDecklist">
@@ -35,4 +36,27 @@ function Card({ heroe, index }) {
   );
 }
 
-export default Card;
+export default connect(
+  (state, { heroe }) => {
+    return {
+      inDeck: isInDeck(heroe.id)(state),
+    };
+  },
+  (dispatch, { heroe }) => {
+    return {
+      addToPlayerDeck: () => dispatch(addToPlayerDeck({ ...heroe })),
+      removeFromPlayerDeck: () => dispatch(removeFromPlayerDeck({ ...heroe })),
+    };
+  },
+  (stateProps, dispatchProps, ownProps) => {
+    return {
+      ...ownProps,
+      ...stateProps,
+      ...dispatchProps,
+      togglePresenceInDeck: () => {
+        if (stateProps.inDeck) dispatchProps.removeFromPlayerDeck();
+        else dispatchProps.addToPlayerDeck();
+      },
+    };
+  }
+)(Card);

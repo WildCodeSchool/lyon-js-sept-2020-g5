@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Howl } from 'howler';
 import fight from '../Audio/fight.wav';
 import CardsInDeck from './CardsInDeck';
@@ -7,16 +8,14 @@ import { DeckContext } from '../Contexts/DeckContextProvider';
 import '../Style/DeckList.css';
 import Card from './Card';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
+import { fetchCards, getPlayerDeckArray } from '../Redux/cardsSlice';
 
-function DeckList() {
+function DeckList({ playerDeck }) {
   const { pseudo, maxPower } = useContext(OptionsContext);
-  const {
-    deck,
-    addToDeck,
-    setDeck,
-    readyForFight,
-    setReadyForFight,
-  } = useContext(DeckContext);
+  const { addToDeck, setDeck, readyForFight, setReadyForFight } = useContext(
+    DeckContext
+  );
+
   const history = useHistory();
 
   const audioClips3 = new Howl({
@@ -31,7 +30,7 @@ function DeckList() {
 
   function sumPower() {
     let currentPower = 0;
-    currentPower = deck
+    currentPower = playerDeck
       .map((heroeChoosen) => heroeChoosen.power)
       .reduce((acc, cur) => acc + cur, 0);
     return currentPower;
@@ -41,7 +40,7 @@ function DeckList() {
     if (sumPower() === 0) {
       window.alert('You must choose at leat one heroe');
     } else {
-      const deckForHand = deck.slice();
+      const deckForHand = playerDeck.slice();
       for (let i = 0; i < deckForHand.length; i += 1) {
         deckForHand[i].position = 'hand';
       }
@@ -70,15 +69,14 @@ function DeckList() {
           <div className="totalPower">
             TOTAL POWER :{' '}
             <p>
-              {sumPower()} /{maxPower}
+              {sumPower()} / {maxPower}
             </p>
           </div>
           <div className="deck">
             <p>DECK</p>
-            {deck.map((heroe) => (
+            {playerDeck.map((heroe) => (
               <CardsInDeck
                 key={heroe.name}
-                j
                 heroechoice={heroe}
                 addToDeck={addToDeck}
                 heroe={heroe}
@@ -101,13 +99,13 @@ function DeckList() {
       <div className={confirmationWindow}>
         <h2>Check your team</h2>
         <div className="confirmationView">
-          {deck.map((hero, index) => {
+          {playerDeck.map((hero, index) => {
             return <Card key={hero.id} heroe={hero} index={index} />;
           })}
         </div>
         <div>
           <button
-            className="decklist-btn whiteButton"
+            className="playerDecklist-btn whiteButton"
             type="button"
             onClick={toggleReadyForFightNoAlert}
           >
@@ -126,4 +124,17 @@ function DeckList() {
   );
 }
 
-export default DeckList;
+export default connect(
+  (state) => {
+    const {
+      cards: { allCards },
+    } = state;
+    return {
+      playerDeck: getPlayerDeckArray(state),
+      allCards,
+    };
+  },
+  (dispatch) => {
+    return { fetchCards: () => dispatch(fetchCards()) };
+  }
+)(DeckList);

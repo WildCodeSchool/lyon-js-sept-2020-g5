@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { CardsContext } from '../Contexts/CardsContextProvider';
+import React, { useContext, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Card from './Card';
 import '../Style/CardList.css';
 import { DeckContext } from '../Contexts/DeckContextProvider';
+import { fetchCards } from '../Redux/cardsSlice';
 
-function CardList() {
-  const { cards } = useContext(CardsContext);
+function CardList({ cards, fetchAllCards }) {
+  useEffect(fetchAllCards, []);
+
   const { readyForFight } = useContext(DeckContext);
 
   const deckChoiceWindow = readyForFight
@@ -21,4 +23,15 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default connect(
+  (state) => {
+    return {
+      cards: state.cards.allCards,
+    };
+  },
+  (dispatch) => {
+    return {
+      fetchAllCards: () => dispatch(fetchCards()),
+    };
+  }
+)(CardList);
