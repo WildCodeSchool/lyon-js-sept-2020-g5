@@ -26,11 +26,15 @@ import {
   playerHasWon,
   putPlayerCardInBoard,
   getGraveyardCards,
+  putOtherPlayerCardInBoard,
 } from '../Redux/gameSlice';
 
 function DeckBoard() {
   const dispatch = useDispatch();
-  const actions = bindActionCreators({ putPlayerCardInBoard }, dispatch);
+  const actions = bindActionCreators(
+    { putPlayerCardInBoard, putOtherPlayerCardInBoard },
+    dispatch
+  );
   const deckIa = useSelector(getOtherPlayerDeck);
   const deck = useSelector(getPlayerDeck);
   const otherPlayerHandCards = useSelector(getOtherPlayerHandCards);
@@ -50,7 +54,9 @@ function DeckBoard() {
     history.push('/');
   };
 
-  const handleTurnEnd = () => {};
+  const handleTurnEnd = () => {
+    actions.putOtherPlayerCardInBoard(otherPlayerHandCards);
+  };
 
   return (
     <div>

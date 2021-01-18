@@ -110,6 +110,20 @@ const gameSlice = createSlice({
         return { type: 'cards/createIaDeck', payload: { cards } };
       },
     },
+    putOtherPlayerCardInBoard: {
+      reducer(state, action) {
+        state.otherPlayerDeck.find(
+          (card) => card.id === action.payload
+        ).position = BOARD_POSITIONS.OTHER_PLAYER_BOARD;
+      },
+      prepare(cardsInHand) {
+        const randomCardInHandId = _.shuffle(cardsInHand)[0].id;
+        return {
+          type: 'cards/putOtherPlayerCardInBoard',
+          payload: randomCardInHandId,
+        };
+      },
+    },
     startDeckEdition(state) {
       state.status = GAME_STATUS.DECK_EDITION;
     },
@@ -134,6 +148,7 @@ export const {
   startDeckEdition,
   startDeckReview,
   putPlayerCardInBoard,
+  putOtherPlayerCardInBoard,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

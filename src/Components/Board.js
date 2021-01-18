@@ -6,7 +6,7 @@ const Board = (props) => {
   return (
     <>
       {heroes.map((hero, index) => {
-        return <CardInBoard key={hero.name} heroe={hero} index={index} />;
+        return <CardInBoard key={hero.id} heroe={hero} index={index} />;
       })}
     </>
   );
