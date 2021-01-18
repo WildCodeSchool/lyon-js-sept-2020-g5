@@ -107,7 +107,7 @@ function DeckList() {
         </div>
         <div>
           <button
-            className="playerDecklist-btn whiteButton"
+            className="decklist-btn whiteButton"
             type="button"
             onClick={() => actions.startDeckEdition()}
           >
