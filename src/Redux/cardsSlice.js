@@ -1,8 +1,4 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  createSelector,
-} from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchCards = createAsyncThunk('cards/fetch', async () => {
@@ -31,24 +27,13 @@ export const fetchCards = createAsyncThunk('cards/fetch', async () => {
   );
 });
 
-const counterSlice = createSlice({
-  name: 'counter',
+export const getRoot = (state) => state.cards;
+export const getAllCards = (state) => getRoot(state).allCards;
+
+const cardsSlice = createSlice({
+  name: 'cards',
   initialState: {
     allCards: [],
-    playerDeck: {},
-    playerDeckIds: [],
-  },
-  reducers: {
-    addToPlayerDeck(state, action) {
-      state.playerDeck[action.payload.id] = action.payload;
-      state.playerDeckIds.push(action.payload.id);
-    },
-    removeFromPlayerDeck(state, action) {
-      state.playerDeck[action.payload.id] = undefined;
-      state.playerDeckIds = state.playerDeckIds.filter(
-        (id) => action.payload.id !== id
-      );
-    },
   },
   extraReducers: {
     [fetchCards.fulfilled]: (state, action) => {
@@ -57,22 +42,6 @@ const counterSlice = createSlice({
   },
 });
 
-export const {
-  setAllCards,
-  addToPlayerDeck,
-  removeFromPlayerDeck,
-} = counterSlice.actions;
+export const { setAllCards } = cardsSlice.actions;
 
-export const getRoot = (state) => state.cards;
-export const getPlayerDeck = (state) => getRoot(state).playerDeck;
-export const getPlayerDeckIds = (state) => getRoot(state).playerDeckIds;
-
-export const getPlayerDeckArray = createSelector(
-  getPlayerDeckIds,
-  getPlayerDeck,
-  (playerDeckIds, playerDeck) => playerDeckIds.map((id) => playerDeck[id])
-);
-export const isInDeck = (id) =>
-  createSelector(getPlayerDeck, (playerDeck) => !!playerDeck[id]);
-
-export default counterSlice.reducer;
+export default cardsSlice.reducer;

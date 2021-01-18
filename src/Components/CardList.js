@@ -1,21 +1,21 @@
-import React, { useContext, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Card from './Card';
 import '../Style/CardList.css';
-import { DeckContext } from '../Contexts/DeckContextProvider';
-import { fetchCards } from '../Redux/cardsSlice';
+import { fetchCards, getAllCards } from '../Redux/cardsSlice';
+import { isReviewingDeck } from '../Redux/gameSlice';
 
-function CardList({ cards, fetchAllCards }) {
-  useEffect(fetchAllCards, []);
+function CardList() {
+  const cards = useSelector(getAllCards);
+  const dispatch = useDispatch();
+  const actions = bindActionCreators({ fetchCards }, dispatch);
+  const reviewing = useSelector(isReviewingDeck);
 
-  const { readyForFight } = useContext(DeckContext);
-
-  const deckChoiceWindow = readyForFight
-    ? 'cardList displayNone'
-    : 'cardList display';
+  useEffect(actions.fetchCards, []);
 
   return (
-    <main className={deckChoiceWindow}>
+    <main className={reviewing ? 'cardList displayNone' : 'cardList display'}>
       {cards.map((hero, index) => {
         return <Card key={hero.id} heroe={hero} index={index} />;
       })}
@@ -23,15 +23,4 @@ function CardList({ cards, fetchAllCards }) {
   );
 }
 
-export default connect(
-  (state) => {
-    return {
-      cards: state.cards.allCards,
-    };
-  },
-  (dispatch) => {
-    return {
-      fetchAllCards: () => dispatch(fetchCards()),
-    };
-  }
-)(CardList);
+export default CardList;

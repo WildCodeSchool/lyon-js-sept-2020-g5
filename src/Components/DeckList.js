@@ -1,66 +1,68 @@
 import React, { useContext } from 'react';
+import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Howl } from 'howler';
 import fight from '../Audio/fight.wav';
 import CardsInDeck from './CardsInDeck';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import '../Style/DeckList.css';
 import Card from './Card';
 import { OptionsContext } from '../Contexts/OptionsContextProvider';
-import { fetchCards, getPlayerDeckArray } from '../Redux/cardsSlice';
+import { getAllCards } from '../Redux/cardsSlice';
+import {
+  addToPlayerDeck,
+  getPlayerDeck,
+  startDeckReview,
+  startFight,
+  startDeckEdition,
+  createIaDeck,
+  isReviewingDeck,
+} from '../Redux/gameSlice';
 
-function DeckList({ playerDeck }) {
+function DeckList() {
   const { pseudo, maxPower } = useContext(OptionsContext);
-  const { addToDeck, setDeck, readyForFight, setReadyForFight } = useContext(
-    DeckContext
+  const dispatch = useDispatch();
+  const actions = bindActionCreators(
+    {
+      addToPlayerDeck,
+      startFight,
+      createIaDeck,
+      startDeckReview,
+      startDeckEdition,
+    },
+    dispatch
   );
-
+  const playerDeck = useSelector(getPlayerDeck);
+  const reviewing = useSelector(isReviewingDeck);
   const history = useHistory();
-
   const audioClips3 = new Howl({
     src: [fight],
   });
+  const allCards = useSelector(getAllCards);
 
-  const confirmationWindow = readyForFight
-    ? 'cardList display specialFlex'
-    : 'cardList displayNone';
+  const totalPower = playerDeck
+    .map((heroeChoosen) => heroeChoosen.power)
+    .reduce((acc, cur) => acc + cur, 0);
 
-  const view = readyForFight ? 'deckConfirmation' : 'playerDeck';
-
-  function sumPower() {
-    let currentPower = 0;
-    currentPower = playerDeck
-      .map((heroeChoosen) => heroeChoosen.power)
-      .reduce((acc, cur) => acc + cur, 0);
-    return currentPower;
-  }
-
-  const handlePositionHand = () => {
-    if (sumPower() === 0) {
-      window.alert('You must choose at leat one heroe');
-    } else {
-      const deckForHand = playerDeck.slice();
-      for (let i = 0; i < deckForHand.length; i += 1) {
-        deckForHand[i].position = 'hand';
-      }
-      setDeck(deckForHand);
-      history.push('/deckBoard');
-      audioClips3.play();
-    }
+  const handleFightButtonClick = () => {
+    actions.createIaDeck(allCards, maxPower);
+    actions.startFight();
+    history.push('/deckBoard');
+    audioClips3.play();
   };
 
   const toggleReadyForFightAlert = () => {
-    if (sumPower() === 0) {
+    if (totalPower === 0) {
       window.alert('You must choose at leat one heroe');
     } else {
-      setReadyForFight(!readyForFight);
+      actions.startDeckReview();
     }
   };
 
-  const toggleReadyForFightNoAlert = () => {
-    setReadyForFight(!readyForFight);
-  };
+  const confirmationWindow = reviewing
+    ? 'cardList display specialFlex'
+    : 'cardList displayNone';
+  const view = reviewing ? 'deckConfirmation' : 'playerDeck';
 
   return (
     <div className="deckContainer">
@@ -69,7 +71,7 @@ function DeckList({ playerDeck }) {
           <div className="totalPower">
             TOTAL POWER :{' '}
             <p>
-              {sumPower()} / {maxPower}
+              {totalPower} / {maxPower}
             </p>
           </div>
           <div className="deck">
@@ -78,7 +80,7 @@ function DeckList({ playerDeck }) {
               <CardsInDeck
                 key={heroe.name}
                 heroechoice={heroe}
-                addToDeck={addToDeck}
+                addToDeck={actions.addToPlayerDeck}
                 heroe={heroe}
               />
             ))}
@@ -107,14 +109,14 @@ function DeckList({ playerDeck }) {
           <button
             className="playerDecklist-btn whiteButton"
             type="button"
-            onClick={toggleReadyForFightNoAlert}
+            onClick={() => actions.startDeckEdition()}
           >
             Manage your team
           </button>
           <button
             className="decklist-btn"
             type="button"
-            onClick={handlePositionHand}
+            onClick={handleFightButtonClick}
           >
             fight
           </button>
@@ -124,17 +126,4 @@ function DeckList({ playerDeck }) {
   );
 }
 
-export default connect(
-  (state) => {
-    const {
-      cards: { allCards },
-    } = state;
-    return {
-      playerDeck: getPlayerDeckArray(state),
-      allCards,
-    };
-  },
-  (dispatch) => {
-    return { fetchCards: () => dispatch(fetchCards()) };
-  }
-)(DeckList);
+export default DeckList;

@@ -2,16 +2,16 @@ import React from 'react';
 import '../Style/CardOfDeckBoard.css';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
+import { isInHand } from '../Redux/gameSlice';
 
 const CardOfDeckBoard = (props) => {
   const { heroe, handToBoard, index } = props;
+  const inHand = isInHand(heroe);
 
   return (
     <div
-      className={
-        heroe.position === 'hand' ? 'cardOfDeckBoard' : 'cardOfDeckBoard IaHand'
-      }
-      onClick={() => handToBoard(heroe.name)}
+      className={inHand ? 'cardOfDeckBoard' : 'cardOfDeckBoard IaHand'}
+      onClick={() => handToBoard(heroe.id)}
       role="button"
       tabIndex={index}
     >
@@ -19,12 +19,12 @@ const CardOfDeckBoard = (props) => {
       <div className="imgCardDeck">
         <img src={heroe.img} alt={heroe.name} />
       </div>
-      <div className={heroe.position === 'hand' ? 'attack' : 'forIaHand'}>
+      <div className={inHand ? 'attack' : 'forIaHand'}>
         <span className="forIaHand">
           <img src={sword} alt="sword icons" /> {heroe.atk}
         </span>
       </div>
-      <div className={heroe.position === 'hand' ? 'healthPoints' : 'forIaHand'}>
+      <div className={inHand ? 'healthPoints' : 'forIaHand'}>
         <span className="forIaHand">
           <img src={heart} alt="heart icons" /> {heroe.hp}
         </span>
