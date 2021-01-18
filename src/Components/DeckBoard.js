@@ -27,12 +27,19 @@ import {
   putPlayerCardInBoard,
   getGraveyardCards,
   putOtherPlayerCardInBoard,
+  startIABoardAttack,
+  resetGame,
 } from '../Redux/gameSlice';
 
 function DeckBoard() {
   const dispatch = useDispatch();
   const actions = bindActionCreators(
-    { putPlayerCardInBoard, putOtherPlayerCardInBoard },
+    {
+      putPlayerCardInBoard,
+      putOtherPlayerCardInBoard,
+      startIABoardAttack,
+      resetGame,
+    },
     dispatch
   );
   const deckIa = useSelector(getOtherPlayerDeck);
@@ -50,17 +57,19 @@ function DeckBoard() {
   const history = useHistory();
 
   const handleQuitButtonClick = () => {
-    // restart();
+    actions.resetGame();
     history.push('/');
   };
 
   const handleTurnEnd = () => {
-    actions.putOtherPlayerCardInBoard(otherPlayerHandCards);
+    if (otherPlayerHandCards.length)
+      actions.putOtherPlayerCardInBoard(otherPlayerHandCards);
+    actions.startIABoardAttack();
   };
 
   return (
     <div>
-      {!isFighting && (
+      {(playerWon || draw || otherPlayerWon) && (
         <div className="endGameContainer">
           <div className={playerWon ? 'win' : 'winDisplaynone'}>
             <div>
@@ -98,7 +107,7 @@ function DeckBoard() {
               ))}
             </div>
             <div className="hiddenCardIa">
-              <HiddenCards heroes={deckIa} />
+              <HiddenCards heroes={deckIa.slice(0, 5)} />
             </div>
           </div>
 

@@ -10,6 +10,7 @@ const CardInBoard = (props) => {
 
   return (
     <div
+      style={{ zoom: heroe.isFighting ? 1.5 : 1 }}
       className={inHand ? 'CardInBoard' : 'CardInBoard IaHand'}
       role="button"
       tabIndex={index}

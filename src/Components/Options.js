@@ -1,49 +1,57 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import '../Style/Options.css';
 import { FiPower } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
+import {
+  getOptions,
+  setMaxPower,
+  setPlayerName,
+  toggleMute,
+} from '../Redux/optionsSlice';
 
 function Options() {
-  const { isMute, setIsMute, pseudo, setPseudo } = useContext(OptionsContext);
-
-  const handleOnOffClick = () => {
-    setIsMute(!isMute);
-  };
-
-  const handleChangeInput = (e) => {
-    setPseudo(e.target.value);
-  };
-
+  const options = useSelector(getOptions);
+  const dispatch = useDispatch();
   const history = useHistory();
-
-  const handleBackHome = () => {
-    history.push('/');
-  };
 
   return (
     <div className="options-body">
       <h1 className="options-title">Options</h1>
       <div className="buttonsContainer">
         <input
-          placeholder="pseudo"
+          placeholder="Player name"
           type="text"
           className="options-btn"
-          value={pseudo}
-          onChange={(e) => handleChangeInput(e)}
+          title="Player name"
+          value={options.playerName}
+          onChange={(e) => dispatch(setPlayerName(e.target.value))}
+        />
+        <input
+          placeholder="Maximum deck power"
+          type="number"
+          min="100"
+          max="1000"
+          step="50"
+          title="Maximum deck power"
+          className="options-btn"
+          value={options.maxPower}
+          onChange={(e) => dispatch(setMaxPower(parseInt(e.target.value, 10)))}
         />
         <button
           type="button"
           className="options-btn mute"
-          onClick={handleOnOffClick}
+          onClick={() => dispatch(toggleMute())}
         >
           {' '}
           <FiPower className="fi-icons" />
-          {isMute ? 'Sound OFF' : 'Sound ON'}
+          {options.mute ? 'Sound OFF' : 'Sound ON'}
         </button>
 
         <button
-          onClick={handleBackHome}
+          onClick={() => {
+            history.push('/');
+          }}
           type="button"
           className="options-btn backHome"
         >

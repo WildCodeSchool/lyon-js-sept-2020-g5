@@ -6,7 +6,7 @@ const Graveyard = (props) => {
   return (
     <>
       {heroes.map((hero) => {
-        return <CardInGraveyard key={hero.name} hero={hero} />;
+        return <CardInGraveyard key={hero.id + hero.position} hero={hero} />;
       })}
     </>
   );

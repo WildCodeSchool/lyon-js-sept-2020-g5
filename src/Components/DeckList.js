@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,6 @@ import fight from '../Audio/fight.wav';
 import CardsInDeck from './CardsInDeck';
 import '../Style/DeckList.css';
 import Card from './Card';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
 import { getAllCards } from '../Redux/cardsSlice';
 import {
   addToPlayerDeck,
@@ -18,9 +17,10 @@ import {
   createIaDeck,
   isReviewingDeck,
 } from '../Redux/gameSlice';
+import { getOptions } from '../Redux/optionsSlice';
 
 function DeckList() {
-  const { pseudo, maxPower } = useContext(OptionsContext);
+  const { playerName, maxPower } = useSelector(getOptions);
   const dispatch = useDispatch();
   const actions = bindActionCreators(
     {
@@ -85,7 +85,7 @@ function DeckList() {
               />
             ))}
           </div>
-          <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
+          <div className="pseudoPlayer">PSEUDO : {playerName}</div>
 
           <div className="buttonStartDiv">
             <button

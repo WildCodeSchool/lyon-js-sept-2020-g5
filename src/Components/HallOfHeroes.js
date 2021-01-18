@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import HallCard from './HallCard';
-import { CardsContext } from '../Contexts/CardsContextProvider';
 import '../Style/hallOfHeroes.css';
+import { getAllCards } from '../Redux/cardsSlice';
 
 const HallOfHeroes = () => {
-  const { cards } = useContext(CardsContext);
+  const cards = useSelector(getAllCards);
 
   return (
     <div className="hallOfHeroesContainer">

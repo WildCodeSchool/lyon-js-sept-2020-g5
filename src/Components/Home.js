@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
+import { getOptions } from '../Redux/optionsSlice';
 
 const audioClips = new Howl({
   src: [Punch],
@@ -14,7 +15,7 @@ const audioClips2 = new Howl({
 });
 
 const Home = (props) => {
-  const { isMute } = useContext(OptionsContext);
+  const isMute = useSelector(getOptions).mute;
 
   const handleNewGameClick = () => {
     props.history.push('/game');
