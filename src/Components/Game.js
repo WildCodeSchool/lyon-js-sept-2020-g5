@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import CardList from './CardList';
 import DeckList from './DeckList';
 import '../Style/Game.css';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import Rotate from '../Pictures/rotate_img_proj.gif';
+import { isReviewingDeck } from '../Redux/gameSlice';
 
 function Game() {
-  const { readyForFight } = useContext(DeckContext);
-
-  const view = readyForFight ? 'containerDeckConfirmation' : 'containerDeck';
+  const reviewing = useSelector(isReviewingDeck);
 
   return (
     <div className="containerGame">
-      <div className={view}>
+      <div
+        className={reviewing ? 'containerDeckConfirmation' : 'containerDeck'}
+      >
         <CardList />
         <DeckList />
       </div>
