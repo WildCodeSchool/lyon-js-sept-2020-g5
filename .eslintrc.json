@@ -26,7 +26,8 @@
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "no-param-reassign": "off",
-    "no-alert": "off"
+    "no-alert": "off",
+    "no-await-in-loop": "off"
   },
   "parser": "babel-eslint"
 }

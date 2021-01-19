@@ -174,12 +174,16 @@ const gameSlice = createSlice({
       state.playerDeck.find((card) => card.id === action.payload).position =
         BOARD_POSITIONS.PLAYER_BOARD;
     },
-    setCardFighting(state, { payload: { id, isFighting, side = 'player' } }) {
-      const card = state[
-        side === 'player' ? 'playerDeck' : 'otherPlayerDeck'
-      ].find((c) => c.id === id);
+    setPlayerCardFighting(state, { payload: { id, value } }) {
+      const card = state.playerDeck.find((c) => c.id === id);
       if (card) {
-        card.isFighting = isFighting;
+        card.isFighting = value;
+      }
+    },
+    setOtherPlayerCardFighting(state, { payload: { id, value } }) {
+      const card = state.otherPlayerDeck.find((c) => c.id === id);
+      if (card) {
+        card.isFighting = value;
       }
     },
     resetGame(state) {
@@ -200,6 +204,9 @@ export const {
   putPlayerCardInBoard,
   putOtherPlayerCardInBoard,
   resetGame,
+  setOtherPlayerCardFighting,
+  setPlayerCardFighting,
+  clashCards,
 } = gameSlice.actions;
 
 const getRandomElement = (array) =>
@@ -210,9 +217,11 @@ const delay = (millisec) =>
     setTimeout(resolve, millisec);
   });
 
+let startIABoardAttackRunning = false;
 export function startIABoardAttack() {
-  const { clashCards, setCardFighting } = gameSlice.actions;
   return async (dispatch, getState) => {
+    if (startIABoardAttackRunning) return;
+    startIABoardAttackRunning = true;
     const state = getState();
     const IACards = getOtherPlayerBoardCards(state);
     for (let i = 0; i < IACards.length; i += 1) {
@@ -220,21 +229,10 @@ export function startIABoardAttack() {
       const playerCards = getPlayerBoardCards(state);
       const playerCard = getRandomElement(playerCards);
       if (playerCard) {
+        dispatch(setPlayerCardFighting({ id: IACard.id, value: true }));
         dispatch(
-          setCardFighting({
-            id: IACard.id,
-            isFighting: true,
-            side: 'otherPlayer',
-          })
+          setOtherPlayerCardFighting({ id: playerCard.id, value: true })
         );
-        dispatch(
-          setCardFighting({
-            id: playerCard.id,
-            isFighting: true,
-            side: 'player',
-          })
-        );
-        // eslint-disable-next-line
         await delay(3000);
         dispatch(
           clashCards({
@@ -242,22 +240,11 @@ export function startIABoardAttack() {
             playerCardId: playerCard.id,
           })
         );
-        dispatch(
-          setCardFighting({
-            id: IACard.id,
-            isFighting: false,
-            side: 'otherPlayer',
-          })
-        );
-        dispatch(
-          setCardFighting({
-            id: playerCard.id,
-            isFighting: false,
-            side: 'player',
-          })
-        );
+        dispatch(setOtherPlayerCardFighting({ id: IACard.id, value: false }));
+        dispatch(setPlayerCardFighting({ id: playerCard.id, value: false }));
       }
     }
+    startIABoardAttackRunning = false;
   };
 }
 
