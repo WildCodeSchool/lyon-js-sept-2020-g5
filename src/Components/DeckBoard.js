@@ -29,6 +29,7 @@ import {
   putOtherPlayerCardInBoard,
   startIABoardAttack,
   resetGame,
+  isOtherPlayerTurn,
 } from '../Redux/gameSlice';
 
 function DeckBoard() {
@@ -53,12 +54,18 @@ function DeckBoard() {
   const otherPlayerBoardCards = useSelector(getOtherPlayerBoardCards);
   const playerBoardCards = useSelector(getPlayerBoardCards);
   const graveyardCards = useSelector(getGraveyardCards);
+  const otherPlayerTurn = useSelector(isOtherPlayerTurn);
 
   const history = useHistory();
 
   const handleQuitButtonClick = () => {
     actions.resetGame();
     history.push('/');
+  };
+
+  const handleNewGameButtonClick = () => {
+    actions.resetGame();
+    history.push('/game');
   };
 
   const handleTurnEnd = () => {
@@ -90,9 +97,9 @@ function DeckBoard() {
             <button
               className="buttonQuit"
               type="button"
-              onClick={handleQuitButtonClick}
+              onClick={handleNewGameButtonClick}
             >
-              Quit
+              New Game
             </button>
           </div>
         </div>
@@ -149,6 +156,7 @@ function DeckBoard() {
           </div>
           <div className="GameButtonsContainer">
             <button
+              disabled={otherPlayerTurn}
               className="buttonGameEndTurn"
               type="button"
               onClick={handleTurnEnd}

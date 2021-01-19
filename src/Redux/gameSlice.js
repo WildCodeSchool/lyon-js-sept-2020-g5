@@ -14,6 +14,14 @@ export const GAME_STATUS = {
   FIGHTING: 'fighting',
 };
 
+export const initialState = {
+  playerDeck: [],
+  otherPlayerDeck: [],
+  graveyard: [],
+  satus: GAME_STATUS.DECK_CREATION,
+  otherPlayerTurn: false,
+};
+
 export const getRoot = (state) => state.game;
 export const getPlayerDeck = (state) => getRoot(state).playerDeck;
 export const getOtherPlayerDeck = (state) => getRoot(state).otherPlayerDeck;
@@ -72,12 +80,10 @@ export const isInHand = (card) =>
   card.position === BOARD_POSITIONS.PLAYER_HAND ||
   BOARD_POSITIONS.OTHER_PLAYER_HAND;
 
-export const initialState = {
-  playerDeck: [],
-  otherPlayerDeck: [],
-  graveyard: [],
-  satus: GAME_STATUS.DECK_CREATION,
-};
+export const isOtherPlayerTurn = createSelector(
+  (state) => getRoot(state),
+  (root) => root.otherPlayerTurn
+);
 
 const gameSlice = createSlice({
   name: 'game',
@@ -137,28 +143,25 @@ const gameSlice = createSlice({
     },
     clashCards(state, action) {
       const { playerCardId, otherPlayerCardId } = action.payload;
-      const playerCard = state.playerDeck.find(
+      const playerCardIdx = state.playerDeck.findIndex(
         (card) => card.id === playerCardId
       );
-      const otherPlayerCard = state.otherPlayerDeck.find(
+      const otherPlayerCardIdx = state.otherPlayerDeck.findIndex(
         (card) => card.id === otherPlayerCardId
       );
-
-      playerCard.hp -= otherPlayerCard.atk;
-      otherPlayerCard.hp -= playerCard.atk;
-      if (playerCard.hp <= 0) {
-        const idx = state.playerDeck.findIndex(
-          (card) => playerCard.id === card.id
-        );
-        state.playerDeck.splice(idx, 1);
-        state.graveyard.push(playerCard);
-      }
-      if (otherPlayerCard.hp <= 0) {
-        const idx = state.otherPlayerDeck.findIndex(
-          (card) => otherPlayerCard.id === card.id
-        );
-        state.otherPlayerDeck.splice(idx, 1);
-        state.graveyard.push(otherPlayerCard);
+      const playerCard = state.playerDeck[playerCardIdx];
+      const otherPlayerCard = state.otherPlayerDeck[otherPlayerCardIdx];
+      if (playerCard && otherPlayerCard) {
+        playerCard.hp -= otherPlayerCard.atk;
+        otherPlayerCard.hp -= playerCard.atk;
+        if (playerCard.hp <= 0) {
+          state.playerDeck.splice(playerCardIdx, 1);
+          state.graveyard.push(playerCard);
+        }
+        if (otherPlayerCard.hp <= 0) {
+          state.otherPlayerDeck.splice(otherPlayerCardIdx, 1);
+          state.graveyard.push(otherPlayerCard);
+        }
       }
     },
     startDeckEdition(state) {
@@ -191,6 +194,9 @@ const gameSlice = createSlice({
         state[k] = initialState[k];
       });
     },
+    setIsOtherPlayerTurn(state, { payload }) {
+      state.otherPlayerTurn = payload;
+    },
   },
 });
 
@@ -207,6 +213,7 @@ export const {
   setOtherPlayerCardFighting,
   setPlayerCardFighting,
   clashCards,
+  setIsOtherPlayerTurn,
 } = gameSlice.actions;
 
 const getRandomElement = (array) =>
@@ -217,22 +224,18 @@ const delay = (millisec) =>
     setTimeout(resolve, millisec);
   });
 
-let startIABoardAttackRunning = false;
 export function startIABoardAttack() {
   return async (dispatch, getState) => {
-    if (startIABoardAttackRunning) return;
-    startIABoardAttackRunning = true;
-    const state = getState();
-    const IACards = getOtherPlayerBoardCards(state);
+    dispatch(setIsOtherPlayerTurn(true));
+    const IACards = getOtherPlayerBoardCards(getState());
+    // each card on otherPlayer's board attacks a random card on the player's board
     for (let i = 0; i < IACards.length; i += 1) {
       const IACard = IACards[i];
-      const playerCards = getPlayerBoardCards(state);
+      const playerCards = getPlayerBoardCards(getState());
       const playerCard = getRandomElement(playerCards);
-      if (playerCard) {
-        dispatch(setPlayerCardFighting({ id: IACard.id, value: true }));
-        dispatch(
-          setOtherPlayerCardFighting({ id: playerCard.id, value: true })
-        );
+      if (playerCard && IACard) {
+        dispatch(setPlayerCardFighting({ id: playerCard.id, value: true }));
+        dispatch(setOtherPlayerCardFighting({ id: IACard.id, value: true }));
         await delay(3000);
         dispatch(
           clashCards({
@@ -240,11 +243,11 @@ export function startIABoardAttack() {
             playerCardId: playerCard.id,
           })
         );
-        dispatch(setOtherPlayerCardFighting({ id: IACard.id, value: false }));
         dispatch(setPlayerCardFighting({ id: playerCard.id, value: false }));
+        dispatch(setOtherPlayerCardFighting({ id: IACard.id, value: false }));
       }
     }
-    startIABoardAttackRunning = false;
+    dispatch(setIsOtherPlayerTurn(false));
   };
 }
 
