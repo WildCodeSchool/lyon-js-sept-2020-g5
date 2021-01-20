@@ -7,11 +7,7 @@ const CardInBoardIa = (props) => {
   const { heroe } = props;
 
   return (
-    <div
-      className={
-        heroe.position === 'handIA' ? 'CardInBoardIaIaHand' : 'CardInBoardIa'
-      }
-    >
+    <div style={{ zoom: heroe.isFighting ? 1.5 : 1 }} className="CardInBoardIa">
       <div className="heroName">{heroe.name}</div>
       <div className="imgCardDeck">
         <img src={heroe.img} alt={heroe.name} />

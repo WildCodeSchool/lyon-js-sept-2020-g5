@@ -1,22 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import '../Style/Card.css';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import sword from '../Pictures/icons-epee.png';
 import heart from '../Pictures/icons-coeurs.png';
 import hammer from '../Pictures/icons-marteau-de-thor.png';
+import {
+  addToPlayerDeck,
+  removeFromPlayerDeck,
+  isInPlayerDeck,
+} from '../Redux/gameSlice';
 
 function Card({ heroe, index }) {
-  const { deck, addToDeck } = useContext(DeckContext);
+  const dispatch = useDispatch();
+  const actions = bindActionCreators(
+    { addToPlayerDeck, removeFromPlayerDeck },
+    dispatch
+  );
+  const inDeck = useSelector((state) => isInPlayerDeck(heroe.id)(state));
+  const togglePresenceInDeck = inDeck
+    ? () => actions.removeFromPlayerDeck(heroe)
+    : () => actions.addToPlayerDeck(heroe);
+
   return (
     <div
-      className={
-        deck.filter((heroeDeck) => heroeDeck.name === heroe.name).length === 0
-          ? 'cardDeck'
-          : 'cardDeck selected'
-      }
+      className={!inDeck ? 'cardDeck' : 'cardDeck selected'}
       role="button"
       tabIndex={index}
-      onClick={() => addToDeck(heroe.name)}
+      onClick={togglePresenceInDeck}
     >
       <div className="heroNameDecklist">{heroe.name}</div>
       <div className="imgCardDecklist">

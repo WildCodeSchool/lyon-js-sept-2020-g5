@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Howl } from 'howler';
 import '../Style/Home.css';
 import Punch from '../Audio/Punch.wav';
 import Go from '../Audio/go.wav';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
+import { getOptions } from '../Redux/optionsSlice';
+import { resetGame } from '../Redux/gameSlice';
 
 const audioClips = new Howl({
   src: [Punch],
@@ -14,9 +16,12 @@ const audioClips2 = new Howl({
 });
 
 const Home = (props) => {
-  const { isMute } = useContext(OptionsContext);
+  const dispatch = useDispatch();
+  const reset = () => dispatch(resetGame());
+  const isMute = useSelector(getOptions).mute;
 
   const handleNewGameClick = () => {
+    reset();
     props.history.push('/game');
     if (!isMute) {
       audioClips2.play();

@@ -1,67 +1,70 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Howl } from 'howler';
 import fight from '../Audio/fight.wav';
 import CardsInDeck from './CardsInDeck';
-import { DeckContext } from '../Contexts/DeckContextProvider';
 import '../Style/DeckList.css';
 import Card from './Card';
-import { OptionsContext } from '../Contexts/OptionsContextProvider';
+import { getAllCards } from '../Redux/cardsSlice';
+import {
+  addToPlayerDeck,
+  getPlayerDeck,
+  startDeckReview,
+  startFight,
+  startDeckEdition,
+  createIaDeck,
+  isReviewingDeck,
+} from '../Redux/gameSlice';
+import { getOptions } from '../Redux/optionsSlice';
 
 function DeckList() {
-  const { pseudo, maxPower } = useContext(OptionsContext);
-  const {
-    deck,
-    addToDeck,
-    setDeck,
-    readyForFight,
-    setReadyForFight,
-  } = useContext(DeckContext);
+  const { playerName, maxPower } = useSelector(getOptions);
+  const dispatch = useDispatch();
+  const actions = bindActionCreators(
+    {
+      addToPlayerDeck,
+      startFight,
+      createIaDeck,
+      startDeckReview,
+      startDeckEdition,
+    },
+    dispatch
+  );
+  const playerDeck = useSelector(getPlayerDeck);
+  const reviewing = useSelector(isReviewingDeck);
   const history = useHistory();
-
   const audioClips3 = new Howl({
     src: [fight],
   });
+  const allCards = useSelector(getAllCards);
 
-  const confirmationWindow = readyForFight
-    ? 'cardList display specialFlex'
-    : 'cardList displayNone';
+  const totalPower = playerDeck
+    .map((heroeChoosen) => heroeChoosen.power)
+    .reduce((acc, cur) => acc + cur, 0);
 
-  const view = readyForFight ? 'deckConfirmation' : 'playerDeck';
-
-  function sumPower() {
-    let currentPower = 0;
-    currentPower = deck
-      .map((heroeChoosen) => heroeChoosen.power)
-      .reduce((acc, cur) => acc + cur, 0);
-    return currentPower;
-  }
-
-  const handlePositionHand = () => {
-    if (sumPower() === 0) {
-      window.alert('You must choose at leat one heroe');
-    } else {
-      const deckForHand = deck.slice();
-      for (let i = 0; i < deckForHand.length; i += 1) {
-        deckForHand[i].position = 'hand';
-      }
-      setDeck(deckForHand);
-      history.push('/deckBoard');
-      audioClips3.play();
-    }
+  const handleFightButtonClick = () => {
+    actions.createIaDeck(allCards, maxPower);
+    actions.startFight();
+    history.push('/deckBoard');
+    audioClips3.play();
   };
 
   const toggleReadyForFightAlert = () => {
-    if (sumPower() === 0) {
+    if (totalPower === 0) {
       window.alert('You must choose at leat one heroe');
+    } else if (maxPower <= totalPower) {
+      alert('Maximum deck power exceeded, please remove cards from your deck');
     } else {
-      setReadyForFight(!readyForFight);
+      actions.startDeckReview();
     }
   };
 
-  const toggleReadyForFightNoAlert = () => {
-    setReadyForFight(!readyForFight);
-  };
+  const confirmationWindow = reviewing
+    ? 'cardList display specialFlex'
+    : 'cardList displayNone';
+  const view = reviewing ? 'deckConfirmation' : 'playerDeck';
 
   return (
     <div className="deckContainer">
@@ -70,22 +73,23 @@ function DeckList() {
           <div className="totalPower">
             TOTAL POWER :{' '}
             <p>
-              {sumPower()} /{maxPower}
+              {totalPower} / {maxPower}
             </p>
           </div>
           <div className="deck">
-            <p>DECK</p>
-            {deck.map((heroe) => (
-              <CardsInDeck
-                key={heroe.name}
-                j
-                heroechoice={heroe}
-                addToDeck={addToDeck}
-                heroe={heroe}
-              />
-            ))}
+            <p style={{ marginBottom: 15 }}>DECK</p>
+            {playerDeck
+              .map((heroe) => (
+                <CardsInDeck
+                  key={heroe.id}
+                  heroechoice={heroe}
+                  addToDeck={actions.addToPlayerDeck}
+                  heroe={heroe}
+                />
+              ))
+              .reverse()}
           </div>
-          <div className="pseudoPlayer">PSEUDO : {pseudo}</div>
+          <div className="pseudoPlayer">PSEUDO : {playerName}</div>
 
           <div className="buttonStartDiv">
             <button
@@ -101,7 +105,7 @@ function DeckList() {
       <div className={confirmationWindow}>
         <h2>Check your team</h2>
         <div className="confirmationView">
-          {deck.map((hero, index) => {
+          {playerDeck.map((hero, index) => {
             return <Card key={hero.id} heroe={hero} index={index} />;
           })}
         </div>
@@ -109,14 +113,14 @@ function DeckList() {
           <button
             className="decklist-btn whiteButton"
             type="button"
-            onClick={toggleReadyForFightNoAlert}
+            onClick={() => actions.startDeckEdition()}
           >
             Manage your team
           </button>
           <button
             className="decklist-btn"
             type="button"
-            onClick={handlePositionHand}
+            onClick={handleFightButtonClick}
           >
             fight
           </button>
