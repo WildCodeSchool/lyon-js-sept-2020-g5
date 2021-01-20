@@ -54,6 +54,8 @@ function DeckList() {
   const toggleReadyForFightAlert = () => {
     if (totalPower === 0) {
       window.alert('You must choose at leat one heroe');
+    } else if (maxPower <= totalPower) {
+      alert('Maximum deck power exceeded, please remove cards from your deck');
     } else {
       actions.startDeckReview();
     }
@@ -75,15 +77,17 @@ function DeckList() {
             </p>
           </div>
           <div className="deck">
-            <p>DECK</p>
-            {playerDeck.map((heroe) => (
-              <CardsInDeck
-                key={heroe.name}
-                heroechoice={heroe}
-                addToDeck={actions.addToPlayerDeck}
-                heroe={heroe}
-              />
-            ))}
+            <p style={{ marginBottom: 15 }}>DECK</p>
+            {playerDeck
+              .map((heroe) => (
+                <CardsInDeck
+                  key={heroe.id}
+                  heroechoice={heroe}
+                  addToDeck={actions.addToPlayerDeck}
+                  heroe={heroe}
+                />
+              ))
+              .reverse()}
           </div>
           <div className="pseudoPlayer">PSEUDO : {playerName}</div>
 

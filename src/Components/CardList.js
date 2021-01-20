@@ -15,11 +15,11 @@ function CardList() {
   useEffect(actions.fetchCards, []);
 
   return (
-    <main className={reviewing ? 'cardList displayNone' : 'cardList display'}>
+    <div className={reviewing ? 'cardList displayNone' : 'cardList display'}>
       {cards.map((hero, index) => {
         return <Card key={hero.id} heroe={hero} index={index} />;
       })}
-    </main>
+    </div>
   );
 }
 

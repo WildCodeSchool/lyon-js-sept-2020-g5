@@ -1,4 +1,5 @@
 import React from 'react';
+import StickyBox from 'react-sticky-box';
 import { useSelector } from 'react-redux';
 import CardList from './CardList';
 import DeckList from './DeckList';
@@ -15,7 +16,13 @@ function Game() {
         className={reviewing ? 'containerDeckConfirmation' : 'containerDeck'}
       >
         <CardList />
-        <DeckList />
+        <StickyBox
+          style={{ height: 'fit-content' }}
+          offsetTop={0}
+          offsetBottom={20}
+        >
+          <DeckList />
+        </StickyBox>
       </div>
       <div className="Portrait">
         <img src={Rotate} alt="turn phone" />

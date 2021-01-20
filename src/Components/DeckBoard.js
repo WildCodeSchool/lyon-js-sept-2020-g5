@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router-dom';
 import CardOfDeckBoard from './CardOfDeckBoard';
 import CardOfDeckBoardIa from './CardOfDeckBoardIa';
@@ -16,35 +15,22 @@ import equalityGame from '../Pictures/equality.jpg';
 import {
   equality,
   getOtherPlayerBoardCards,
-  getOtherPlayerDeck,
   getOtherPlayerHandCards,
   getPlayerBoardCards,
-  getPlayerDeck,
   getPlayerHandCards,
   getIsFigthing,
   otherPlayerHasWon,
   playerHasWon,
   putPlayerCardInBoard,
   getGraveyardCards,
-  putOtherPlayerCardInBoard,
   startIABoardAttack,
   resetGame,
   isOtherPlayerTurn,
+  putRandomOtherPlayerCardOnBoard,
 } from '../Redux/gameSlice';
 
 function DeckBoard() {
   const dispatch = useDispatch();
-  const actions = bindActionCreators(
-    {
-      putPlayerCardInBoard,
-      putOtherPlayerCardInBoard,
-      startIABoardAttack,
-      resetGame,
-    },
-    dispatch
-  );
-  const deckIa = useSelector(getOtherPlayerDeck);
-  const deck = useSelector(getPlayerDeck);
   const otherPlayerHandCards = useSelector(getOtherPlayerHandCards);
   const playerHandCards = useSelector(getPlayerHandCards);
   const playerWon = useSelector(playerHasWon);
@@ -59,19 +45,23 @@ function DeckBoard() {
   const history = useHistory();
 
   const handleQuitButtonClick = () => {
-    actions.resetGame();
+    dispatch(resetGame());
     history.push('/');
   };
 
   const handleNewGameButtonClick = () => {
-    actions.resetGame();
+    dispatch(resetGame());
     history.push('/game');
   };
 
   const handleTurnEnd = () => {
     if (otherPlayerHandCards.length)
-      actions.putOtherPlayerCardInBoard(otherPlayerHandCards);
-    actions.startIABoardAttack();
+      dispatch(putRandomOtherPlayerCardOnBoard());
+    dispatch(startIABoardAttack());
+  };
+
+  const handlePlayerHandCardClick = (card) => {
+    dispatch(putPlayerCardInBoard(card));
   };
 
   return (
@@ -109,12 +99,12 @@ function DeckBoard() {
         <div className="mainContainer">
           <div className="containerHandIa">
             <div className="iaHand">
-              {otherPlayerHandCards.map((heroe) => (
+              {otherPlayerHandCards.slice(0, 5).map((heroe) => (
                 <CardOfDeckBoardIa key={heroe.id} heroe={heroe} />
               ))}
             </div>
             <div className="hiddenCardIa">
-              <HiddenCards heroes={deckIa.slice(0, 5)} />
+              <HiddenCards heroes={otherPlayerHandCards.slice(5)} />
             </div>
           </div>
 
@@ -126,16 +116,16 @@ function DeckBoard() {
           </div>
           <div className="containerHandPlayer">
             <div className="playerHand">
-              {playerHandCards.map((heroe) => (
+              {playerHandCards.slice(0, 5).map((heroe) => (
                 <CardOfDeckBoard
                   key={heroe.id}
                   heroe={heroe}
-                  handToBoard={actions.putPlayerCardInBoard}
+                  handToBoard={handlePlayerHandCardClick}
                 />
               ))}
             </div>
             <div className="hiddenCardPlayer1">
-              <HiddenCards heroes={deck} />
+              <HiddenCards heroes={playerHandCards.slice(5)} />
             </div>
           </div>
         </div>
